@@ -1,0 +1,3 @@
+INDEX VERSION 1.131+C:\Users\dvusi\OneDrive\Documents\SMU\Fall 2020\CRCP 3330\.metadata\.plugins\org.eclipse.jdt.core
+3665282139.index
+1190523430.index
