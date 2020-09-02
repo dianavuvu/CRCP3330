@@ -10,6 +10,7 @@
 		<item key="WizardFileSystemResourceImportPage1.STORE_OVERWRITE_EXISTING_RESOURCES_ID" value="false"/>
 		<item key="WizardFileSystemResourceImportPage1.STORE_CREATE_CONTAINER_STRUCTURE_ID" value="false"/>
 		<list key="WizardFileSystemResourceImportPage1.STORE_SOURCE_NAMES_ID">
+			<item value="C:\Users\dvusi\OneDrive\Documents\SMU\Fall2020\CRCP3330\HelloWorldMidi"/>
 			<item value="C:\Users\dvusi\OneDrive\Documents\SMU\Fall 2020\CRCP 3330"/>
 		</list>
 	</section>
