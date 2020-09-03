@@ -19,7 +19,19 @@ public class ProbabilityGenerator <T> {
 	
 	//it is training probability generator with new data
 	void train(ArrayList<T> newTokens) {
-		//code training
+		for (int i = 0; i <= newTokens.size() - 1; i++) {	//for loop to go through newTokens
+			for (int j = 0; j <= alphabet.size(); j ++) {	//another for loop to go through alphabet so each index of tokens goes through every alphabet index
+				if (newTokens.get(i) == alphabet.get(j)) {		 
+					T index = alphabet.get(j);
+				}
+				else {
+					alphabet.add(newTokens.get(i));		//add newTokens to alphabet array
+				}
+			}
+		int val = alphabet_counts.get(i);
+		val = val + 1;
+		alphabet_counts.set(alphabet_counts.get(i), val);	//incrementing alphabet counts by 1
+		}
 	}
 	
 	T generate() {
