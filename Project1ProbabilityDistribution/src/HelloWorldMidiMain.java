@@ -1,14 +1,11 @@
-
-/*
- * c2017-2019 Courtney Brown 
- * 
- * Class: H
+/* 
+ * Programmer: Diana Vu 
+ * Date: September 8, 2020
  * Description: Demonstration of MIDI file manipulations, etc. & 'MelodyPlayer' sequencer
  * 
  */
 
 import processing.core.*;
-
 import java.util.*; 
 
 //importing the JMusic stuff
@@ -31,13 +28,11 @@ public class HelloWorldMidiMain extends PApplet {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		PApplet.main("HelloWorldMidiMain"); //change this to match above class & file name 
-
 	}
 
 	//setting the window size to 300x300
 	public void settings() {
 		size(300, 300);
-
 	}
 
 	//doing all the setup stuff
@@ -47,6 +42,7 @@ public class HelloWorldMidiMain extends PApplet {
 		//Create my generator for pitch and rhythm
 		ProbabilityGenerator<Integer> pitchGenerator = new ProbabilityGenerator<Integer>();
 		ProbabilityGenerator<Double> rhythmGenerator = new ProbabilityGenerator<Double>();
+		
 
 		// returns a url
 		String filePath = getPath("mid/gardel_por.mid");
@@ -71,7 +67,7 @@ public class HelloWorldMidiMain extends PApplet {
 	}
 
 	public void draw() {
-		player.play(); //play each note in the sequence -- the player will determine whether is time for a note onset
+		//player.play(); //play each note in the sequence -- the player will determine whether is time for a note onset
 
 		textSize(12);
 		fill(0, 203, 153);
@@ -104,28 +100,16 @@ public class HelloWorldMidiMain extends PApplet {
 	//this starts & restarts the melody.
 	public void keyPressed() {
 		
-		//put in unit test class
-		MidiFileToNotes midiNotesMary; //read midi file
-		// returns a url
-		String filePath = getPath("mid/MaryHadALittleLamb.mid");
-
-		midiNotesMary = new MidiFileToNotes(filePath); //creates a new MidiFileToNotes -- reminder -- ALL objects in Java must 
-													//be created with "new". Note how every object is a pointer or reference. Every. single. one.
-
-
-//		// which line to read in --> this object only reads one line (or ie, voice or ie, one instrument)'s worth of data from the file
-		midiNotesMary.setWhichLine(0);
-		
-		
+		//instantiate UnitTestOne
+		UnitOneTest test = new UnitOneTest();
 		
 		if (key == ' ') {
 			player.reset();
 			println("Melody started!");
 		}
-		else if (key == '1'){
+		else if (key == '1'){		
 			//run unit 1
-			System.out.println(midiNotesMary.getPitchArray());
-			System.out.println(midiNotesMary.getRhythmArray());
+			test.run();
 		}
 	}
 }

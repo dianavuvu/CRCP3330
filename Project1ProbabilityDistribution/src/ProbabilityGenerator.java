@@ -1,8 +1,7 @@
 /*
  * Programmer: Diana Vu
  * Date: September 8, 2020
- * Description: 
- * This is the probability generator class where I will create an algorithm that predicts the next 'T' in a sequence. 
+ * Description: This is the probability generator class where I will create an algorithm that predicts the next 'T' in a sequence. 
  * 
  */
 
@@ -19,6 +18,7 @@ public class ProbabilityGenerator <T> {
 	
 	//it is training probability generator with new data
 	void train(ArrayList<T> newTokens) {
+		
 		for (int i = 0; i <= newTokens.size() - 1; i++) {	//for loop to go through newTokens
 			for (int j = 0; j <= alphabet.size(); j ++) {	//another for loop to go through alphabet so each index of tokens goes through every alphabet index
 				if (newTokens.get(i) == alphabet.get(j)) {		 
@@ -26,17 +26,21 @@ public class ProbabilityGenerator <T> {
 				}
 				else {
 					alphabet.add(newTokens.get(i));		//add newTokens to alphabet array
+					alphabet_counts.add(0);				//add 0 to alphabets counts array
 				}
 			}
 		int val = alphabet_counts.get(i);
 		val = val + 1;
 		alphabet_counts.set(alphabet_counts.get(i), val);	//incrementing alphabet counts by 1
 		}
+		
 	}
 	
 	T generate() {
 		T newToken = null;
-		//do something here
+		
+		//float rIndex = (float) Math.random();
+		
 		return newToken;
 	}
 	
