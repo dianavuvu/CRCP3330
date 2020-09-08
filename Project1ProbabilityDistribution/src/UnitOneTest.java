@@ -34,6 +34,13 @@ public class UnitOneTest {
 		//training
 		pitchGenerator.train(midiNotesMary.getPitchArray());
 		rhythmGenerator.train(midiNotesMary.getRhythmArray());
+		
+		System.out.println("\n Pitches: \n" + "-----Probability Distribution-----\n");
+		pitchGenerator.print(midiNotesMary.getPitchArray());
+		System.out.println("\n Rhythms: \n" + "-----Probability Distribution-----\n");
+		rhythmGenerator.print(midiNotesMary.getRhythmArray());
+
+
 	}
 
 	String getPath(String path) {
