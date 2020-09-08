@@ -55,9 +55,6 @@ public class HelloWorldMidiMain extends PApplet {
 //		// which line to read in --> this object only reads one line (or ie, voice or ie, one instrument)'s worth of data from the file
 		midiNotes.setWhichLine(0);
 		
-		//training
-		pitchGenerator.train(midiNotes.getPitchArray());
-		rhythmGenerator.train(midiNotes.getRhythmArray());
 
 		player = new MelodyPlayer(this, 100.0f);
 

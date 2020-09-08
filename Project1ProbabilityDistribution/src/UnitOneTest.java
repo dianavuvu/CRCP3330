@@ -28,16 +28,12 @@ public class UnitOneTest {
 	    // which line to read in --> this object only reads one line (or ie, voice or ie, one instrument)'s worth of data from the file
 		midiNotesMary.setWhichLine(0);
 		
-		System.out.println("Pitches: \n" + "-----Probability Distribution-----\n");
-		for (int i = 0; i<= 5; i++) {
-			System.out.println("Token: " + token + "|" + "Probability:"+ midiNotesMary.getPitchArray(i));		//print out all the pitches
-		}
+		ProbabilityGenerator<Integer> pitchGenerator = new ProbabilityGenerator<Integer>();
+		ProbabilityGenerator<Double> rhythmGenerator = new ProbabilityGenerator<Double>();
 		
-		System.out.println("Rhythms: \n" + "-----Probability Distribution-----\n");
-		for (int i = 0; i<= 5; i++) {
-			System.out.println("Token: " + token + "|" + "Probability:"+ midiNotesMary.getRhythmArray(i));		
-		}
-
+		//training
+		pitchGenerator.train(midiNotesMary.getPitchArray());
+		rhythmGenerator.train(midiNotesMary.getRhythmArray());
 	}
 
 	String getPath(String path) {
