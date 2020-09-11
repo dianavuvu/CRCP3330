@@ -7,11 +7,10 @@
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
+import java.util.ArrayList;
 
 public class UnitTwoTest {
-	
-	MelodyPlayer player;
-	
+
 	UnitTwoTest(){
 		
 	}
@@ -39,22 +38,17 @@ public class UnitTwoTest {
 		rhythmGenerator.train(midiNotesMary.getRhythmArray());
 		
 		//generating melodies
-		pitchGenerator.generate(20);
-		rhythmGenerator.generate(20);
+		ArrayList<Integer> newPitches = new ArrayList<Integer>(); //initialize new array for generated pitches
+		ArrayList<Double> newRhythms = new ArrayList<Double>(); //initialize new array for generated rhythms
+		
+		newPitches = pitchGenerator.generate(20);
+		newRhythms = rhythmGenerator.generate(20);
 		
 		//printing out pitch and rhythm of generated melody
 		System.out.println("\n Pitches: \n" + "-----Probability Distribution-----\n");
-		pitchGenerator.print(midiNotesMary.getPitchArray());
+		pitchGenerator.print(newPitches);
 		System.out.println("\n Rhythms: \n" + "-----Probability Distribution-----\n");
-		rhythmGenerator.print(midiNotesMary.getRhythmArray());
-
-		//player = new MelodyPlayer(this, 100.0f);
-
-//		player.setup();
-//		player.setMelody(pitchGenerator.generate(20));
-//		player.setRhythm(rhythmGenerator.generate(20));
-
-
+		rhythmGenerator.print(newRhythms);
 	}
 
 	String getPath(String path) {

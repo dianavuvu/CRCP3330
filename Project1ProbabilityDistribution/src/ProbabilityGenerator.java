@@ -10,13 +10,11 @@ import java.util.ArrayList;
 public class ProbabilityGenerator<T> {
 	ArrayList<T> alphabet; // initializing alphabet array list
 	ArrayList<Integer> alphabet_counts; // initializing alphabet count array list
-	ArrayList<Integer> newProbs; //initializing newProbs array list
 	float total = 0; //initializing total
 
 	ProbabilityGenerator() {
 		alphabet = new ArrayList<T>();
 		alphabet_counts = new ArrayList<Integer>();
-		newProbs = new ArrayList<Integer>();
 	}
 
 	// it is training probability generator with new data
@@ -50,12 +48,14 @@ public class ProbabilityGenerator<T> {
 	T generate() {
 		T newToken = null; 
 		
+		ArrayList<Integer> newProbs = new ArrayList<Integer>();
+		
 		//generate random number from 0 - 1
 		float rIndex = (float) Math.random();
 		float index = alphabet.size() * rIndex;
 		
 		//create sumProbs array
-		for (int i = 1; i <= alphabet.size() - 1; i++) {
+		for (int i = 1; i < alphabet.size() - 1; i++) {
 
 			int p = alphabet_counts.get(i);		//current distribution		
 			int r = alphabet_counts.get(i - 1);	//previous distribution
@@ -64,16 +64,23 @@ public class ProbabilityGenerator<T> {
 			newProbs.add(t); // add to new array
 		}
 		
+		//debug, check if size is the same
+		if (alphabet.size() == newProbs.size())
+			System.out.println("Size is the same");
+		
 		//while loop (!found
 		//found --> rIndex <= sumProbs[index];
-		//boolean found = false;
-		//index < size - 1
+		boolean found = false;
+		int i = newProbs.size();
 		
-		for(int i = 0; i <= newProbs.size(); i++) {
-			if (index < newProbs.get(i))			//if x <= index then index = certain index
+		while(found == false) {
+			//index < size - 1
+			if (index < newProbs.get(i)) {			//if x < index then newToken = that index
 				newToken = alphabet.get(i);			//return alphabet.get(index);
+				found = true;						//break the while loop once match is found
+			}
+			i--; //decrement the index size
 		}
-
 		return newToken;
 	}
 

@@ -66,15 +66,15 @@ public class HelloWorldMidiMain extends PApplet {
 	public void draw() {
 		//player.play(); //play each note in the sequence -- the player will determine whether is time for a note onset
 
-		textSize(12);
-		fill(0, 203, 153);
-		text("Press 1 to start Unit Test One\n", width/10, height/2);
+		textSize(15);
+		fill(0, 0, 200);
+		text("Press 1 to start Unit Test One\n", width/10, height/6);
 		
-		fill(100, 203, 153);
-		text("Press 2 to start Unit Test Two\n", width/10, height/2);
+		fill(0, 200, 0);
+		text("Press 2 to start Unit Test Two\n", width/10, height/4);
 		
-		fill(100, 255, 53);
-		text("Press 3 to start Unit Test Three\n", width/10, height/2);
+		fill(200, 0, 0);
+		text("Press 3 to start Unit Test Three\n", width/10, height/3);
 	}
 
 	//this finds the absolute path of a file
