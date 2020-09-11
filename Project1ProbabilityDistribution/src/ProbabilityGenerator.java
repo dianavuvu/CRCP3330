@@ -10,11 +10,13 @@ import java.util.ArrayList;
 public class ProbabilityGenerator<T> {
 	ArrayList<T> alphabet; // initializing alphabet array list
 	ArrayList<Integer> alphabet_counts; // initializing alphabet count array list
+	ArrayList<Integer> newProbs; //initializing newProbs array list
 	float total = 0; //initializing total
 
 	ProbabilityGenerator() {
 		alphabet = new ArrayList<T>();
 		alphabet_counts = new ArrayList<Integer>();
+		newProbs = new ArrayList<Integer>();
 	}
 
 	// it is training probability generator with new data
@@ -40,16 +42,37 @@ public class ProbabilityGenerator<T> {
 		
 		// create print probability function
 		for (int i = 0; i < alphabet_counts.size(); i++) {
-			System.out.println("Token: " + alphabet.get(i) + " | " + "Probability:" + (alphabet_counts.get(i) / total)); // print out all the pitches & rhythms
-																													
+			System.out.println("Token: " + alphabet.get(i) + " | " + "Probability:" + (alphabet_counts.get(i) / total)); // print out all the pitches & rhythms																									
 		}
 
 	}
 
 	T generate() {
-		T newToken = null;
+		T newToken = null; 
+		
+		//generate random number from 0 - 1
+		float rIndex = (float) Math.random();
+		float index = alphabet.size() * rIndex;
+		
+		//create sumProbs array
+		for (int i = 1; i <= alphabet.size() - 1; i++) {
 
-		// float rIndex = (float) Math.random();
+			int p = alphabet_counts.get(i);		//current distribution		
+			int r = alphabet_counts.get(i - 1);	//previous distribution
+			int t = p + r;						//add sum
+					
+			newProbs.add(t); // add to new array
+		}
+		
+		//while loop (!found
+		//found --> rIndex <= sumProbs[index];
+		//boolean found = false;
+		//index < size - 1
+		
+		for(int i = 0; i <= newProbs.size(); i++) {
+			if (index < newProbs.get(i))			//if x <= index then index = certain index
+				newToken = alphabet.get(i);			//return alphabet.get(index);
+		}
 
 		return newToken;
 	}

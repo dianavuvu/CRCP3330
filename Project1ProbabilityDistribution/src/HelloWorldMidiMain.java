@@ -68,7 +68,13 @@ public class HelloWorldMidiMain extends PApplet {
 
 		textSize(12);
 		fill(0, 203, 153);
-		text("Press 1 to start the unit test", width/10, height/2);
+		text("Press 1 to start Unit Test One\n", width/10, height/2);
+		
+		fill(100, 203, 153);
+		text("Press 2 to start Unit Test Two\n", width/10, height/2);
+		
+		fill(100, 255, 53);
+		text("Press 3 to start Unit Test Three\n", width/10, height/2);
 	}
 
 	//this finds the absolute path of a file
@@ -97,8 +103,9 @@ public class HelloWorldMidiMain extends PApplet {
 	//this starts & restarts the melody.
 	public void keyPressed() {
 		
-		//instantiate UnitTestOne
+		//instantiate unit tests
 		UnitOneTest test = new UnitOneTest();
+		UnitTwoTest t = new UnitTwoTest();
 		
 		if (key == ' ') {
 			player.reset();
@@ -107,6 +114,10 @@ public class HelloWorldMidiMain extends PApplet {
 		else if (key == '1'){		
 			//run unit 1
 			test.run();
+		}
+		else if (key == '2') {
+			//run unit 2
+			t.run();
 		}
 	}
 }
