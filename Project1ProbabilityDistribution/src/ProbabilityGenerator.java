@@ -64,14 +64,14 @@ public class ProbabilityGenerator<T> {
 			newProbs.add(t); // add to new array
 		}
 		
-		//debug, check if size is the same
+		//debugging, check if size is the same
 		if (alphabet.size() == newProbs.size())
-			System.out.println("Size is the same");
+			System.out.println("YAY the size is the same! :)");
 		
 		//while loop (!found
 		//found --> rIndex <= sumProbs[index];
 		boolean found = false;
-		int i = newProbs.size();
+		int i = 0;
 		
 		while(found == false) {
 			//index < size - 1
@@ -79,7 +79,10 @@ public class ProbabilityGenerator<T> {
 				newToken = alphabet.get(i);			//return alphabet.get(index);
 				found = true;						//break the while loop once match is found
 			}
-			i--; //decrement the index size
+			
+			i++; //increment the index size
+			if(i <= newProbs.size())
+				break;	//break once the increment reaches the max size
 		}
 		return newToken;
 	}
