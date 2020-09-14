@@ -32,14 +32,11 @@ public class ProbabilityGenerator<T> {
 			val = val + 1;
 			alphabet_counts.set(index, val); // incrementing alphabet counts by 1
 		}
-		
+		total = total + newTokens.size();	// divide by total amount
 	}
 	
 	// create print probability function
 	void print(ArrayList<T> newTokens) {	
-		
-		total = total + newTokens.size();	// divide by total amount
-
 		for (int i = 0; i < alphabet_counts.size(); i++) {
 			System.out.println("Token: " + alphabet.get(i) + " | " + "Probability:" + alphabet_counts.get(i) / total); // print out all the pitches & rhythms																									
 		}
