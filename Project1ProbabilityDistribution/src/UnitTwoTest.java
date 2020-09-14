@@ -44,13 +44,10 @@ public class UnitTwoTest {
 		newRhythms = rhythmGenerator.generate(20); //put new generated rhythms in an array
 		
 		//printing out pitch and rhythm of generated melody
-		System.out.println("Unit Test Two:");
-		System.out.println("\n Pitches: \n" + "-----Probability Distribution-----\n");
-		pitchGenerator.print(newPitches);
-		System.out.println("\n Rhythms: \n" + "-----Probability Distribution-----\n");
-		rhythmGenerator.print(newRhythms);
-		System.out.println("------\n");
-
+		System.out.println("Unit Test Two:\n" + " Generated Tokens for Pitches: \n");
+		System.out.println(newPitches);
+		System.out.println("\n Generated Tokens for Rhythm: \n");
+		System.out.println(newRhythms);
 	}
 
 	String getPath(String path) {
