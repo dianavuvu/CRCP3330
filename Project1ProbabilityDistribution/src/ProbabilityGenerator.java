@@ -50,6 +50,7 @@ public class ProbabilityGenerator<T> {
 	
 		//generate random number from 0 - 1
 		float rIndex = (float) Math.random();
+		float sum = 0;
 		
 		//normalize array
 		for (int i = 0; i < alphabet_counts.size(); i++) {
@@ -61,11 +62,14 @@ public class ProbabilityGenerator<T> {
 		for (int i = 0; i < alphabet.size(); i++) {
 			
 			if (i == 0) {  // first iteration of alphabet
-				newProbs.add(probDist.get(0)); 
+				newProbs.add(probDist.get(0));
+				sum = sum + probDist.get(0);
 			}
 			else {
-				newProbs.add(probDist.get(i) + probDist.get(i-1)); //add current and previous distribution to new array
-				//System.out.println(newProbs.get(i));
+				//add current and previous distribution to new array
+				sum = sum + probDist.get(i); //running total
+				newProbs.add(sum);
+				System.out.println(newProbs.get(i));
 			}
 		}
 		
@@ -77,9 +81,9 @@ public class ProbabilityGenerator<T> {
 		int i = 0; //index for while loop
 		
 		//while loop to look through newProbs array to find newToken to generate
-		while(!found && i < newProbs.size() - 1) {
+		while(!found && i < newProbs.size()) {
 			//index < size - 1
-			found = rIndex <= newProbs.get(i); //if x < index then newToken = that index
+			found = rIndex < newProbs.get(i); //if x < index then newToken = that index
 			i++; //increment the index size
 		}
 		newToken = alphabet.get(i - 1); //return alphabet.get(index);
