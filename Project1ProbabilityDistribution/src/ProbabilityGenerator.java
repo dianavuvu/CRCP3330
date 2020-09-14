@@ -48,7 +48,7 @@ public class ProbabilityGenerator<T> {
 	T generate() {
 		T newToken = null; 
 		
-		ArrayList<Integer> newProbs = new ArrayList<Integer>();
+		ArrayList<Integer> newProbs = new ArrayList<Integer>(); //intialize newProbs arraylist
 		
 		//generate random number from 0 - 1
 		float rIndex = (float) Math.random();
@@ -56,6 +56,9 @@ public class ProbabilityGenerator<T> {
 		
 		//create sumProbs array
 		for (int i = 1; i < alphabet.size() - 1; i++) {
+			
+//			if (i == 0)  // first iteration of alphabet
+//				newProbs.add(alphabet_counts.get(0));
 
 			int p = alphabet_counts.get(i);		//current distribution		
 			int r = alphabet_counts.get(i - 1);	//previous distribution
@@ -68,21 +71,19 @@ public class ProbabilityGenerator<T> {
 		if (alphabet.size() == newProbs.size())
 			System.out.println("YAY the size is the same! :)");
 		
-		//while loop (!found
 		//found --> rIndex <= sumProbs[index];
-		boolean found = false;
-		int i = 0;
 		
-		while(found == false) {
+		boolean found = false;
+		int i = 0; //index for while loop
+		
+		//while loop to look through newProbs array to find newToken to generate
+		while(!found && i < newProbs.size()) {
 			//index < size - 1
-			if (index < newProbs.get(i)) {			//if x < index then newToken = that index
+			if (index <= newProbs.get(i)) {			//if x < index then newToken = that index
 				newToken = alphabet.get(i);			//return alphabet.get(index);
-				found = true;						//break the while loop once match is found
+				found = true;
 			}
-			
 			i++; //increment the index size
-			if(i <= newProbs.size())
-				break;	//break once the increment reaches the max size
 		}
 		return newToken;
 	}

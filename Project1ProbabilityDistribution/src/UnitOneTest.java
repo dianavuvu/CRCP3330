@@ -36,10 +36,12 @@ public class UnitOneTest {
 		rhythmGenerator.train(midiNotesMary.getRhythmArray());
 		
 		//print out the distribution
+		System.out.println("Unit Test One: \n");
 		System.out.println("\n Pitches: \n" + "-----Probability Distribution-----\n");
 		pitchGenerator.print(midiNotesMary.getPitchArray());
 		System.out.println("\n Rhythms: \n" + "-----Probability Distribution-----\n");
 		rhythmGenerator.print(midiNotesMary.getRhythmArray());
+		System.out.println("------");
 
 
 	}
