@@ -35,35 +35,41 @@ public class ProbabilityGenerator<T> {
 		
 	}
 	
-	void print(ArrayList<T> newTokens) {
-		total = total + newTokens.size();	// divide by total amount
+	// create print probability function
+	void print(ArrayList<T> newTokens) {	
 		
-		// create print probability function
+		total = total + newTokens.size();	// divide by total amount
+
 		for (int i = 0; i < alphabet_counts.size(); i++) {
-			System.out.println("Token: " + alphabet.get(i) + " | " + "Probability:" + (alphabet_counts.get(i) / total)); // print out all the pitches & rhythms																									
+			System.out.println("Token: " + alphabet.get(i) + " | " + "Probability:" + alphabet_counts.get(i) / total); // print out all the pitches & rhythms																									
 		}
-
 	}
-
+	
 	T generate() {
 		T newToken = null; 
 		
-		ArrayList<Integer> newProbs = new ArrayList<Integer>(); //initialize newProbs array list
-		
+		ArrayList<Float> newProbs = new ArrayList<Float>(); //initialize newProbs array list
+		ArrayList<Float> probDist =  new ArrayList<Float>();  //initialize probability distribution array list to normalize alphabet counts
+	
 		//generate random number from 0 - 1
 		float rIndex = (float) Math.random();
-		float index = alphabet.size() * rIndex;
 		
+		//normalize array
+		for (int i = 0; i < alphabet_counts.size(); i++) {
+			probDist.add(alphabet_counts.get(i) / total);
+		}
+	
+			
 		//create sumProbs array
 		for (int i = 0; i < alphabet.size(); i++) {
 			
 			if (i == 0) {  // first iteration of alphabet
-				newProbs.add(alphabet_counts.get(0));
+				newProbs.add(probDist.get(0)); //normalize array
 			}
 			else {
-				int p = alphabet_counts.get(i);		//current distribution		
-				int r = alphabet_counts.get(i - 1);	//previous distribution
-				int t = p + r;						//add together
+				float p = probDist.get(i);		//current distribution		
+				float r = probDist.get(i - 1) ;	//previous distribution
+				float t = p + r;							//add together
 						
 				newProbs.add(t); // add to new array
 			}
@@ -77,19 +83,14 @@ public class ProbabilityGenerator<T> {
 		
 		boolean found = false;
 		int i = 0; //index for while loop
-		int foundToken = 0;
 		
 		//while loop to look through newProbs array to find newToken to generate
 		while(!found && i < newProbs.size()) {
 			//index < size - 1
-			if (index < newProbs.get(i)) {			//if x < index then newToken = that index
-				//newToken = alphabet.get(i);			//return alphabet.get(index);
-				foundToken = i;
-				found = true;
-			}
+			found = rIndex < newProbs.get(i); //if x < index then newToken = that index
 			i++; //increment the index size
 		}
-		newToken = alphabet.get(foundToken); //return alphabet.get(index);
+		newToken = alphabet.get(i - 1); //return alphabet.get(index);
 		return newToken;
 	}
 
