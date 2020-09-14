@@ -57,6 +57,7 @@ public class ProbabilityGenerator<T> {
 		//normalize array
 		for (int i = 0; i < alphabet_counts.size(); i++) {
 			probDist.add(alphabet_counts.get(i) / total);
+			System.out.println(probDist.get(i));
 		}
 			
 		//create sumProbs array
@@ -68,14 +69,14 @@ public class ProbabilityGenerator<T> {
 			else {
 				float p = probDist.get(i);		//current distribution		
 				float r = probDist.get(i - 1) ;	//previous distribution
-				float t = p + r;							//add together
+				float t = p + r;				//add together
 						
 				newProbs.add(t); // add to new array
 			}
 		}
 		
 		//debugging, check if size is the same
-			System.out.println(alphabet);
+			System.out.println(alphabet_counts);
 			System.out.println(newProbs);
 		
 		//found --> rIndex <= sumProbs[index];
