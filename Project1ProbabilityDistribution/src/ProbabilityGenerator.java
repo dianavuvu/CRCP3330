@@ -66,10 +66,10 @@ public class ProbabilityGenerator<T> {
 				sum = sum + probDist.get(0);
 			}
 			else {
-				//add current and previous distribution to new array
+				//add current and previous distributions to new array
 				sum = sum + probDist.get(i); //running total
 				newProbs.add(sum);
-				System.out.println(newProbs.get(i));
+				//System.out.println(newProbs.get(i));
 			}
 		}
 		
@@ -82,7 +82,6 @@ public class ProbabilityGenerator<T> {
 		
 		//while loop to look through newProbs array to find newToken to generate
 		while(!found && i < newProbs.size()) {
-			//index < size - 1
 			found = rIndex < newProbs.get(i); //if x < index then newToken = that index
 			i++; //increment the index size
 		}
