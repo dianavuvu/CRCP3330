@@ -58,13 +58,12 @@ public class ProbabilityGenerator<T> {
 		for (int i = 0; i < alphabet_counts.size(); i++) {
 			probDist.add(alphabet_counts.get(i) / total);
 		}
-	
 			
 		//create sumProbs array
 		for (int i = 0; i < alphabet.size(); i++) {
 			
 			if (i == 0) {  // first iteration of alphabet
-				newProbs.add(probDist.get(0)); //normalize array
+				newProbs.add(probDist.get(0)); 
 			}
 			else {
 				float p = probDist.get(i);		//current distribution		
