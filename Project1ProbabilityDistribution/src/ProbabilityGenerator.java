@@ -48,43 +48,48 @@ public class ProbabilityGenerator<T> {
 	T generate() {
 		T newToken = null; 
 		
-		ArrayList<Integer> newProbs = new ArrayList<Integer>(); //intialize newProbs arraylist
+		ArrayList<Integer> newProbs = new ArrayList<Integer>(); //initialize newProbs array list
 		
 		//generate random number from 0 - 1
 		float rIndex = (float) Math.random();
 		float index = alphabet.size() * rIndex;
 		
 		//create sumProbs array
-		for (int i = 1; i < alphabet.size() - 1; i++) {
+		for (int i = 0; i < alphabet.size(); i++) {
 			
-//			if (i == 0)  // first iteration of alphabet
-//				newProbs.add(alphabet_counts.get(0));
-
-			int p = alphabet_counts.get(i);		//current distribution		
-			int r = alphabet_counts.get(i - 1);	//previous distribution
-			int t = p + r;						//add sum
-					
-			newProbs.add(t); // add to new array
+			if (i == 0) {  // first iteration of alphabet
+				newProbs.add(alphabet_counts.get(0));
+			}
+			else {
+				int p = alphabet_counts.get(i);		//current distribution		
+				int r = alphabet_counts.get(i - 1);	//previous distribution
+				int t = p + r;						//add together
+						
+				newProbs.add(t); // add to new array
+			}
 		}
 		
 		//debugging, check if size is the same
-		if (alphabet.size() == newProbs.size())
-			System.out.println("YAY the size is the same! :)");
+			System.out.println(alphabet);
+			System.out.println(newProbs);
 		
 		//found --> rIndex <= sumProbs[index];
 		
 		boolean found = false;
 		int i = 0; //index for while loop
+		int foundToken = 0;
 		
 		//while loop to look through newProbs array to find newToken to generate
 		while(!found && i < newProbs.size()) {
 			//index < size - 1
-			if (index <= newProbs.get(i)) {			//if x < index then newToken = that index
-				newToken = alphabet.get(i);			//return alphabet.get(index);
+			if (index < newProbs.get(i)) {			//if x < index then newToken = that index
+				//newToken = alphabet.get(i);			//return alphabet.get(index);
+				foundToken = i;
 				found = true;
 			}
 			i++; //increment the index size
 		}
+		newToken = alphabet.get(foundToken); //return alphabet.get(index);
 		return newToken;
 	}
 

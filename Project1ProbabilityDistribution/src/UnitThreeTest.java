@@ -43,6 +43,9 @@ public class UnitThreeTest {
 		for (int i = 0; i <= 10000; i++) {
 			newPitches = pitchGenerator.generate(20); //put new generated pitches in an array
 			newRhythms = rhythmGenerator.generate(20); //put new generated rhythms in an array
+			
+			pitchGenerator.train(newPitches); //train newly generated melody
+			rhythmGenerator.train(newRhythms);
 			}
 		
 		//print out the distribution

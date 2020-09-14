@@ -106,6 +106,7 @@ public class HelloWorldMidiMain extends PApplet {
 		//instantiate unit tests
 		UnitOneTest test = new UnitOneTest();
 		UnitTwoTest t = new UnitTwoTest();
+		UnitThreeTest ts = new UnitThreeTest();
 		
 		if (key == ' ') {
 			player.reset();
@@ -118,6 +119,10 @@ public class HelloWorldMidiMain extends PApplet {
 		else if (key == '2') {
 			//run unit 2
 			t.run();
+		}
+		else if (key == '3') {
+			//run unit 3
+			ts.run();
 		}
 	}
 }
