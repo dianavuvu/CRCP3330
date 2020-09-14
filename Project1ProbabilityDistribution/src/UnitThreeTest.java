@@ -40,7 +40,7 @@ public class UnitThreeTest {
 		rhythmGenerator.train(midiNotesMary.getRhythmArray());
 		
 		//generate 10,000 times
-		for (int i = 0; i <= 100000; i++) {
+		for (int i = 0; i <= 10000; i++) {
 			newPitches = pitchGenerator.generate(20); //put new generated pitches in an array
 			newRhythms = rhythmGenerator.generate(20); //put new generated rhythms in an array
 			

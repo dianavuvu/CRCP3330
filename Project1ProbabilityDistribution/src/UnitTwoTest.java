@@ -43,7 +43,7 @@ public class UnitTwoTest {
 		newPitches = pitchGenerator.generate(20); //put new generated pitches in an array
 		newRhythms = rhythmGenerator.generate(20); //put new generated rhythms in an array
 		
-		//printing out pitch and rhythm of generated melody
+		//printing out pitch and rhythm tokens of generated melody
 		System.out.println("Unit Test Two:\n" + " Generated Tokens for Pitches: \n");
 		System.out.println(newPitches);
 		System.out.println("\n Generated Tokens for Rhythm: \n");
