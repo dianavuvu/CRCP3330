@@ -8,9 +8,13 @@
 import java.util.ArrayList;
 
 public class MarkovGenerator<T> extends ProbabilityGenerator<T>{
+	//to declare
+	ArrayList<ArrayList<Integer>> transitionTable;
 	
 	MarkovGenerator(){
 		super();
+		//to create the ArrayList
+		transitionTable = new ArrayList();
 	}
 	
 	T generate() {
@@ -20,18 +24,13 @@ public class MarkovGenerator<T> extends ProbabilityGenerator<T>{
 	}
 	
 	void train(ArrayList<T> newTokens) {
-		//to declare
-		ArrayList<ArrayList<Integer>> transitionTable;
-
-		//to create the ArrayList
-		transitionTable = new ArrayList();
-		
+			
 		int lastIndex = -1;
 		
 		for(int i = 0; i <= newTokens.size(); i++) { //for each token in input array
-			int tokenIndex = (int)alphabet.get(i); //token index is equal to index of token in alphabet
+			int tokenIndex = alphabet.indexOf(i); //token index is equal to index of token in alphabet
 			
-			if ((int)alphabet.get(i) == -1) {
+			if (alphabet.indexOf(i) == -1) {
 				tokenIndex = alphabet.size(); //tokenIndex = size of alphabet
 				
 				//add a new row to the transition table (expand vertically)
@@ -43,7 +42,7 @@ public class MarkovGenerator<T> extends ProbabilityGenerator<T>{
 		
 				//add a new column (expand horizontally)
 				for(int k = 0; k <= transitionTable.size(); k++) {
-					 transitionTable.get(k).add(0); //add a 0 on to all of the arrays in the transition table.
+					 transitionTable.get(k).add(0); //add a 0 to all of the arrays in the transition table.
 				}
 		
 				alphabet.add(alphabet.get(i)); //add the token to the alphabet array 
@@ -54,10 +53,20 @@ public class MarkovGenerator<T> extends ProbabilityGenerator<T>{
 				//1.	Use lastIndex to get the correct row (array) in your transition table.
 				//2.	Use the tokenIndex to index the correct column (value of the row you accessed)
 				//3.	Add 1 to that value.
-				transitionTable.get(lastIndex).get(tokenIndex).add(1);
+				transitionTable.get(lastIndex).set(tokenIndex, transitionTable.get(lastIndex).get(tokenIndex)+1);
 			}
 			
 			lastIndex = tokenIndex; //setting current to previous for next round
+		}
+	}
+	
+	void printMarkov(ArrayList<T> newTokens) {
+		System.out.println(alphabet);
+		
+		for(int i = 0; i <= newTokens.size(); i++) {
+			System.out.println(alphabet.get(i));
+			System.out.printf("%.4f", transitionTable.get(i));
+			
 		}
 	}
 	

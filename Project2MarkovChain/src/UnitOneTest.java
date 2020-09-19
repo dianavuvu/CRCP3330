@@ -28,8 +28,8 @@ public class UnitOneTest {
 	    // which line to read in --> this object only reads one line (or ie, voice or ie, one instrument)'s worth of data from the file
 		midiNotesMary.setWhichLine(0);
 		
-		ProbabilityGenerator<Integer> pitchGenerator = new ProbabilityGenerator<Integer>();
-		ProbabilityGenerator<Double> rhythmGenerator = new ProbabilityGenerator<Double>();
+		MarkovGenerator<Integer> pitchGenerator = new MarkovGenerator<Integer>();
+		MarkovGenerator<Double> rhythmGenerator = new MarkovGenerator<Double>();
 		
 		//training
 		pitchGenerator.train(midiNotesMary.getPitchArray());
@@ -37,9 +37,9 @@ public class UnitOneTest {
 		
 		//print out the distribution
 		System.out.println("Unit Test One: \n");
-		System.out.println("\n Pitches: \n" + "-----Probability Distribution-----\n");
+		System.out.println("\n Pitches: \n" + "-----Transition Table -----\n");
 		pitchGenerator.print(midiNotesMary.getPitchArray());
-		System.out.println("\n Rhythms: \n" + "-----Probability Distribution-----\n");
+		System.out.println("\n Rhythms: \n" + "-----Transition Table-----\n");
 		rhythmGenerator.print(midiNotesMary.getRhythmArray());
 		System.out.println("------");
 
