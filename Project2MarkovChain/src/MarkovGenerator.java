@@ -65,8 +65,7 @@ public class MarkovGenerator<T> extends ProbabilityGenerator<T>{
 		
 		for(int i = 0; i <= newTokens.size(); i++) {
 			System.out.println(alphabet.get(i));
-			System.out.printf("%.4f", transitionTable.get(i));
-			
+			System.out.printf(" %.4f ", transitionTable.get(i));
 		}
 	}
 	
