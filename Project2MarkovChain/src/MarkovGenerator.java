@@ -35,7 +35,7 @@ public class MarkovGenerator<T> extends ProbabilityGenerator<T>{
 				
 				//add a new row to the transition table (expand vertically)
 				ArrayList<Integer> newRow = new ArrayList();
-				for(int j = 0; j <= alphabet.size(); j++) { //create a new array that is the size of the alphabet 
+				for(int j = 0; j < alphabet.size(); j++) { //create a new array that is the size of the alphabet 
 					newRow.add(0);
 				}
 				transitionTable.add(newRow); //Then add to your transition table (the array of arrays)
@@ -58,7 +58,7 @@ public class MarkovGenerator<T> extends ProbabilityGenerator<T>{
 			
 			lastIndex = tokenIndex; //setting current to previous for next round
 		}
-		total = total + newTokens.size();	// divide by total amount
+		//total = total + newTokens.size();	// divide by total amount
 	}
 	
 	void printMarkov(ArrayList<T> newTokens) {
