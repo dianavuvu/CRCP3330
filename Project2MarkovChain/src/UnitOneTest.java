@@ -38,9 +38,9 @@ public class UnitOneTest {
 		//print out the distribution
 		System.out.println("Unit Test One: \n");
 		System.out.println("\n Pitches: \n" + "-----Transition Table -----\n");
-		pitchGenerator.print(midiNotesMary.getPitchArray());
+		pitchGenerator.printMarkov(midiNotesMary.getPitchArray());
 		System.out.println("\n Rhythms: \n" + "-----Transition Table-----\n");
-		rhythmGenerator.print(midiNotesMary.getRhythmArray());
+		rhythmGenerator.printMarkov(midiNotesMary.getRhythmArray());
 		System.out.println("------");
 
 
