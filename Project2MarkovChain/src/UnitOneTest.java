@@ -41,7 +41,7 @@ public class UnitOneTest {
 		rGenerator.train(midiNotesMary.getRhythmArray());
 
 		
-		//print out the distribution
+		//print out transition table
 		System.out.println("Project 2\n " + "Unit Test One: \n");
 		System.out.println("\n Pitches: \n" + "-----Transition Table -----\n");
 		pitchGenerator.printMarkov(midiNotesMary.getPitchArray());

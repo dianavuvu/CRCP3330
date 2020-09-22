@@ -58,19 +58,24 @@ public class MarkovGenerator<T> extends ProbabilityGenerator<T>{
 			
 			lastIndex = tokenIndex; //setting current to previous for next round
 		}
-		sum = sum + newTokens.size();	// divide by total amount
+		//sum = sum + newTokens.size();	// divide by total amount
 	}
 	
 	void printMarkov(ArrayList<T> newTokens) {
 		System.out.println(alphabet);
 		
-		for(int i = 0; i < alphabet.size(); i++) {
+		for(int i = 0; i < alphabet.size(); i++) { //for each row in transition table
 			System.out.println(alphabet.get(i));
 			
-			for(int j = 0; j < transitionTable.size(); j++) {
-				System.out.printf(" %.4f ", transitionTable.get(i).get(j) / sum);
+			for(int j = 0; j < transitionTable.get(i).size(); j++) { //print each element in the row
+				
+				for(int k = 0; k < transitionTable.get(i).size(); k++) { //find sum of the row to divide element by 
+					sum = sum + transitionTable.get(i).get(k);
+				}
+				
+				System.out.printf(" %.4f ", transitionTable.get(i).get(j) / sum); //print out element divided by sum
 			}
-			
+			sum = 0; //reset sum for other rows
 			System.out.println("\n");
 		}
 	}
