@@ -9,12 +9,12 @@ import java.util.ArrayList;
 
 public class MarkovGenerator<T> extends ProbabilityGenerator<T>{
 	//to declare
-	ArrayList<ArrayList<Integer>> transitionTable;
+	ArrayList<ArrayList<Integer>> transitionTable; //initialize array list of array lists
+	float sum = 0; //initialize sum
 	
 	MarkovGenerator(){
 		super();
-		//to create the ArrayList
-		transitionTable = new ArrayList();
+		transitionTable = new ArrayList(); 		//to create the ArrayList
 	}
 	
 	T generate() {
@@ -27,8 +27,8 @@ public class MarkovGenerator<T> extends ProbabilityGenerator<T>{
 			
 		int lastIndex = -1;
 		
-		for(int i = 0; i < newTokens.size(); i++) { //for each token in input array
-			int tokenIndex = alphabet.indexOf(i); //token index is equal to index of token in alphabet
+		for(int i = 0; i < newTokens.size() - 1; i++) { //for each token in input array
+			int tokenIndex = newTokens.indexOf(i); //token index is equal to index of token in alphabet
 			
 			if (alphabet.indexOf(i) == -1) {
 				tokenIndex = alphabet.size(); //tokenIndex = size of alphabet
@@ -58,16 +58,20 @@ public class MarkovGenerator<T> extends ProbabilityGenerator<T>{
 			
 			lastIndex = tokenIndex; //setting current to previous for next round
 		}
-		//total = total + newTokens.size();	// divide by total amount
+		sum = sum + newTokens.size();	// divide by total amount
 	}
 	
 	void printMarkov(ArrayList<T> newTokens) {
 		System.out.println(alphabet);
 		
-		for(int i = 0; i < alphabet_counts.size(); i++) {
+		for(int i = 0; i < alphabet.size(); i++) {
 			System.out.println(alphabet.get(i));
-			//System.out.printf(" %.4f ", transitionTable.get(i));
-			System.out.println(transitionTable.get(i));
+			
+			for(int j = 0; j < transitionTable.size(); j++) {
+				System.out.printf(" %.4f ", transitionTable.get(i).get(j) / sum);
+			}
+			
+			System.out.println("\n");
 		}
 	}
 	
