@@ -28,9 +28,9 @@ public class MarkovGenerator<T> extends ProbabilityGenerator<T>{
 		int lastIndex = -1;
 		
 		for(int i = 0; i < newTokens.size() - 1; i++) { //for each token in input array
-			int tokenIndex = newTokens.indexOf(i); //token index is equal to index of token in alphabet
+			int tokenIndex = alphabet.indexOf(newTokens.get(i)); //token index is equal to index of token in alphabet
 			
-			if (newTokens.indexOf(i) == -1) {
+			if (tokenIndex == -1) {
 				tokenIndex = alphabet.size(); //tokenIndex = size of alphabet
 				
 				//add a new row to the transition table (expand vertically)
@@ -62,13 +62,13 @@ public class MarkovGenerator<T> extends ProbabilityGenerator<T>{
 	}
 	
 	void printMarkov(ArrayList<T> newTokens) {
-		System.out.println(newTokens);
+		System.out.println(alphabet);
 		
 		for(int i = 0; i < alphabet.size(); i++) {
 			System.out.println(alphabet.get(i));
 			
 			for(int j = 0; j < transitionTable.size(); j++) {
-				System.out.printf(" %.4f ", transitionTable.get(i).get(j) / sum);
+				//System.out.printf(" %.4f ", transitionTable.get(i).get(j) / sum);
 			}
 			
 			System.out.println("\n");

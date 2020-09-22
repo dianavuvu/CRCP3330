@@ -37,8 +37,8 @@ public class UnitOneTest {
 		//training
 		pitchGenerator.train(midiNotesMary.getPitchArray());
 		rhythmGenerator.train(midiNotesMary.getRhythmArray());
-		pGenerator.train(midiNotesMary.getPitchArray());
-		rGenerator.train(midiNotesMary.getRhythmArray());
+//		pGenerator.train(midiNotesMary.getPitchArray());
+//		rGenerator.train(midiNotesMary.getRhythmArray());
 
 		
 		//print out the distribution
