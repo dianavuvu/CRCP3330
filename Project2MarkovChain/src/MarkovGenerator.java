@@ -58,7 +58,6 @@ public class MarkovGenerator<T> extends ProbabilityGenerator<T>{
 			
 			lastIndex = tokenIndex; //setting current to previous for next round
 		}
-		//sum = sum + newTokens.size();	// divide by total amount
 	}
 	
 	void printMarkov(ArrayList<T> newTokens) {
@@ -72,6 +71,9 @@ public class MarkovGenerator<T> extends ProbabilityGenerator<T>{
 				for(int k = 0; k < transitionTable.get(i).size(); k++) { //find sum of the row to divide element by 
 					sum = sum + transitionTable.get(i).get(k);
 				}
+				
+				if (sum == 0) //for rows that have nothing
+					sum = 1;
 				
 				System.out.printf(" %.4f ", transitionTable.get(i).get(j) / sum); //print out element divided by sum
 				sum = 0; //reset sum for other rows
