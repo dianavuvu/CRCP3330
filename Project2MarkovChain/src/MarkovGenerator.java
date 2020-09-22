@@ -74,8 +74,8 @@ public class MarkovGenerator<T> extends ProbabilityGenerator<T>{
 				}
 				
 				System.out.printf(" %.4f ", transitionTable.get(i).get(j) / sum); //print out element divided by sum
+				sum = 0; //reset sum for other rows
 			}
-			sum = 0; //reset sum for other rows
 			System.out.println("\n");
 		}
 	}
