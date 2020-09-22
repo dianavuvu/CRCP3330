@@ -42,7 +42,31 @@ public class HelloWorldMidiMain extends PApplet {
 	}
 
 	public void draw() {
-		//player.play(); //play each note in the sequence -- the player will determine whether is time for a note onset
+		//Create my generator for pitch and rhythm
+		ProbabilityGenerator<Integer> pG = new ProbabilityGenerator<Integer>();
+		ProbabilityGenerator<Double> rG = new ProbabilityGenerator<Double>();
+		
+
+		// returns a url
+		String filePath = getPath("mid/gardel_por.mid");
+		// playMidiFile(filePath);
+
+		midiNotes = new MidiFileToNotes(filePath); //creates a new MidiFileToNotes -- reminder -- ALL objects in Java must 
+													//be created with "new". Note how every object is a pointer or reference. Every. single. one.
+
+		// which line to read in --> this object only reads one line (or ie, voice or ie, one instrument)'s worth of data from the file
+		midiNotes.setWhichLine(0);
+		
+		//training
+		pG.train(midiNotes.getPitchArray());
+		rG.train(midiNotes.getRhythmArray());
+		
+		player = new MelodyPlayer(this, 100.0f);
+
+		player.setup();
+		player.setMelody(pG.generate(20));
+		player.setRhythm(rG.generate(20));
+		player.play(); //play each note in the sequence -- the player will determine whether is time for a note onset
 
 		textSize(15);
 		fill(0, 0, 200);
@@ -54,8 +78,8 @@ public class HelloWorldMidiMain extends PApplet {
 		fill(200, 0, 0);
 		text("Press 3 to start Unit Test Three\n", width/10, height/3);
 		
-		fill(200, 0, 200);
-		text("Press 4 to play melody\n", width/10, height/2);
+		//fill(200, 0, 200);
+		//text("Press 4 to stop melody\n", width/10, height/2);
 	}
 
 	//this finds the absolute path of a file
@@ -106,31 +130,8 @@ public class HelloWorldMidiMain extends PApplet {
 			ts.run();
 		}
 		else if (key == '4') {
-			//Create my generator for pitch and rhythm
-			ProbabilityGenerator<Integer> pG = new ProbabilityGenerator<Integer>();
-			ProbabilityGenerator<Double> rG = new ProbabilityGenerator<Double>();
-			
 
-			// returns a url
-			String filePath = getPath("mid/gardel_por.mid");
-			// playMidiFile(filePath);
-
-			midiNotes = new MidiFileToNotes(filePath); //creates a new MidiFileToNotes -- reminder -- ALL objects in Java must 
-														//be created with "new". Note how every object is a pointer or reference. Every. single. one.
-
-			// which line to read in --> this object only reads one line (or ie, voice or ie, one instrument)'s worth of data from the file
-			midiNotes.setWhichLine(0);
-			
-			//training
-			pG.train(midiNotes.getPitchArray());
-			rG.train(midiNotes.getRhythmArray());
-			
-			player = new MelodyPlayer(this, 100.0f);
-
-			player.setup();
-			player.setMelody(pG.generate(20));
-			player.setRhythm(rG.generate(20));
-			player.play();
+			//player.play();
 		}
 	}
 }
