@@ -37,8 +37,8 @@ public class UnitOneTest {
 		//training
 		pitchGenerator.train(midiNotesMary.getPitchArray());
 		rhythmGenerator.train(midiNotesMary.getRhythmArray());
-//		pGenerator.train(midiNotesMary.getPitchArray());
-//		rGenerator.train(midiNotesMary.getRhythmArray());
+		pGenerator.train(midiNotesMary.getPitchArray());
+		rGenerator.train(midiNotesMary.getRhythmArray());
 
 		
 		//print out the distribution
@@ -50,12 +50,12 @@ public class UnitOneTest {
 		System.out.println("------");
 		
 		//print out the distribution
-//		System.out.println("Project 1\n" + "Unit Test One: \n");
-//		System.out.println("\n Pitches: \n" + "-----Probability Distribution-----\n");
-//		pGenerator.print(midiNotesMary.getPitchArray());
-//		System.out.println("\n Rhythms: \n" + "-----Probability Distribution-----\n");
-//		rGenerator.print(midiNotesMary.getRhythmArray());
-//		System.out.println("------");
+		System.out.println("Project 1\n" + "Unit Test One: \n");
+		System.out.println("\n Pitches: \n" + "-----Probability Distribution-----\n");
+		pGenerator.print(midiNotesMary.getPitchArray());
+		System.out.println("\n Rhythms: \n" + "-----Probability Distribution-----\n");
+		rGenerator.print(midiNotesMary.getRhythmArray());
+		System.out.println("------");
 
 
 

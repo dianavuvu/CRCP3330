@@ -58,7 +58,7 @@ public class MarkovGenerator<T> extends ProbabilityGenerator<T>{
 			
 			lastIndex = tokenIndex; //setting current to previous for next round
 		}
-		sum = sum + alphabet.size();	// divide by total amount
+		sum = sum + newTokens.size();	// divide by total amount
 	}
 	
 	void printMarkov(ArrayList<T> newTokens) {
