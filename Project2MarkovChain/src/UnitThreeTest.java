@@ -49,7 +49,7 @@ public class UnitThreeTest {
 			}
 		
 		//print out the distribution
-		System.out.println("Unit Test 3:");
+		System.out.println("Project 1:\n" + "Unit Test 3:");
 		System.out.println("\n Pitches: \n" + "-----Probability Distribution-----\n");
 		pitchGenerator.print(newPitches);
 		System.out.println("\n Rhythms: \n" + "-----Probability Distribution-----\n");

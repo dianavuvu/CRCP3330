@@ -46,7 +46,7 @@ public class ProbabilityGenerator<T> {
 		T newToken = null; 
 		
 		ArrayList<Float> newProbs = new ArrayList<Float>(); //initialize newProbs array list
-		ArrayList<Float> probDist =  new ArrayList<Float>();  //initialize probability distribution array list to normalize alphabet counts
+		ArrayList<Float> probDist =  new ArrayList<Float>(); //initialize probability distribution array list to normalize alphabet counts
 	
 		//generate random number from 0 - 1
 		float rIndex = (float) Math.random();
@@ -72,10 +72,6 @@ public class ProbabilityGenerator<T> {
 				//System.out.println(newProbs.get(i));
 			}
 		}
-		
-		//debugging, check if size is the same
-			//System.out.println(alphabet_counts);
-			//System.out.println(newProbs);
 		
 		boolean found = false;
 		int i = 0; //index for while loop

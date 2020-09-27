@@ -17,35 +17,29 @@ public class MarkovGenerator<T> extends ProbabilityGenerator<T>{
 		transitionTable = new ArrayList(); 		//to create the ArrayList
 	}
 	
-	T generate(T initToken) {
+	T generate(T initToken) { //find initToken from ProbabilityGenerator
 		T newToken = null;
-//		In order to do a markov chain, we must start with an initial symbol. You may start with a symbol by either:
-//			using an instance of your ProbabilityGenerator class to generate one from the input
-//			asking for user input (in the GUI, not console input)
-//			setting it to a hard-coded number (must be a constant passed as a parameter)
-//			Note that for your unit tests, you should use option a) but for “Do the THING” you may use any technique.
+
 		int foundIndex = 0; //initialize found token index
-		
-		initToken = rIndex;
-//
-//			Ok, now that we have our initToken
-//
-//			find initToken in the alphabet (ie, get the index of where it is)
+
+		//find initToken in the alphabet (ie, get the index of where it is)
 		for(int i = 0; i < alphabet.size(); i++) {
 			if(initToken == alphabet.get(i)) {
 				foundIndex = alphabet.indexOf(alphabet.get(i));
 			}
 		}
-//			Use that index to access the row (ie one array from the array of arrays) of probabilities in transitionTable
-//			This array is the beginning of a probability distribution. It has all the counts. It is exactly like the array of counts that you had in Project 1. 
-//			Thus, You already have a function which generates from a probability distribution.
-//			Hand that function (your generate function from Project 1) your row(i.e., array of probabilities/counts) and generate from that. 
-//			You may have to rewrite it to accommodate your new needs. Make sure Project 1 still works afterwards. Run your Project 1 unit tests to check.
 		
-		newToken = generate(transitionTable.get(foundIndex));
+//		Use that index to access the row (ie one array from the array of arrays) of probabilities in transitionTable
+//		This array is the beginning of a probability distribution. It has all the counts. It is exactly like the array of counts that you had in Project 1. 
+//		Thus, You already have a function which generates from a probability distribution.
+//		Hand that function (your generate function from Project 1) your row(i.e., array of probabilities/counts) and generate from that. 
+//		You may have to rewrite it to accommodate your new needs. Make sure Project 1 still works afterwards. Run your Project 1 unit tests to check.
 		
-//			If you need to generate more than one symbol, use this result to generate another.
-//			That is, set initToken = the token you just generated. Go to step 1.
+		newToken = generate(transitionTable.get(foundIndex)); //handing generate function from ProbGen array from transitionTable
+		
+//		If you need to generate more than one symbol, use this result to generate another.
+//		That is, set initToken = the token you just generated. Go to step 1.
+		
 		initToken = newToken;
 		
 		return newToken;
@@ -112,17 +106,17 @@ public class MarkovGenerator<T> extends ProbabilityGenerator<T>{
 	
 	ArrayList<T> generate(int length, T initToken) {
 		ArrayList<T> newSequence = new ArrayList<T>();
-//		for (int i = 0; i < length; i++) {
-//			newSequence.add(generate());
-//		}
+		for (int i = 0; i < length; i++) {
+			newSequence.add(generate());
+		}
 		return newSequence;
 	}
 	
 	ArrayList<T> generate(int length) {
 		ArrayList<T> newSequence = new ArrayList<T>();
-//		for (int i = 0; i < length; i++) {
-//			newSequence.add(generate());
-//		}
+		for (int i = 0; i < length; i++) {
+			newSequence.add(generate());
+		}
 		return newSequence;
 	}
 }
