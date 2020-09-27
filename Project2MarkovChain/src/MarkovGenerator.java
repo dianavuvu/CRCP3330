@@ -17,8 +17,36 @@ public class MarkovGenerator<T> extends ProbabilityGenerator<T>{
 		transitionTable = new ArrayList(); 		//to create the ArrayList
 	}
 	
-	T generate() {
+	T generate(T initToken) {
 		T newToken = null;
+//		In order to do a markov chain, we must start with an initial symbol. You may start with a symbol by either:
+//			using an instance of your ProbabilityGenerator class to generate one from the input
+//			asking for user input (in the GUI, not console input)
+//			setting it to a hard-coded number (must be a constant passed as a parameter)
+//			Note that for your unit tests, you should use option a) but for “Do the THING” you may use any technique.
+		int foundIndex = 0; //initialize found token index
+		
+		initToken = rIndex;
+//
+//			Ok, now that we have our initToken
+//
+//			find initToken in the alphabet (ie, get the index of where it is)
+		for(int i = 0; i < alphabet.size(); i++) {
+			if(initToken == alphabet.get(i)) {
+				foundIndex = alphabet.indexOf(alphabet.get(i));
+			}
+		}
+//			Use that index to access the row (ie one array from the array of arrays) of probabilities in transitionTable
+//			This array is the beginning of a probability distribution. It has all the counts. It is exactly like the array of counts that you had in Project 1. 
+//			Thus, You already have a function which generates from a probability distribution.
+//			Hand that function (your generate function from Project 1) your row(i.e., array of probabilities/counts) and generate from that. 
+//			You may have to rewrite it to accommodate your new needs. Make sure Project 1 still works afterwards. Run your Project 1 unit tests to check.
+		
+		newToken = generate(transitionTable.get(foundIndex));
+		
+//			If you need to generate more than one symbol, use this result to generate another.
+//			That is, set initToken = the token you just generated. Go to step 1.
+		initToken = newToken;
 		
 		return newToken;
 	}
@@ -61,10 +89,10 @@ public class MarkovGenerator<T> extends ProbabilityGenerator<T>{
 	}
 	
 	void printMarkov(ArrayList<T> newTokens) {
-		System.out.println(alphabet);
+		System.out.println(alphabet); //printing out what is in alphabet(ie the tokens)
 		
 		for(int i = 0; i < alphabet.size(); i++) { //for each row in transition table
-			System.out.println(alphabet.get(i));
+			System.out.print(alphabet.get(i));
 			
 			for(int j = 0; j < transitionTable.get(i).size(); j++) { //print each element in the row
 				
@@ -72,7 +100,7 @@ public class MarkovGenerator<T> extends ProbabilityGenerator<T>{
 					sum = sum + transitionTable.get(i).get(k);
 				}
 				
-				if (sum == 0) //for rows that have nothing
+				if (sum == 0) //for rows that have nothing (i.e. 0)
 					sum = 1;
 				
 				System.out.printf(" %.4f ", transitionTable.get(i).get(j) / sum); //print out element divided by sum
