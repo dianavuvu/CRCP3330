@@ -39,15 +39,6 @@ public class UnitOneTest {
 		rhythmGenerator.train(midiNotesMary.getRhythmArray());
 		pGenerator.train(midiNotesMary.getPitchArray());
 		rGenerator.train(midiNotesMary.getRhythmArray());
-
-		
-		//print out transition table
-		System.out.println("Project 2\n " + "Unit Test One: \n");
-		System.out.println("\n Pitches: \n" + "-----Transition Table -----\n");
-		pitchGenerator.printMarkov(midiNotesMary.getPitchArray());
-		System.out.println("\n Rhythms: \n" + "-----Transition Table-----\n");
-		rhythmGenerator.printMarkov(midiNotesMary.getRhythmArray());
-		System.out.println("------");
 		
 		//print out the distribution
 		System.out.println("Project 1\n" + "Unit Test One: \n");
@@ -56,8 +47,14 @@ public class UnitOneTest {
 		System.out.println("\n Rhythms: \n" + "-----Probability Distribution-----\n");
 		rGenerator.print(midiNotesMary.getRhythmArray());
 		System.out.println("------");
-
-
+		
+		//print out transition table
+		System.out.println("Project 2\n " + "Unit Test One: \n");
+		System.out.println("\n Pitches: \n" + "-----Transition Table -----\n");
+		pitchGenerator.printMarkov(midiNotesMary.getPitchArray());
+		System.out.println("\n Rhythms: \n" + "-----Transition Table-----\n");
+		rhythmGenerator.printMarkov(midiNotesMary.getRhythmArray());
+		System.out.println("------");
 
 	}
 

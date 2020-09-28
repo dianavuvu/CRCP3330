@@ -1,7 +1,8 @@
 /*
  * Programmer: Diana Vu
- * Date: September 14, 2020
- * Description: This is Unit Two test that will test the generate method in probability generator 
+ * Date: September 28, 2020
+ * Description: This is Unit Two test that will test the generate method in probability generator and markov generator
+ * from projects 1 and 2
  * 
  */
 
@@ -31,8 +32,8 @@ public class UnitTwoTest {
 		//initialize generators for pitch and rhythm
 		ProbabilityGenerator<Integer> pitchGenerator = new ProbabilityGenerator<Integer>();
 		ProbabilityGenerator<Double> rhythmGenerator = new ProbabilityGenerator<Double>();
-		ProbabilityGenerator<Integer> pitchG = new ProbabilityGenerator<Integer>(); //project 2
-		ProbabilityGenerator<Double> rhythmG = new ProbabilityGenerator<Double>();
+		MarkovGenerator<Integer> pitchG = new MarkovGenerator<Integer>(); //project 2
+		MarkovGenerator<Double> rhythmG = new MarkovGenerator<Double>();
 		
 		//training
 		pitchGenerator.train(midiNotesMary.getPitchArray());

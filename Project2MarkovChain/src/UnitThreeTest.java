@@ -1,7 +1,8 @@
 /*
  * Programmer: Diana Vu
- * Date: September 14, 2020
- * Description: This is Unit Three test that will generate 10,000 melodies and print out the data set from those entries
+ * Date: September 28, 2020
+ * Description: This is Unit Three test that will generate 10,000 melodies and print out the data set from those entries 
+ * from projects 1 and 2
  * 
  */
 
@@ -30,16 +31,24 @@ public class UnitThreeTest {
 		
 		ProbabilityGenerator<Integer> pitchGenerator = new ProbabilityGenerator<Integer>();
 		ProbabilityGenerator<Double> rhythmGenerator = new ProbabilityGenerator<Double>();
+		MarkovGenerator<Integer> pitGenerator = new MarkovGenerator<Integer>(); //Project 2
+		MarkovGenerator<Double> rhyGenerator = new MarkovGenerator<Double>();
+
 		
 		//generating melodies
 		ArrayList<Integer> newPitches = new ArrayList<Integer>(); //initialize new array for generated pitches
 		ArrayList<Double> newRhythms = new ArrayList<Double>(); //initialize new array for generated rhythms
+		ArrayList<Integer> newPit = new ArrayList<Integer>(); //Project 2
+		ArrayList<Double> newRhy = new ArrayList<Double>(); 
+		//T initToken;
 	
 		//training
 		pitchGenerator.train(midiNotesMary.getPitchArray());
 		rhythmGenerator.train(midiNotesMary.getRhythmArray());
+		pitGenerator.train(midiNotesMary.getPitchArray()); //Project 2
+		rhyGenerator.train(midiNotesMary.getRhythmArray());
 		
-		//generate 10,000 times
+		//generate 10,000 times Project 1
 		for (int i = 0; i <= 10000; i++) {
 			newPitches = pitchGenerator.generate(20); //put new generated pitches in an array
 			newRhythms = rhythmGenerator.generate(20); //put new generated rhythms in an array
@@ -48,6 +57,13 @@ public class UnitThreeTest {
 			rhythmGenerator.train(newRhythms);
 			}
 		
+		//generate 10,000 times Project 2
+//		for (int i = 0; i <= 10000; i++) {
+//			initToken = pitGenerator.generate(1); //generate 1 token
+//			newPit = rhyGenerator.generate(initToken, 20);
+//
+//			}
+		
 		//print out the distribution
 		System.out.println("Project 1:\n" + "Unit Test 3:");
 		System.out.println("\n Pitches: \n" + "-----Probability Distribution-----\n");
@@ -55,6 +71,15 @@ public class UnitThreeTest {
 		System.out.println("\n Rhythms: \n" + "-----Probability Distribution-----\n");
 		rhythmGenerator.print(newRhythms);
 		System.out.println("------");
+		
+		//print out transition table
+		System.out.println("Project 2\n " + "Unit Test One: \n");
+		System.out.println("\n Pitches: \n" + "-----Transition Table -----\n");
+		pitGenerator.printMarkov(midiNotesMary.getPitchArray());
+		System.out.println("\n Rhythms: \n" + "-----Transition Table-----\n");
+		rhyGenerator.printMarkov(midiNotesMary.getRhythmArray());
+		System.out.println("------");
+
 
 	}
 

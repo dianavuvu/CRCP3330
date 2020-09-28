@@ -1,6 +1,6 @@
 /*
  * Programmer: Diana Vu
- * Date: September 21, 2020
+ * Date: September 28, 2020
  * Description: This is the markov generator class where I will create an algorithm that predicts the next 'T' in a sequence to make a coherent melody style. 
  * 
  */
@@ -35,7 +35,7 @@ public class MarkovGenerator<T> extends ProbabilityGenerator<T>{
 //		Hand that function (your generate function from Project 1) your row(i.e., array of probabilities/counts) and generate from that. 
 //		You may have to rewrite it to accommodate your new needs. Make sure Project 1 still works afterwards. Run your Project 1 unit tests to check.
 		
-		newToken = generate(transitionTable.get(foundIndex)); //handing generate function from ProbGen array from transitionTable
+		newToken = generateFromArray(transitionTable.get(foundIndex)); //handing generate function from ProbGen array from transitionTable
 		
 //		If you need to generate more than one symbol, use this result to generate another.
 //		That is, set initToken = the token you just generated. Go to step 1.

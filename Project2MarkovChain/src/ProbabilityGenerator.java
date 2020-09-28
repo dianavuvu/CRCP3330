@@ -86,6 +86,61 @@ public class ProbabilityGenerator<T> {
 		
 		return newToken;
 	}
+	
+	T generateFromArray(ArrayList<Integer> probArray) {
+		T newToken = null; 
+		
+		ArrayList<Float> newProbs = new ArrayList<Float>(); //initialize newProbs array list
+		ArrayList<Float> probDist =  new ArrayList<Float>(); //initialize probability distribution array list to normalize alphabet counts
+	
+		//generate random number from 0 - 1
+		float rIndex = (float) Math.random();
+		
+		float sum = 0;
+		float arraySum = 0; //initialize 
+		
+		//normalize array
+		for (int i = 0; i < probArray.size(); i++) { //for each element in probArray 
+			
+			for(int k = 0; k < probArray.size(); k++) { //find sum of the row to divide element by 
+				arraySum = arraySum + probArray.get(k);
+			}
+			
+			if (arraySum == 0) //for rows that have nothing (i.e. 0)
+				arraySum = 1;
+
+			probDist.add(probArray.get(i) / arraySum); //add normalized element to probDist array
+			//System.out.println(probDist.get(i));
+		}
+			
+		//create sumProbs array
+		for (int i = 0; i < alphabet.size(); i++) {
+			
+			if (i == 0) {  // first iteration of alphabet
+				newProbs.add(probDist.get(0));
+				sum = sum + probDist.get(0);
+			}
+			else {
+				//add current and previous distributions to new array
+				sum = sum + probDist.get(i); //running total
+				newProbs.add(sum);
+				//System.out.println(newProbs.get(i));
+			}
+		}
+		
+		boolean found = false;
+		int i = 0; //index for while loop
+		
+		//while loop to look through newProbs array to find newToken to generate
+		while(!found && i < newProbs.size()) {
+			found = rIndex < newProbs.get(i); //if x < index then newToken = that index
+			i++; //increment the index size
+		}
+
+		newToken = alphabet.get(i-1); //return alphabet.get(index);
+		
+		return newToken;
+	}
 
 	ArrayList<T> generate(int length) {
 		ArrayList<T> newSequence = new ArrayList<T>();
