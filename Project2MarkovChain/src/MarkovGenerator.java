@@ -106,17 +106,19 @@ public class MarkovGenerator<T> extends ProbabilityGenerator<T>{
 	
 	ArrayList<T> generate(int length, T initToken) {
 		ArrayList<T> newSequence = new ArrayList<T>();
-		for (int i = 0; i < length; i++) {
-			newSequence.add(generate());
-		}
+//		for (int i = 0; i < length; i++) {
+//			newSequence.add(generate());
+//		}
 		return newSequence;
 	}
 	
 	ArrayList<T> generate(int length) {
 		ArrayList<T> newSequence = new ArrayList<T>();
+		
 		for (int i = 0; i < length; i++) {
 			newSequence.add(generate());
 		}
+
 		return newSequence;
 	}
 }

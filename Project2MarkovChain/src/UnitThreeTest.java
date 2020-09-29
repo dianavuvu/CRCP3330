@@ -45,8 +45,8 @@ public class UnitThreeTest {
 		//training
 		pitchGenerator.train(midiNotesMary.getPitchArray());
 		rhythmGenerator.train(midiNotesMary.getRhythmArray());
-		pitGenerator.train(midiNotesMary.getPitchArray()); //Project 2
-		rhyGenerator.train(midiNotesMary.getRhythmArray());
+//		pitGenerator.train(midiNotesMary.getPitchArray()); //Project 2
+//		rhyGenerator.train(midiNotesMary.getRhythmArray());
 		
 		//generate 10,000 times Project 1
 		for (int i = 0; i <= 10000; i++) {
@@ -59,18 +59,18 @@ public class UnitThreeTest {
 		
 		//generate 10,000 times Project 2
 //		for (int i = 0; i <= 10000; i++) {
-//			initToken = pitGenerator.generate(1); //generate 1 token
+//			initToken = pitchGenerator.generate(1); //generate 1 token
 //			newPit = rhyGenerator.generate(initToken, 20);
-//
+//			pitGenerator.train(newPit);			
 //			}
 		
 		//print out the distribution
-		System.out.println("Project 1:\n" + "Unit Test 3:");
-		System.out.println("\n Pitches: \n" + "-----Probability Distribution-----\n");
-		pitchGenerator.print(newPitches);
-		System.out.println("\n Rhythms: \n" + "-----Probability Distribution-----\n");
-		rhythmGenerator.print(newRhythms);
-		System.out.println("------");
+//		System.out.println("Project 1:\n" + "Unit Test 3:");
+//		System.out.println("\n Pitches: \n" + "-----Probability Distribution-----\n");
+//		pitchGenerator.print(newPitches);
+//		System.out.println("\n Rhythms: \n" + "-----Probability Distribution-----\n");
+//		rhythmGenerator.print(newRhythms);
+//		System.out.println("------");
 		
 		//print out transition table
 		System.out.println("Project 2\n " + "Unit Test One: \n");
