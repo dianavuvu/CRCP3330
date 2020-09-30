@@ -20,11 +20,6 @@ public class MarkovGenerator<T> extends ProbabilityGenerator<T>{
 	
 	T generate(T initToken) { //find initToken from ProbabilityGenerator
 		T newToken = null;
-		
-		//get row
-		//normalize row
-		//pron = row;
-		//return super.generate();
 
 		int foundIndex = 0; //initialize found token index
 		float sumAlphabetCounts = 0; //initialize sum of alphabet counts array
@@ -32,7 +27,6 @@ public class MarkovGenerator<T> extends ProbabilityGenerator<T>{
 		//find initToken in the alphabet (ie, get the index of where it is)
 		foundIndex = alphabet.indexOf(initToken);
 
-		
 //		Use that index to access the row (ie one array from the array of arrays) of probabilities in transitionTable
 //		This array is the beginning of a probability distribution. It has all the counts. It is exactly like the array of counts that you had in Project 1. 
 //		Thus, You already have a function which generates from a probability distribution.
@@ -41,24 +35,21 @@ public class MarkovGenerator<T> extends ProbabilityGenerator<T>{
 		
 		alphabet_counts = transitionTable.get(foundIndex); //calling ProbabilityGenerator generate
 		
-		for(int i = 0; i < alphabet_counts.size(); i++){//sum alphabet_counts
+		for(int i = 0; i < alphabet_counts.size(); i++){ //sum alphabet_counts
 			sumAlphabetCounts = sumAlphabetCounts + alphabet_counts.get(i);
 		}
 		
 		total = sumAlphabetCounts;
 		
 		if (total == 0) {
-			return probGenerator.generate();
+			return probGenerator.generate(); //for rows with nothing (i.e. 0)
 		}
 		else {
-			return super.generate();
+			return super.generate(); //handing generate function from ProbGen array from transitionTable
 		}
-		//newToken = generate(transitionTable.get(foundIndex)); //handing generate function from ProbGen array from transitionTable
-		
+
 //		If you need to generate more than one symbol, use this result to generate another.
 //		That is, set initToken = the token you just generated. Go to step 1.
-		
-		return newToken;
 	}
 	
 	void train(ArrayList<T> newTokens) {

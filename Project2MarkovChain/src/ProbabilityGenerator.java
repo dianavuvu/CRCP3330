@@ -81,7 +81,7 @@ public class ProbabilityGenerator<T> {
 			found = rIndex < newProbs.get(i); //if x < index then newToken = that index
 			i++; //increment the index size
 		}
-
+		
 		newToken = alphabet.get(i-1); //return alphabet.get(index);
 		
 		return newToken;

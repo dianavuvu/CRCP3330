@@ -60,8 +60,14 @@ public class UnitThreeTest {
 		//generate 10,000 times Project 2
 //		for (int i = 0; i <= 10000; i++) {
 //			initToken = pitchGenerator.generate(1); //generate 1 token
-//			newPit = rhyGenerator.generate(initToken, 20);
-//			pitGenerator.train(newPit);			
+//			initRhy = rhythmGenerator.generate(1);
+		
+//			newPit = pitGenerator.generate(initToken, 20);
+//			newRhy = rhyGenerator.generate(initRhy, 20);
+		
+//			pitGenerator.train(newPit);	
+//			rhyGenerator.train(newRhy);
+		
 //			}
 		
 		//print out the distribution
