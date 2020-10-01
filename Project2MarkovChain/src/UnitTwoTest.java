@@ -59,10 +59,10 @@ public class UnitTwoTest {
 		System.out.println(newRhythms);
 		
 		//printing out pitch and rhythm tokens of generated melody Project 2
-//		System.out.println("Project 2:\n" + "Unit Test Two:\n" + " Generated Tokens for Pitches: \n");
-//		System.out.println(newP);
-//		System.out.println("\n Generated Tokens for Rhythm: \n");
-//		System.out.println(newR);
+		System.out.println("Project 2:\n" + "Unit Test Two:\n" + " Generated Tokens for Pitches: \n");
+		System.out.println(newP);
+		System.out.println("\n Generated Tokens for Rhythm: \n");
+		System.out.println(newR);
 	}
 
 	String getPath(String path) {

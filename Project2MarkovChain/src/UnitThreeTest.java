@@ -10,7 +10,7 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.util.ArrayList;
 
-public class UnitThreeTest {
+public class UnitThreeTest<T> {
 	
 	UnitThreeTest(){
 		
@@ -45,8 +45,8 @@ public class UnitThreeTest {
 		//training
 		pitchGenerator.train(midiNotesMary.getPitchArray());
 		rhythmGenerator.train(midiNotesMary.getRhythmArray());
-//		pitGenerator.train(midiNotesMary.getPitchArray()); //Project 2
-//		rhyGenerator.train(midiNotesMary.getRhythmArray());
+		pitGenerator.train(midiNotesMary.getPitchArray()); //Project 2
+		rhyGenerator.train(midiNotesMary.getRhythmArray());
 		
 		//generate 10,000 times Project 1
 		for (int i = 0; i <= 10000; i++) {
@@ -58,17 +58,16 @@ public class UnitThreeTest {
 			}
 		
 		//generate 10,000 times Project 2
-//		for (int i = 0; i <= 10000; i++) {
-//			initToken = pitchGenerator.generate(1); //generate 1 token
-//			initRhy = rhythmGenerator.generate(1);
+		for (int i = 0; i <= 10000; i++) {
+			T initPit = (T) pitchGenerator.generate(1); //generate 1 token
+			T initRhy = (T) rhythmGenerator.generate(1);
 		
-//			newPit = pitGenerator.generate(initToken, 20);
-//			newRhy = rhyGenerator.generate(initRhy, 20);
+			newPit = pitGenerator.generate(20, initPit); //generate 20 notes using initToken
+			newRhy = rhyGenerator.generate(20, initRhy);
 		
-//			pitGenerator.train(newPit);	
-//			rhyGenerator.train(newRhy);
-		
-//			}
+			pitGenerator.train(newPit);	//get probabilities of generation
+			rhyGenerator.train(newRhy);
+			}
 		
 		//print out the distribution
 //		System.out.println("Project 1:\n" + "Unit Test 3:");

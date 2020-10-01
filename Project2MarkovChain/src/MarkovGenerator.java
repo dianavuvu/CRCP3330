@@ -53,7 +53,9 @@ public class MarkovGenerator<T> extends ProbabilityGenerator<T>{
 	}
 	
 	void train(ArrayList<T> newTokens) {
-			
+		
+		probGenerator.train(newTokens); //train the data first
+		
 		int lastIndex = -1;
 		
 		for(int i = 0; i <= newTokens.size() - 1; i++) { //for each token in input array
@@ -113,9 +115,25 @@ public class MarkovGenerator<T> extends ProbabilityGenerator<T>{
 	
 	ArrayList<T> generate(int length, T initToken) {
 		ArrayList<T> newSequence = new ArrayList<T>();
-//		for (int i = 0; i < length; i++) {
-//			newSequence.add(generate());
-//		}
+		
+		T token = null; //initialize variables
+		T nToken = null;
+		
+		newSequence.add(initToken); //add original initToken to sequence
+		
+		for (int i = 0; i < length; i++) {
+			
+			if(i == 0) { //use parameter to generate first token
+				token = generate(initToken); //generate initial token
+				newSequence.add(token);
+				nToken = generate(token);
+				newSequence.add(nToken);
+			}
+			else { //use previous call to generate new tokens
+				nToken = generate(nToken);
+				newSequence.add(nToken);
+			}
+		}
 		return newSequence;
 	}
 	
