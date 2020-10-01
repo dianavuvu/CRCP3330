@@ -33,7 +33,6 @@ public class UnitThreeTest<T> {
 		ProbabilityGenerator<Double> rhythmGenerator = new ProbabilityGenerator<Double>();
 		MarkovGenerator<Integer> pitGenerator = new MarkovGenerator<Integer>(); //Project 2
 		MarkovGenerator<Double> rhyGenerator = new MarkovGenerator<Double>();
-
 		
 		//generating melodies
 		ArrayList<Integer> newPitches = new ArrayList<Integer>(); //initialize new array for generated pitches
@@ -59,10 +58,10 @@ public class UnitThreeTest<T> {
 		
 		//generate 10,000 times Project 2
 		for (int i = 0; i <= 10000; i++) {
-			T initPit = (T) pitchGenerator.generate(1); //generate 1 token
+			T initPit = (T) pitchGenerator.generate(1); //generate 1 token using generator from last project
 			T initRhy = (T) rhythmGenerator.generate(1);
 		
-			newPit = pitGenerator.generate(20, initPit); //generate 20 notes using initToken
+			newPit = pitGenerator.generate(20, initPit); //generate 20 notes using initToken from MarkovGenerator
 			newRhy = rhyGenerator.generate(20, initRhy);
 		
 			pitGenerator.train(newPit);	//get probabilities of generation
@@ -70,12 +69,12 @@ public class UnitThreeTest<T> {
 			}
 		
 		//print out the distribution
-//		System.out.println("Project 1:\n" + "Unit Test 3:");
-//		System.out.println("\n Pitches: \n" + "-----Probability Distribution-----\n");
-//		pitchGenerator.print(newPitches);
-//		System.out.println("\n Rhythms: \n" + "-----Probability Distribution-----\n");
-//		rhythmGenerator.print(newRhythms);
-//		System.out.println("------");
+		System.out.println("Project 1:\n" + "Unit Test 3:");
+		System.out.println("\n Pitches: \n" + "-----Probability Distribution-----\n");
+		pitchGenerator.print(newPitches);
+		System.out.println("\n Rhythms: \n" + "-----Probability Distribution-----\n");
+		rhythmGenerator.print(newRhythms);
+		System.out.println("------");
 		
 		//print out transition table
 		System.out.println("Project 2\n " + "Unit Test One: \n");
