@@ -7,10 +7,10 @@
 
 import java.util.ArrayList;
 
-public class MarkovOrderM<T> extends ProbabilityGenerator<T>{
+public class MarkovOrderM<T> extends MarkovGenerator<T>{
 	
 	MarkovOrderM() {
-		//order of Markov chain
+		//int orderM = curSequence.size(); //set order of Markov chain
 	}
 	
 	

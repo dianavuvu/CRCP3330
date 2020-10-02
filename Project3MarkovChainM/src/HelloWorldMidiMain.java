@@ -68,7 +68,7 @@ public class HelloWorldMidiMain extends PApplet {
 //		player.setMelody(pG.generate(20));
 //		player.setRhythm(rG.generate(20));
 //		
-//		while(playMelody = true) {
+//		while(playMelody = false) {
 //			player.play(); //play each note in the sequence -- the player will determine whether is time for a note onset
 //		}
 
@@ -134,7 +134,7 @@ public class HelloWorldMidiMain extends PApplet {
 			ts.run();
 		}
 		else if (key == '4') {
-			playMelody = false;
+			playMelody = true;
 		}
 	}
 }

@@ -61,8 +61,8 @@ public class UnitThreeTest<T> {
 			T initPit = (T) pitchGenerator.generate(1); //generate 1 token using generator from last project
 			T initRhy = (T) rhythmGenerator.generate(1);
 		
-			newPit = pitGenerator.generate(20, initPit); //generate 20 notes using initToken from MarkovGenerator
-			newRhy = rhyGenerator.generate(20, initRhy);
+			newPit = pitGenerator.generate(20); //generate 20 notes using initToken from MarkovGenerator
+			newRhy = rhyGenerator.generate(20);
 		
 			pitGenerator.train(newPit);	//get probabilities of generation
 			rhyGenerator.train(newRhy);

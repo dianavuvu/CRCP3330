@@ -24,7 +24,7 @@ public class HelloWorldMidiMain extends PApplet {
 
 	MelodyPlayer player; //play a midi sequence
 	MidiFileToNotes midiNotes; //read a midi file
-	boolean playMelody;
+	boolean playMelody = false;
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -44,33 +44,33 @@ public class HelloWorldMidiMain extends PApplet {
 
 	public void draw() {
 		//Create my generator for pitch and rhythm
-		ProbabilityGenerator<Integer> pG = new ProbabilityGenerator<Integer>();
-		ProbabilityGenerator<Double> rG = new ProbabilityGenerator<Double>();
+		MarkovGenerator<Integer> pG = new MarkovGenerator<Integer>();
+		MarkovGenerator<Double> rG = new MarkovGenerator<Double>();
 		
 
 		// returns a url
-//		String filePath = getPath("mid/gardel_por.mid");
-//		// playMidiFile(filePath);
-//
-//		midiNotes = new MidiFileToNotes(filePath); //creates a new MidiFileToNotes -- reminder -- ALL objects in Java must 
-//													//be created with "new". Note how every object is a pointer or reference. Every. single. one.
-//
-//		// which line to read in --> this object only reads one line (or ie, voice or ie, one instrument)'s worth of data from the file
-//		midiNotes.setWhichLine(0);
+		String filePath = getPath("mid/gardel_por.mid");
+		// playMidiFile(filePath);
+
+		midiNotes = new MidiFileToNotes(filePath); //creates a new MidiFileToNotes -- reminder -- ALL objects in Java must 
+													//be created with "new". Note how every object is a pointer or reference. Every. single. one.
+
+		// which line to read in --> this object only reads one line (or ie, voice or ie, one instrument)'s worth of data from the file
+		midiNotes.setWhichLine(0);
 		
 		//training
-//		pG.train(midiNotes.getPitchArray());
-//		rG.train(midiNotes.getRhythmArray());
-//		
-//		player = new MelodyPlayer(this, 100.0f);
-//
-//		player.setup();
-//		player.setMelody(pG.generate(20));
-//		player.setRhythm(rG.generate(20));
-//		
-//		while(playMelody = true) {
-//			player.play(); //play each note in the sequence -- the player will determine whether is time for a note onset
-//		}
+		pG.train(midiNotes.getPitchArray());
+		rG.train(midiNotes.getRhythmArray());
+		
+		player = new MelodyPlayer(this, 100.0f);
+
+		player.setup();
+		player.setMelody(pG.generate(20));
+		player.setRhythm(rG.generate(20));
+		
+		while(playMelody) {
+			player.play(); //play each note in the sequence -- the player will determine whether is time for a note onset
+		}
 
 		textSize(15);
 		fill(0, 0, 200);
@@ -134,7 +134,7 @@ public class HelloWorldMidiMain extends PApplet {
 			ts.run();
 		}
 		else if (key == '4') {
-			playMelody = false;
+			playMelody = !playMelody; //switch play melody on or off
 		}
 	}
 }
