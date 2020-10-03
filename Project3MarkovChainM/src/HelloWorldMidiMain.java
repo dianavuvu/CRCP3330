@@ -24,7 +24,7 @@ public class HelloWorldMidiMain extends PApplet {
 
 	MelodyPlayer player; //play a midi sequence
 	MidiFileToNotes midiNotes; //read a midi file
-	boolean playMelody;
+	boolean playMelody = false;
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -44,8 +44,8 @@ public class HelloWorldMidiMain extends PApplet {
 
 	public void draw() {
 		//Create my generator for pitch and rhythm
-		ProbabilityGenerator<Integer> pG = new ProbabilityGenerator<Integer>();
-		ProbabilityGenerator<Double> rG = new ProbabilityGenerator<Double>();
+		MarkovGenerator<Integer> pG = new MarkovGenerator<Integer>();
+		MarkovGenerator<Double> rG = new MarkovGenerator<Double>();
 		
 
 		// returns a url
@@ -68,7 +68,7 @@ public class HelloWorldMidiMain extends PApplet {
 //		player.setMelody(pG.generate(20));
 //		player.setRhythm(rG.generate(20));
 //		
-//		while(playMelody = false) {
+//		while(playMelody) {
 //			player.play(); //play each note in the sequence -- the player will determine whether is time for a note onset
 //		}
 
@@ -134,7 +134,7 @@ public class HelloWorldMidiMain extends PApplet {
 			ts.run();
 		}
 		else if (key == '4') {
-			playMelody = true;
+			playMelody = !playMelody;
 		}
 	}
 }
