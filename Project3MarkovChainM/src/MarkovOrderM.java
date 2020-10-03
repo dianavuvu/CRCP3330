@@ -22,7 +22,7 @@ public class MarkovOrderM<T> extends MarkovGenerator<T>{
 //		for i = orderM -1 to (i < size of the input - 1) do 
 		for(int i = orderM - 1; i <= newTokens.size() - 1; i++ ){
 			
-			int tokenIndex; //token index is equal to index of token in alphabet
+			int tokenIndex = 0; //token index is equal to index of token in alphabet
 			int rowIndex = 0;
 					
 //			1.	Create the current sequence (eg. curSequence) of size orderM from the input
@@ -36,20 +36,27 @@ public class MarkovOrderM<T> extends MarkovGenerator<T>{
 			}
 						
 //			2.	Find  curSequence in uniqueAlphabetSequences
-//			if curSequence is not found
-			if(curSequence == -1) {
-//				1. set rowIndex to the size of uniqueAlphabetSequences
-				 rowIndex = uniqueAlphabetSequence.size();
-				 
-//				2. add the curSequence to uniqueAlphabetSequences
-				 uniqueAlphabetSequence.add(curSequence);
-
-//				3. add a new row to the transition table the size of the alphabet
-				ArrayList<Integer> newRow = new ArrayList(); //initialize
-				for(int j = 0; j < alphabet.size(); j++) { //create a new array that is the size of the alphabet 
-					newRow.add(0);
+			for(int c = 0; c < uniqueAlphabetSequence.size(); c++) {
+				
+				if(curSequence == uniqueAlphabetSequence.get(c)) {
+					//do nothing
 				}
-				transitionTable.add(newRow); //Then add to your transition table (the array of arrays)	
+				
+//				if curSequence is not found
+				else{
+//					1. set rowIndex to the size of uniqueAlphabetSequences
+					 rowIndex = uniqueAlphabetSequence.size();
+					 
+//					2. add the curSequence to uniqueAlphabetSequences
+					 uniqueAlphabetSequence.add(curSequence);
+	
+//					3. add a new row to the transition table the size of the alphabet
+					ArrayList<Integer> newRow = new ArrayList(); //initialize
+					for(int j = 0; j < alphabet.size(); j++) { //create a new array that is the size of the alphabet 
+						newRow.add(0);
+					}
+					transitionTable.add(newRow); //Then add to your transition table (the array of arrays)	
+				}
 			}
 						
 //			3.	Find the current next token (tokenIndex)
