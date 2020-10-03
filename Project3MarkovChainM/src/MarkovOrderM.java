@@ -22,7 +22,7 @@ public class MarkovOrderM<T> extends MarkovGenerator<T>{
 //		for i = orderM -1 to (i < size of the input - 1) do 
 		for(int i = orderM - 1; i <= newTokens.size() - 1; i++ ){
 			
-			int tokenIndex = alphabet.indexOf(newTokens.get(i)); //token index is equal to index of token in alphabet
+			int tokenIndex; //token index is equal to index of token in alphabet
 			int rowIndex = 0;
 					
 //			1.	Create the current sequence (eg. curSequence) of size orderM from the input
@@ -53,26 +53,25 @@ public class MarkovOrderM<T> extends MarkovGenerator<T>{
 			}
 						
 //			3.	Find the current next token (tokenIndex)
-//			{
+			for(int k = 0; k < alphabet.size(); k++) {
 //				tokenIndex = the next index of the token in the alphabet (i+1)
-				tokenIndex = alphabet.indexOf(newTokens.get(i+1));
+				tokenIndex = alphabet.indexOf(newTokens.get(k+1));
 //					
 //				if tokenIndex is not found in the alphabet
-				for(int k = 0; k < alphabet.size(); k++) {
-					if(tokenIndex == -1){
-//						1. tokenIndex = size of the alphabet 
-						tokenIndex = alphabet.size();
+
+				if(tokenIndex == -1){
+//					1. tokenIndex = size of the alphabet 
+					tokenIndex = alphabet.size();
 						
-//						2. add the token to the alphabet
-						alphabet.add(newTokens.get(i));
+//					2. add the token to the alphabet
+					alphabet.add(newTokens.get(k));
 						
-//						3. expand transitionTable horizontally
-						for(int p = 0; p < transitionTable.size(); p++) {
-							 transitionTable.get(k).add(0); //add a 0 to all of the arrays in the transition table.
-						}
+//					3. expand transitionTable horizontally
+					for(int p = 0; p < transitionTable.size(); p++) {
+						 transitionTable.get(p).add(0); //add a 0 to all of the arrays in the transition table.
 					}
 				}
-//			}
+			}
 
 //			4.	Update the counts – since we started after the beginning, rowIndex will not be -1
 //				a.	Get the row using rowIndex
@@ -81,6 +80,7 @@ public class MarkovOrderM<T> extends MarkovGenerator<T>{
 			if(rowIndex > -1) {
 				transitionTable.get(rowIndex).set(tokenIndex, transitionTable.get(rowIndex).get(tokenIndex)+1);
 			}
+			
 		}
 	}
 }
