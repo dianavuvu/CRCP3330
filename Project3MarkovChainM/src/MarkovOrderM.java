@@ -10,8 +10,8 @@ import java.util.ArrayList;
 public class MarkovOrderM<T> extends MarkovGenerator<T>{
 	
 	int orderM = 2; //set order of Markov chain
-	ArrayList<ArrayList<T>> curSequence;
-	ArrayList<ArrayList<ArrayList<T>>> uniqueAlphabetSequence; //make an arraylist (uniquealphabetsequence) that holds cursequence arraylist
+	ArrayList<ArrayList<T>> curSequence; //an arraylist holding arraylists
+	ArrayList<ArrayList<ArrayList<T>>> uniqueAlphabetSequence; //make an arraylist (uniquealphabetsequence) that holds cursequence
 	
 	MarkovOrderM() {
 		curSequence = new ArrayList(); //current sequence 
@@ -39,7 +39,7 @@ public class MarkovOrderM<T> extends MarkovGenerator<T>{
 			for(int c = 0; c < uniqueAlphabetSequence.size(); c++) {
 				
 				if(curSequence == uniqueAlphabetSequence.get(c)) {
-					//do nothing
+					//yay already have the sequence!
 				}
 				
 //				if curSequence is not found
@@ -90,6 +90,29 @@ public class MarkovOrderM<T> extends MarkovGenerator<T>{
 			
 		}
 	}
+	
+	void printMarkovM(ArrayList<T> newTokens) {
+		System.out.println(alphabet); //printing out what is in alphabet(ie the tokens)
+		
+		for(int i = 0; i < alphabet.size(); i++) { //for each row in transition table
+			System.out.print(uniqueAlphabetSequence.get(i));
+			
+			for(int j = 0; j < transitionTable.get(i).size(); j++) { //print each element in the row
+				
+				for(int k = 0; k < transitionTable.get(i).size(); k++) { //find sum of the row to divide element by 
+					sum = sum + transitionTable.get(i).get(k);
+				}
+				
+				if (sum == 0) //for rows that have nothing (i.e. 0)
+					sum = 1;
+				
+				System.out.printf(" %.4f ", transitionTable.get(i).get(j) / sum); //print out element divided by sum
+				sum = 0; //reset sum for other rows
+			}
+			System.out.println("\n");
+		}
+	}
+
 }
 
 

@@ -32,6 +32,8 @@ public class UnitOneTest {
 		MarkovGenerator<Double> rhythmGenerator = new MarkovGenerator<Double>();
 		ProbabilityGenerator<Integer> pGenerator = new ProbabilityGenerator<Integer>();
 		ProbabilityGenerator<Double> rGenerator = new ProbabilityGenerator<Double>();
+		MarkovOrderM<Integer> pGen = new MarkovOrderM<Integer>();
+		MarkovOrderM<Double> rGen = new MarkovOrderM<Double>();
 
 		
 		//training
@@ -39,6 +41,8 @@ public class UnitOneTest {
 		rhythmGenerator.train(midiNotesMary.getRhythmArray());
 		pGenerator.train(midiNotesMary.getPitchArray());
 		rGenerator.train(midiNotesMary.getRhythmArray());
+		pGen.train(midiNotesMary.getPitchArray());
+		rGen.train(midiNotesMary.getRhythmArray());
 		
 		//print out the distribution
 //		System.out.println("Project 1\n" + "Unit Test One: \n");
@@ -58,12 +62,13 @@ public class UnitOneTest {
 		
 		//print out transition table
 		System.out.println("Project 3\n " + "Unit Test One: \n");
-		System.out.println("\n Pitches: \n" + "-----Transition Table -----\n");
+		for(int i = 1; i <= 10; i++) {
+//		System.out.println("\n Pitches: \n" + "-----Transition Table -----\n");
 		pitchGenerator.printMarkov(midiNotesMary.getPitchArray());
-		System.out.println("\n Rhythms: \n" + "-----Transition Table-----\n");
+//		System.out.println("\n Rhythms: \n" + "-----Transition Table-----\n");
 		rhythmGenerator.printMarkov(midiNotesMary.getRhythmArray());
-		System.out.println("------");
-
+//		System.out.println("------");
+		}
 	}
 
 	String getPath(String path) {
