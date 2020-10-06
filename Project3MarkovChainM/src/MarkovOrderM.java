@@ -9,9 +9,9 @@ import java.util.ArrayList;
 
 public class MarkovOrderM<T> extends MarkovGenerator<T>{
 	
-	int orderM = 2; //set order of Markov chain
-	ArrayList<ArrayList<T>> curSequence; //an arraylist holding arraylists
-	ArrayList<ArrayList<ArrayList<T>>> uniqueAlphabetSequence; //make an arraylist (uniquealphabetsequence) that holds cursequence
+	int orderM = 1; //set order of Markov chain
+	ArrayList<T> curSequence; //an arraylist holding arraylists
+	ArrayList<ArrayList<T>> uniqueAlphabetSequence; //make an arraylist (uniquealphabetsequence) that holds cursequences
 	
 	MarkovOrderM() {
 		curSequence = new ArrayList(); //current sequence 
@@ -31,8 +31,8 @@ public class MarkovOrderM<T> extends MarkovGenerator<T>{
 //				b.	You may do this in a for-loop or use .subList()
 //					i.	https://beginnersbook.com/2013/12/how-to-get-sublist-of-an-arraylist-with-example/
 			
-			for(int j = 0; j < orderM; j++) { 
-				curSequence.get(j).add(newTokens.get(i));
+			for(int j = newTokens.indexOf(i); j < newTokens.indexOf(i)+orderM; j++) { 
+				curSequence.add(newTokens.get(j));
 			}
 						
 //			2.	Find  curSequence in uniqueAlphabetSequences
@@ -65,13 +65,13 @@ public class MarkovOrderM<T> extends MarkovGenerator<T>{
 				tokenIndex = alphabet.indexOf(newTokens.get(k+1));
 //					
 //				if tokenIndex is not found in the alphabet
-
 				if(tokenIndex == -1){
+					
 //					1. tokenIndex = size of the alphabet 
 					tokenIndex = alphabet.size();
 						
 //					2. add the token to the alphabet
-					alphabet.add(newTokens.get(k));
+					alphabet.add(newTokens.get(k+1));
 						
 //					3. expand transitionTable horizontally
 					for(int p = 0; p < transitionTable.size(); p++) {
@@ -87,8 +87,8 @@ public class MarkovOrderM<T> extends MarkovGenerator<T>{
 			if(rowIndex > -1) {
 				transitionTable.get(rowIndex).set(tokenIndex, transitionTable.get(rowIndex).get(tokenIndex)+1);
 			}
-			
 		}
+		orderM = orderM + 1; //increment orderM after every loop
 	}
 	
 	void printMarkovM(ArrayList<T> newTokens) {

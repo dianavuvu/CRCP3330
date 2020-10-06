@@ -41,8 +41,6 @@ public class UnitOneTest {
 		rhythmGenerator.train(midiNotesMary.getRhythmArray());
 		pGenerator.train(midiNotesMary.getPitchArray());
 		rGenerator.train(midiNotesMary.getRhythmArray());
-		pGen.train(midiNotesMary.getPitchArray());
-		rGen.train(midiNotesMary.getRhythmArray());
 		
 		//print out the distribution
 //		System.out.println("Project 1\n" + "Unit Test One: \n");
@@ -63,12 +61,25 @@ public class UnitOneTest {
 		//print out transition table
 		System.out.println("Project 3\n " + "Unit Test One: \n");
 		for(int i = 1; i <= 10; i++) {
-//		System.out.println("\n Pitches: \n" + "-----Transition Table -----\n");
-		pitchGenerator.printMarkov(midiNotesMary.getPitchArray());
-//		System.out.println("\n Rhythms: \n" + "-----Transition Table-----\n");
-		rhythmGenerator.printMarkov(midiNotesMary.getRhythmArray());
-//		System.out.println("------");
+			
+			//training data
+			pGen.train(midiNotesMary.getPitchArray());
+			
+			System.out.println("\n Pitches for order" + i + ":\n" + "-----Transition Table -----\n");
+			pGen.printMarkovM(midiNotesMary.getPitchArray());
+			System.out.println("------");
 		}
+
+		for(int i = 1; i <= 10; i++) {
+			
+			//training data
+			rGen.train(midiNotesMary.getRhythmArray());
+			
+			System.out.println("\n Rhythms for order" + i + ":\n" + "-----Transition Table -----\n");
+			rGen.printMarkovM(midiNotesMary.getRhythmArray());
+			System.out.println("------");
+		}
+
 	}
 
 	String getPath(String path) {
