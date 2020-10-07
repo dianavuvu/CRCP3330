@@ -20,7 +20,7 @@ public class MarkovOrderM<T> extends MarkovGenerator<T>{
 	
 	void train(ArrayList<T> newTokens) {
 //		for i = orderM -1 to (i < size of the input - 1) do 
-		for(int i = orderM - 1; i <= newTokens.size() - 1; i++){
+		for(int i = orderM - 1; i < newTokens.size() - 1; i++){
 			
 			int tokenIndex = 0; //token index is equal to index of token in alphabet
 			int rowIndex = -1;
@@ -88,7 +88,7 @@ public class MarkovOrderM<T> extends MarkovGenerator<T>{
 	void printMarkovM(ArrayList<T> newTokens) {
 		System.out.println(alphabet); //printing out what is in alphabet(ie the tokens)
 		
-		for(int i = 0; i < alphabet.size(); i++) { //for each row in transition table
+		for(int i = 0; i < uniqueAlphabetSequence.size(); i++) { //for each row in transition table
 			System.out.print(uniqueAlphabetSequence.get(i));
 			
 			for(int j = 0; j < transitionTable.get(i).size(); j++) { //print each element in the row
