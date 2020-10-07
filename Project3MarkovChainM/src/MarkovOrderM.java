@@ -55,23 +55,22 @@ public class MarkovOrderM<T> extends MarkovGenerator<T>{
 			}
 						
 //			3.	Find the current next token (tokenIndex)
-			for(int k = 0; k < newTokens.size(); k++) {
-//				tokenIndex = the next index of the token in the alphabet (i+1)
-				tokenIndex = alphabet.indexOf(newTokens.get(k+1));
+			
+//			tokenIndex = the next index of the token in the alphabet (i+1)
+			tokenIndex = alphabet.indexOf(newTokens.get(i+1));
 //					
-//				if tokenIndex is not found in the alphabet
-				if(tokenIndex == -1){
+//			if tokenIndex is not found in the alphabet
+			if(tokenIndex == -1){
 					
-//					1. tokenIndex = size of the alphabet 
-					tokenIndex = alphabet.size();
+//				1. tokenIndex = size of the alphabet 
+				tokenIndex = alphabet.size();
 						
-//					2. add the token to the alphabet
-					alphabet.add(newTokens.get(k+1));
+//				2. add the token to the alphabet
+				alphabet.add(newTokens.get(i+1));
 						
-//					3. expand transitionTable horizontally
-					for(int p = 0; p < transitionTable.size(); p++) {
-						 transitionTable.get(p).add(0); //add a 0 to all of the arrays in the transition table.
-					}
+//				3. expand transitionTable horizontally
+				for(int p = 0; p < transitionTable.size(); p++) {
+					 transitionTable.get(p).add(0); //add a 0 to all of the arrays in the transition table.
 				}
 			}
 
