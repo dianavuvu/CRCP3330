@@ -72,7 +72,7 @@ public class UnitOneTest {
 			MarkovOrderM<Double> rGen = new MarkovOrderM<Double>(); //create new object
 			
 			//training data
-			rGen.train(midiNotesMary.getRhythmArray());
+			rGen.train(i, midiNotesMary.getRhythmArray());
 			
 			System.out.println("\n Rhythms for order " + i + ":\n" + "-----Transition Table -----\n");
 			rGen.printMarkovM(midiNotesMary.getRhythmArray());

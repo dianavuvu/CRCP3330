@@ -9,14 +9,14 @@ import java.util.ArrayList;
 
 public class MarkovOrderM<T> extends MarkovGenerator<T>{
 	
-	int orderM = 10; //set order of Markov chain
+	//int orderM = 10; //set order of Markov chain
 	ArrayList<ArrayList<T>> uniqueAlphabetSequence; //make an arraylist (uniquealphabetsequence) that holds cursequences
 	
 	MarkovOrderM() {
 		uniqueAlphabetSequence = new ArrayList(); //add current sequences into transition table
 	}
 	
-	void train(ArrayList<T> newTokens) {
+	void train(int orderM, ArrayList<T> newTokens) {
 //		for i = orderM -1 to (i < size of the input - 1) do 
 		for(int i = orderM - 1; i < newTokens.size() - 1; i++){
 			
