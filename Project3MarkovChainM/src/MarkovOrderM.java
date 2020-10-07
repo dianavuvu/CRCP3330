@@ -20,10 +20,10 @@ public class MarkovOrderM<T> extends MarkovGenerator<T>{
 	
 	void train(ArrayList<T> newTokens) {
 //		for i = orderM -1 to (i < size of the input - 1) do 
-		for(int i = orderM - 1; i <= newTokens.size() - 1; i++ ){
+		for(int i = orderM - 1; i <= newTokens.size() - 1; i++){
 			
 			int tokenIndex = 0; //token index is equal to index of token in alphabet
-			int rowIndex = 0;
+			int rowIndex = -1;
 					
 //			1.	Create the current sequence (eg. curSequence) of size orderM from the input
 //			Remember to start the index into the input at 0 (with this algorithm) 
@@ -31,36 +31,31 @@ public class MarkovOrderM<T> extends MarkovGenerator<T>{
 //				b.	You may do this in a for-loop or use .subList()
 //					i.	https://beginnersbook.com/2013/12/how-to-get-sublist-of-an-arraylist-with-example/
 			
-			for(int j = newTokens.indexOf(i); j < newTokens.indexOf(i)+orderM; j++) { 
+			for(int j = i - (orderM - 1); j < i; j++) { 
 				curSequence.add(newTokens.get(j));
 			}
 						
-//			2.	Find  curSequence in uniqueAlphabetSequences
-			for(int c = 0; c < uniqueAlphabetSequence.size(); c++) {
+//			2.	Find  curSequence in uniqueAlphabetSequences			
+			rowIndex = uniqueAlphabetSequence.indexOf(curSequence);
 				
-				if(curSequence == uniqueAlphabetSequence.get(c)) {
-					//yay already have the sequence!
-				}
-				
-//				if curSequence is not found
-				else{
-//					1. set rowIndex to the size of uniqueAlphabetSequences
-					 rowIndex = uniqueAlphabetSequence.size();
+//			if curSequence is not found
+			if(rowIndex == -1) {
+//				1. set rowIndex to the size of uniqueAlphabetSequences
+				rowIndex = uniqueAlphabetSequence.size();
 					 
-//					2. add the curSequence to uniqueAlphabetSequences
-					 uniqueAlphabetSequence.add(curSequence);
+//				2. add the curSequence to uniqueAlphabetSequences
+				uniqueAlphabetSequence.add(curSequence);
 	
-//					3. add a new row to the transition table the size of the alphabet
-					ArrayList<Integer> newRow = new ArrayList(); //initialize
-					for(int j = 0; j < alphabet.size(); j++) { //create a new array that is the size of the alphabet 
-						newRow.add(0);
-					}
-					transitionTable.add(newRow); //Then add to your transition table (the array of arrays)	
+//				3. add a new row to the transition table the size of the alphabet
+				ArrayList<Integer> newRow = new ArrayList(); //initialize
+				for(int j = 0; j < alphabet.size(); j++) { //create a new array that is the size of the alphabet 
+					newRow.add(0);
 				}
+				transitionTable.add(newRow); //Then add to your transition table (the array of arrays)	
 			}
 						
 //			3.	Find the current next token (tokenIndex)
-			for(int k = 0; k < alphabet.size(); k++) {
+			for(int k = 0; k < newTokens.size(); k++) {
 //				tokenIndex = the next index of the token in the alphabet (i+1)
 				tokenIndex = alphabet.indexOf(newTokens.get(k+1));
 //					

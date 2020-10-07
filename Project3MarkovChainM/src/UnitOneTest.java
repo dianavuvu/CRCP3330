@@ -65,7 +65,7 @@ public class UnitOneTest {
 			//training data
 			pGen.train(midiNotesMary.getPitchArray());
 			
-			System.out.println("\n Pitches for order" + i + ":\n" + "-----Transition Table -----\n");
+			System.out.println("\n Pitches for order " + i + ":\n" + "-----Transition Table -----\n");
 			pGen.printMarkovM(midiNotesMary.getPitchArray());
 			System.out.println("------");
 		}
@@ -75,7 +75,7 @@ public class UnitOneTest {
 			//training data
 			rGen.train(midiNotesMary.getRhythmArray());
 			
-			System.out.println("\n Rhythms for order" + i + ":\n" + "-----Transition Table -----\n");
+			System.out.println("\n Rhythms for order " + i + ":\n" + "-----Transition Table -----\n");
 			rGen.printMarkovM(midiNotesMary.getRhythmArray());
 			System.out.println("------");
 		}
