@@ -9,12 +9,10 @@ import java.util.ArrayList;
 
 public class MarkovOrderM<T> extends MarkovGenerator<T>{
 	
-	int orderM = 1; //set order of Markov chain
-	ArrayList<T> curSequence; //an arraylist holding arraylists
+	int orderM = 10; //set order of Markov chain
 	ArrayList<ArrayList<T>> uniqueAlphabetSequence; //make an arraylist (uniquealphabetsequence) that holds cursequences
 	
 	MarkovOrderM() {
-		curSequence = new ArrayList(); //current sequence 
 		uniqueAlphabetSequence = new ArrayList(); //add current sequences into transition table
 	}
 	
@@ -24,6 +22,7 @@ public class MarkovOrderM<T> extends MarkovGenerator<T>{
 			
 			int tokenIndex = 0; //token index is equal to index of token in alphabet
 			int rowIndex = -1;
+			ArrayList<T> curSequence = new ArrayList(); //current sequence 
 					
 //			1.	Create the current sequence (eg. curSequence) of size orderM from the input
 //			Remember to start the index into the input at 0 (with this algorithm) 
@@ -31,7 +30,7 @@ public class MarkovOrderM<T> extends MarkovGenerator<T>{
 //				b.	You may do this in a for-loop or use .subList()
 //					i.	https://beginnersbook.com/2013/12/how-to-get-sublist-of-an-arraylist-with-example/
 			
-			for(int j = i - (orderM - 1); j < i; j++) { 
+			for(int j = i - (orderM - 1); j <= i; j++) { 
 				curSequence.add(newTokens.get(j));
 			}
 						
@@ -82,7 +81,6 @@ public class MarkovOrderM<T> extends MarkovGenerator<T>{
 				transitionTable.get(rowIndex).set(tokenIndex, transitionTable.get(rowIndex).get(tokenIndex)+1);
 			}
 		}
-		orderM = orderM + 1; //increment orderM after every loop
 	}
 	
 	void printMarkovM(ArrayList<T> newTokens) {
@@ -100,7 +98,7 @@ public class MarkovOrderM<T> extends MarkovGenerator<T>{
 				if (sum == 0) //for rows that have nothing (i.e. 0)
 					sum = 1;
 				
-				System.out.printf(" %.4f ", transitionTable.get(i).get(j) / sum); //print out element divided by sum
+				System.out.print(" " + transitionTable.get(i).get(j) / sum); //print out element divided by sum
 				sum = 0; //reset sum for other rows
 			}
 			System.out.println("\n");

@@ -32,9 +32,6 @@ public class UnitOneTest {
 		MarkovGenerator<Double> rhythmGenerator = new MarkovGenerator<Double>();
 		ProbabilityGenerator<Integer> pGenerator = new ProbabilityGenerator<Integer>();
 		ProbabilityGenerator<Double> rGenerator = new ProbabilityGenerator<Double>();
-		MarkovOrderM<Integer> pGen = new MarkovOrderM<Integer>();
-		MarkovOrderM<Double> rGen = new MarkovOrderM<Double>();
-
 		
 		//training
 		pitchGenerator.train(midiNotesMary.getPitchArray());
@@ -61,6 +58,7 @@ public class UnitOneTest {
 		//print out transition table
 		System.out.println("Project 3\n " + "Unit Test One: \n");
 		for(int i = 1; i <= 10; i++) {
+			MarkovOrderM<Integer> pGen = new MarkovOrderM<Integer>(); //create new object
 			
 			//training data
 			pGen.train(midiNotesMary.getPitchArray());
@@ -71,6 +69,7 @@ public class UnitOneTest {
 		}
 
 		for(int i = 1; i <= 10; i++) {
+			MarkovOrderM<Double> rGen = new MarkovOrderM<Double>(); //create new object
 			
 			//training data
 			rGen.train(midiNotesMary.getRhythmArray());
