@@ -9,14 +9,19 @@ import java.util.ArrayList;
 
 public class MarkovOrderM<T> extends MarkovGenerator<T>{
 	
-	//int orderM = 10; //set order of Markov chain
-	ArrayList<ArrayList<T>> uniqueAlphabetSequence; //make an arraylist (uniquealphabetsequence) that holds cursequences
+	ArrayList<ArrayList<T>> uniqueAlphabetSequence; //make an array list (uniqueAlphabetSequence) that holds curSequences
+	int orderM; //for setting orderM in the constructor
 	
-	MarkovOrderM() {
+	MarkovOrderM(int orderM1){ //overloaded constructor
+		orderM = orderM1;
 		uniqueAlphabetSequence = new ArrayList(); //add current sequences into transition table
 	}
 	
-	void train(int orderM, ArrayList<T> newTokens) {
+	MarkovOrderM() {
+		//uniqueAlphabetSequence = new ArrayList(); //add current sequences into transition table
+	}
+	
+	void train(ArrayList<T> newTokens) {
 //		for i = orderM -1 to (i < size of the input - 1) do 
 		for(int i = orderM - 1; i < newTokens.size() - 1; i++){
 			
@@ -24,9 +29,9 @@ public class MarkovOrderM<T> extends MarkovGenerator<T>{
 			int rowIndex = -1; //initialize rowIndex
 			ArrayList<T> curSequence = new ArrayList(); //create a new curSequence EVERY TIME 
 					
-//			1.	Create the current sequence (eg. curSequence) of size orderM from the input
+//			1.	Create the current sequence (e.g. curSequence) of size orderM from the input
 //			Remember to start the index into the input at 0 (with this algorithm) 
-//				a.	add the previous tokens to a container (eg ArrayList). 
+//				a.	add the previous tokens to a container (e.g. ArrayList). 
 			
 			for(int j = i - (orderM - 1); j <= i; j++) { 
 				curSequence.add(newTokens.get(j));
@@ -82,7 +87,7 @@ public class MarkovOrderM<T> extends MarkovGenerator<T>{
 	}
 	
 	void printMarkovM(ArrayList<T> newTokens) {
-		System.out.println(alphabet); //printing out what is in alphabet(ie the tokens)
+		System.out.println(alphabet); //printing out what is in alphabet(i.e the tokens)
 		
 		for(int i = 0; i < uniqueAlphabetSequence.size(); i++) { //for each row in transition table
 			System.out.print(uniqueAlphabetSequence.get(i));

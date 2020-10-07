@@ -58,10 +58,10 @@ public class UnitOneTest {
 		//print out transition table
 		System.out.println("Project 3\n " + "Unit Test One: \n");
 		for(int i = 1; i <= 10; i++) {
-			MarkovOrderM<Integer> pGen = new MarkovOrderM<Integer>(); //create new object
+			MarkovOrderM<Integer> pGen = new MarkovOrderM<Integer>(i); //create new object
 			
 			//training data
-			pGen.train(i, midiNotesMary.getPitchArray());
+			pGen.train(midiNotesMary.getPitchArray());
 			
 			System.out.println("\n Pitches for order " + i + ":\n" + "-----Transition Table -----\n");
 			pGen.printMarkovM(midiNotesMary.getPitchArray());
@@ -69,10 +69,10 @@ public class UnitOneTest {
 		}
 
 		for(int i = 1; i <= 10; i++) {
-			MarkovOrderM<Double> rGen = new MarkovOrderM<Double>(); //create new object
+			MarkovOrderM<Double> rGen = new MarkovOrderM<Double>(i); //create new object
 			
 			//training data
-			rGen.train(i, midiNotesMary.getRhythmArray());
+			rGen.train(midiNotesMary.getRhythmArray());
 			
 			System.out.println("\n Rhythms for order " + i + ":\n" + "-----Transition Table -----\n");
 			rGen.printMarkovM(midiNotesMary.getRhythmArray());
