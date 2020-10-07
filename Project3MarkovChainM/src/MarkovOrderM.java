@@ -21,14 +21,12 @@ public class MarkovOrderM<T> extends MarkovGenerator<T>{
 		for(int i = orderM - 1; i < newTokens.size() - 1; i++){
 			
 			int tokenIndex = 0; //token index is equal to index of token in alphabet
-			int rowIndex = -1;
-			ArrayList<T> curSequence = new ArrayList(); //current sequence 
+			int rowIndex = -1; //initialize rowIndex
+			ArrayList<T> curSequence = new ArrayList(); //create a new curSequence EVERY TIME 
 					
 //			1.	Create the current sequence (eg. curSequence) of size orderM from the input
 //			Remember to start the index into the input at 0 (with this algorithm) 
 //				a.	add the previous tokens to a container (eg ArrayList). 
-//				b.	You may do this in a for-loop or use .subList()
-//					i.	https://beginnersbook.com/2013/12/how-to-get-sublist-of-an-arraylist-with-example/
 			
 			for(int j = i - (orderM - 1); j <= i; j++) { 
 				curSequence.add(newTokens.get(j));

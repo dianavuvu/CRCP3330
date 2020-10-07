@@ -61,7 +61,7 @@ public class UnitOneTest {
 			MarkovOrderM<Integer> pGen = new MarkovOrderM<Integer>(); //create new object
 			
 			//training data
-			pGen.train(midiNotesMary.getPitchArray());
+			pGen.train(i, midiNotesMary.getPitchArray());
 			
 			System.out.println("\n Pitches for order " + i + ":\n" + "-----Transition Table -----\n");
 			pGen.printMarkovM(midiNotesMary.getPitchArray());
