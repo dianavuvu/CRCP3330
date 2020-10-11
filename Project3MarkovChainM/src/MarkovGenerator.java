@@ -54,7 +54,7 @@ public class MarkovGenerator<T> extends ProbabilityGenerator<T>{
 	
 	void train(ArrayList<T> newTokens) {
 		
-		probGenerator.train(newTokens); //train the data first
+		probGenerator.train(newTokens); //train the data first for generate
 		
 		int lastIndex = -1;
 		
