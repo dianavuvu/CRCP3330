@@ -56,7 +56,6 @@ public class MarkovOrderM<T> extends MarkovGenerator<T>{
 				return super.generate(); //handing generate function from ProbGen array from transitionTable
 			}
 		}
-		
 		return newToken;
 	}
 	
@@ -81,7 +80,7 @@ public class MarkovOrderM<T> extends MarkovGenerator<T>{
 			outputMelody.add(genToken);
 			
 //			5.	remove the first token off the top of the initSeq
-			initSeq.remove(0);
+			initSeq.remove(initSeq.size() - 1);
 		}
 		
 		return initSeq;
@@ -159,7 +158,7 @@ public class MarkovOrderM<T> extends MarkovGenerator<T>{
 	void printMarkovM(ArrayList<T> newTokens) {
 		System.out.println(alphabet); //printing out what is in alphabet(i.e the tokens)
 		
-		for(int i = 0; i < uniqueAlphabetSequence.size(); i++) { //for each row in transition table
+		for(int i = 0; i < uniqueAlphabetSequence.size(); i++) { //for each row in uniqueAlphabetSequence
 			System.out.print(uniqueAlphabetSequence.get(i));
 			
 			for(int j = 0; j < transitionTable.get(i).size(); j++) { //print each element in the row

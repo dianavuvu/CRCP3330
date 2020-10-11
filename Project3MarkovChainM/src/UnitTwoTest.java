@@ -38,7 +38,7 @@ public class UnitTwoTest {
 		//training
 		pitchGenerator.train(midiNotesMary.getPitchArray());
 		rhythmGenerator.train(midiNotesMary.getRhythmArray());
-		pitchG.train(midiNotesMary.getPitchArray()); //proj 2
+		pitchG.train(midiNotesMary.getPitchArray()); //project 2
 		rhythmG.train(midiNotesMary.getRhythmArray());
 		
 		//generating melodies
@@ -53,16 +53,46 @@ public class UnitTwoTest {
 		newR = rhythmG.generate(20); //put new generated rhythms in an array //project 2
 		
 		//printing out pitch and rhythm tokens of generated melody Project 1
-		System.out.println("Project 1:\n" + "Unit Test Two:\n" + " Generated Tokens for Pitches: \n");
-		System.out.println(newPitches);
-		System.out.println("\n Generated Tokens for Rhythm: \n");
-		System.out.println(newRhythms);
+//		System.out.println("Project 1:\n" + "Unit Test Two:\n" + " Generated Tokens for Pitches: \n");
+//		System.out.println(newPitches);
+//		System.out.println("\n Generated Tokens for Rhythm: \n");
+//		System.out.println(newRhythms);
+//		
+//		//printing out pitch and rhythm tokens of generated melody Project 2
+//		System.out.println("Project 2:\n" + "Unit Test Two:\n" + " Generated Tokens for Pitches: \n");
+//		System.out.println(newP);
+//		System.out.println("\n Generated Tokens for Rhythm: \n");
+//		System.out.println(newR);
 		
-		//printing out pitch and rhythm tokens of generated melody Project 2
-		System.out.println("Project 2:\n" + "Unit Test Two:\n" + " Generated Tokens for Pitches: \n");
-		System.out.println(newP);
-		System.out.println("\n Generated Tokens for Rhythm: \n");
-		System.out.println(newR);
+		//printing out pitch and rhythm tokens of generated melody Project 3
+		System.out.println("Project 3\n " + "Unit Test Two: \n");
+		for(int i = 1; i <= 10; i++) {
+			MarkovOrderM<Integer> pGen = new MarkovOrderM<Integer>(i); //create new object
+			
+			//training data
+			pGen.train(midiNotesMary.getPitchArray());
+			
+			ArrayList<Integer> pitch = new ArrayList<Integer>(); //initialize new array for generated pitches 
+			pitch = pGen.generate(20);
+			
+			System.out.println("\n Pitches for order " + i + ":\n" + "-----Generated Tokens-----\n");
+			pGen.printMarkovM(pitch);
+			System.out.println("------");
+		}
+
+		for(int i = 1; i <= 10; i++) {
+			MarkovOrderM<Double> rGen = new MarkovOrderM<Double>(i); //create new object
+			
+			//training data
+			rGen.train(midiNotesMary.getRhythmArray());
+			
+			ArrayList<Double> rhythm = new ArrayList<Double>(); //initialize new array for generated rhythms 
+			rhythm = rGen.generate(20);
+			
+			System.out.println("\n Rhythms for order " + i + ":\n" + "-----Generated Tokens-----\n");
+			rGen.printMarkovM(rhythm);
+			System.out.println("------");
+		}
 	}
 
 	String getPath(String path) {
