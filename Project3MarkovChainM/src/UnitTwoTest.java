@@ -82,7 +82,7 @@ public class UnitTwoTest {
 			pitch = pGen.generate(nP, 20);
 			
 			System.out.println("\n Pitches for order " + i + ":\n" + "-----Generated Tokens-----\n");
-			pGen.printMarkovM(pitch);
+			System.out.println(pitch);
 			System.out.println("------");
 		}
 
@@ -100,7 +100,7 @@ public class UnitTwoTest {
 			rhythm = rGen.generate(rhy, 20);
 			
 			System.out.println("\n Rhythms for order " + i + ":\n" + "-----Generated Tokens-----\n");
-			rGen.printMarkovM(rhythm);
+			System.out.println(rhythm);
 			System.out.println("------");
 		}
 	}

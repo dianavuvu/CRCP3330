@@ -83,7 +83,7 @@ public class MarkovOrderM<T> extends MarkovGenerator<T>{
 			initSeq.remove(initSeq.size() - 1);
 		}
 		
-		return initSeq;
+		return outputMelody;
 	}
 
 	

@@ -73,14 +73,16 @@ public class UnitThreeTest<T> {
 		
 			for(int i = 1; i <= 10; i++) {
 				MarkovOrderM<Integer> pGen = new MarkovOrderM<Integer>(i); //create new object
-				ArrayList<Integer> newP = new ArrayList<Integer>();
+				MarkovGenerator<Integer> pitG = new MarkovGenerator<Integer>();
 				
 				//training data
 				pGen.train(midiNotesMary.getPitchArray());
+				pitG.train(midiNotesMary.getPitchArray());
 				
 				//generate data
+				ArrayList<Integer> newP = new ArrayList<Integer>();
 				for (int j = 0; j <= 10000; j++) {
-					newP = pGen.generate(20); //generate new tokens
+					newP = pGen.generate(pitG, 20); //generate new tokens
 					
 					pGen.train(newP); //use newly generated tokens and train
 				}
