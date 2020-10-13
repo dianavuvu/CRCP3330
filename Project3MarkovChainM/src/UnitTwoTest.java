@@ -68,12 +68,18 @@ public class UnitTwoTest {
 		System.out.println("Project 3\n " + "Unit Test Two: \n");
 		for(int i = 1; i <= 10; i++) {
 			MarkovOrderM<Integer> pGen = new MarkovOrderM<Integer>(i); //create new object
+			MarkovGenerator<Integer> pitG = new MarkovGenerator<Integer>();
 			
 			//training data
 			pGen.train(midiNotesMary.getPitchArray());
+			pitG.train(midiNotesMary.getPitchArray());
 			
 			ArrayList<Integer> pitch = new ArrayList<Integer>(); //initialize new array for generated pitches 
-			pitch = pGen.generate(20);
+			ArrayList<Integer> nP = new ArrayList<Integer>();
+			
+			//generate
+			nP = pitG.generate(20);
+			pitch = pGen.generate(nP, 20);
 			
 			System.out.println("\n Pitches for order " + i + ":\n" + "-----Generated Tokens-----\n");
 			pGen.printMarkovM(pitch);
@@ -82,12 +88,16 @@ public class UnitTwoTest {
 
 		for(int i = 1; i <= 10; i++) {
 			MarkovOrderM<Double> rGen = new MarkovOrderM<Double>(i); //create new object
+			MarkovGenerator<Double> rhyG = new MarkovGenerator<Double>();
 			
 			//training data
 			rGen.train(midiNotesMary.getRhythmArray());
+			rhyG.train(midiNotesMary.getRhythmArray());
 			
 			ArrayList<Double> rhythm = new ArrayList<Double>(); //initialize new array for generated rhythms 
-			rhythm = rGen.generate(20);
+			ArrayList<Double> rhy = new ArrayList<Double>();
+			rhy = rhyG.generate(20);
+			rhythm = rGen.generate(rhy, 20);
 			
 			System.out.println("\n Rhythms for order " + i + ":\n" + "-----Generated Tokens-----\n");
 			rGen.printMarkovM(rhythm);

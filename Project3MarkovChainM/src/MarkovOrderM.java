@@ -18,7 +18,7 @@ public class MarkovOrderM<T> extends MarkovGenerator<T>{
 		uniqueAlphabetSequence = new ArrayList(); //add current sequences into transition table
 	}
 	
-	T generate(ArrayList initSeq) {
+	T generate(ArrayList<T> initSeq) {
 		T newToken = null;
 		float sumAlphabetCounts = 0; //initialize sum of alphabet counts array
 		
@@ -35,7 +35,7 @@ public class MarkovOrderM<T> extends MarkovGenerator<T>{
 //			//found in training will have the reported probabilities for each row. Eg. you will see "discrepancies"
 //			//in the rhythms, as the symbol 4.0 comes after things but nothing comes after it.
 			
-			newToken = markGenerator.generate(); //generating from Project 2 MarkovGenerator
+			newToken = markGenerator.generate(initSeq.get(initSeq.size() - 1)); //generating from Project 2 MarkovGenerator
 		}
 
 		else{
@@ -59,7 +59,7 @@ public class MarkovOrderM<T> extends MarkovGenerator<T>{
 		return newToken;
 	}
 	
-	ArrayList generate(ArrayList initSeq, int numTokensToGen){
+	ArrayList generate(ArrayList<T> initSeq, int numTokensToGen){
 //		1.	create an ArrayList of T - outputMelody
 		ArrayList<T> outputMelody = new ArrayList();
 		T genToken;
