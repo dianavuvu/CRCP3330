@@ -68,7 +68,7 @@ public class HelloWorldMidiMain extends PApplet {
 //		player.setMelody(pG.generate(20));
 //		player.setRhythm(rG.generate(20));
 //		
-//		while(playMelody) {
+//		if(playMelody) {
 //			player.play(); //play each note in the sequence -- the player will determine whether is time for a note onset
 //		}
 

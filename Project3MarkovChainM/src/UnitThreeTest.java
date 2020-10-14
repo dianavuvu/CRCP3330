@@ -80,9 +80,13 @@ public class UnitThreeTest<T> {
 				pitG.train(midiNotesMary.getPitchArray());
 				
 				//generate data
-				ArrayList<Integer> newP = new ArrayList<Integer>();
+				ArrayList<Integer> newP = new ArrayList<Integer>(); //initialize array lists
+				ArrayList<Integer> nP = new ArrayList<Integer>();
+				
+				nP = pitG.generate(20); //generating initSeq
+				
 				for (int j = 0; j <= 10000; j++) {
-					newP = pGen.generate(pitG, 20); //generate new tokens
+					newP = pGen.generate(nP, 20); //generate new tokens
 					
 					pGen.train(newP); //use newly generated tokens and train
 				}
@@ -94,13 +98,19 @@ public class UnitThreeTest<T> {
 
 			for(int i = 1; i <= 10; i++) {
 				MarkovOrderM<Double> rGen = new MarkovOrderM<Double>(i); //create new object
-				ArrayList<Double> newR = new ArrayList<Double>();
+				MarkovGenerator<Double> rhyG = new MarkovGenerator<Double>();
 				
 				//training data
 				rGen.train(midiNotesMary.getRhythmArray());
+				rhyG.train(midiNotesMary.getRhythmArray());
+				
+				ArrayList<Double> newR = new ArrayList<Double>(); //initialize array lists
+				ArrayList<Double> nR = new ArrayList<Double>();
+				
+				nR = rhyG.generate(20); //generate initSeq
 				
 				for (int j = 0; j <= 10000; j++) {
-					newR = rGen.generate(20); //generate new tokens
+					newR = rGen.generate(nR, 20); //generate new tokens
 					
 					rGen.train(newR); //use newly generated tokens and train
 				}

@@ -80,7 +80,7 @@ public class MarkovOrderM<T> extends MarkovGenerator<T>{
 			outputMelody.add(genToken);
 			
 //			5.	remove the first token off the top of the initSeq
-			initSeq.remove(initSeq.size() - 1);
+//			initSeq.remove(initSeq.size() - 1);
 		}
 		
 		return outputMelody;
