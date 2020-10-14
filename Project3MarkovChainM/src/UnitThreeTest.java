@@ -1,8 +1,8 @@
 /*
  * Programmer: Diana Vu
- * Date: September 28, 2020
+ * Date: October 12, 2020
  * Description: This is Unit Three test that will generate 10,000 melodies and print out the data set from those entries 
- * from projects 1 and 2
+ * from projects 1 and 2 and 3
  * 
  */
 
@@ -83,13 +83,14 @@ public class UnitThreeTest<T> {
 				ArrayList<Integer> newP = new ArrayList<Integer>(); //initialize array lists
 				ArrayList<Integer> nP = new ArrayList<Integer>();
 				
-				nP = pitG.generate(20); //generating initSeq
 				
-				for (int j = 0; j <= 10000; j++) {
+				
+				//for (int j = 0; j <= 10000; j++) {
+					nP = pitG.generate(20); //generating initSeq
 					newP = pGen.generate(nP, 20); //generate new tokens
 					
 					pGen.train(newP); //use newly generated tokens and train
-				}
+				//}
 				
 				System.out.println("\n Pitches for order " + i + ":\n" + "-----Transition Table -----\n");
 				pGen.printMarkovM(newP);
@@ -109,14 +110,14 @@ public class UnitThreeTest<T> {
 				
 				nR = rhyG.generate(20); //generate initSeq
 				
-				for (int j = 0; j <= 10000; j++) {
+				//for (int j = 0; j <= 10000; j++) {
 					newR = rGen.generate(nR, 20); //generate new tokens
 					
 					rGen.train(newR); //use newly generated tokens and train
-				}
+				//}
 				
 				System.out.println("\n Rhythms for order " + i + ":\n" + "-----Transition Table -----\n");
-				rGen.printMarkovM(midiNotesMary.getRhythmArray());
+				rGen.printMarkovM(newR);
 				System.out.println("------");
 			}
 

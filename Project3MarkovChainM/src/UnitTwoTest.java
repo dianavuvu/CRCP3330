@@ -1,8 +1,8 @@
 /*
  * Programmer: Diana Vu
- * Date: September 28, 2020
+ * Date: October 12, 2020
  * Description: This is Unit Two test that will test the generate method in probability generator and markov generator
- * from projects 1 and 2
+ * from projects 1 and 2 and 3
  * 
  */
 
@@ -53,16 +53,16 @@ public class UnitTwoTest {
 		newR = rhythmG.generate(20); //put new generated rhythms in an array //project 2
 		
 		//printing out pitch and rhythm tokens of generated melody Project 1
-//		System.out.println("Project 1:\n" + "Unit Test Two:\n" + " Generated Tokens for Pitches: \n");
-//		System.out.println(newPitches);
-//		System.out.println("\n Generated Tokens for Rhythm: \n");
-//		System.out.println(newRhythms);
-//		
-//		//printing out pitch and rhythm tokens of generated melody Project 2
-//		System.out.println("Project 2:\n" + "Unit Test Two:\n" + " Generated Tokens for Pitches: \n");
-//		System.out.println(newP);
-//		System.out.println("\n Generated Tokens for Rhythm: \n");
-//		System.out.println(newR);
+		System.out.println("Project 1:\n" + "Unit Test Two:\n" + " Generated Melody Tokens for Pitches: \n");
+		System.out.println(newPitches);
+		System.out.println("\n Generated Melody Tokens for Rhythm: \n");
+		System.out.println(newRhythms);
+		
+		//printing out pitch and rhythm tokens of generated melody Project 2
+		System.out.println("Project 2:\n" + "Unit Test Two:\n" + " Generated Melody Tokens for Pitches: \n");
+		System.out.println(newP);
+		System.out.println("\n Generated Melody Tokens for Rhythm: \n");
+		System.out.println(newR);
 		
 		//printing out pitch and rhythm tokens of generated melody Project 3
 		System.out.println("Project 3\n " + "Unit Test Two: \n");
@@ -81,7 +81,7 @@ public class UnitTwoTest {
 			nP = pitG.generate(20);
 			pitch = pGen.generate(nP, 20);
 			
-			System.out.println("\n Pitches for order " + i + ":\n" + "-----Generated Tokens-----\n");
+			System.out.println("\n Pitches for order " + i + ":\n" + "-----Generated Melody Tokens-----\n");
 			System.out.println(pitch);
 			System.out.println("------");
 		}
@@ -96,10 +96,12 @@ public class UnitTwoTest {
 			
 			ArrayList<Double> rhythm = new ArrayList<Double>(); //initialize new array for generated rhythms 
 			ArrayList<Double> rhy = new ArrayList<Double>();
+			
+			//generate
 			rhy = rhyG.generate(20);
 			rhythm = rGen.generate(rhy, 20);
 			
-			System.out.println("\n Rhythms for order " + i + ":\n" + "-----Generated Tokens-----\n");
+			System.out.println("\n Rhythms for order " + i + ":\n" + "-----Generated Melody Tokens-----\n");
 			System.out.println(rhythm);
 			System.out.println("------");
 		}

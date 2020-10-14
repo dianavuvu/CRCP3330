@@ -43,11 +43,6 @@ public class HelloWorldMidiMain extends PApplet {
 	}
 
 	public void draw() {
-		//Create my generator for pitch and rhythm
-		MarkovGenerator<Integer> pG = new MarkovGenerator<Integer>();
-		MarkovGenerator<Double> rG = new MarkovGenerator<Double>();
-		
-
 		// returns a url
 //		String filePath = getPath("mid/gardel_por.mid");
 //		// playMidiFile(filePath);
@@ -57,16 +52,30 @@ public class HelloWorldMidiMain extends PApplet {
 //
 //		// which line to read in --> this object only reads one line (or ie, voice or ie, one instrument)'s worth of data from the file
 //		midiNotes.setWhichLine(0);
-		
-		//training
+//		
+//		//Create my generator for pitch and rhythm
+//		MarkovOrderM<Integer> pG = new MarkovOrderM<Integer>(10);
+//		MarkovOrderM<Double> rG = new MarkovOrderM<Double>(10);
+//		MarkovGenerator<Double> rhyG = new MarkovGenerator<Double>();
+//		MarkovGenerator<Integer> pitG = new MarkovGenerator<Integer>();
+//		
+//		//training
 //		pG.train(midiNotes.getPitchArray());
+//		pitG.train(midiNotes.getPitchArray());
 //		rG.train(midiNotes.getRhythmArray());
+//		rhyG.train(midiNotes.getRhythmArray());
+//		
+//		ArrayList<Double> nR = new ArrayList<Double>(); //create array list to hold generated initSeq
+//		ArrayList<Integer> nP = new ArrayList<Integer>();
+//		
+//		nP = pitG.generate(20); //create initSeq4
+//		nR = rhyG.generate(20);
 //		
 //		player = new MelodyPlayer(this, 100.0f);
 //
 //		player.setup();
-//		player.setMelody(pG.generate(20));
-//		player.setRhythm(rG.generate(20));
+//		player.setMelody(pG.generate(nP, 20));
+//		player.setRhythm(rG.generate(nR, 20));
 //		
 //		if(playMelody) {
 //			player.play(); //play each note in the sequence -- the player will determine whether is time for a note onset

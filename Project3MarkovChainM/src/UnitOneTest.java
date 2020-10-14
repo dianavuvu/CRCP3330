@@ -1,7 +1,7 @@
 /*
  * Programmer: Diana Vu
- * Date: September 8, 2020
- * Description: This is Unit One test that will test the train method in probability generator 
+ * Date: October 12, 2020
+ * Description: This is Unit One test that will test the train method in probability generator, markov generator, and markov order m 
  * 
  */
 
