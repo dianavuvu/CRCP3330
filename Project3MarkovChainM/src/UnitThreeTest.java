@@ -68,6 +68,22 @@ public class UnitThreeTest<T> {
 			rhyGenerator.train(newRhy);
 			}
 		
+		//print out the distribution
+		System.out.println("Project 1:\n" + "Unit Test 3:");
+		System.out.println("\n Pitches: \n" + "-----Probability Distribution-----\n");
+		pitchGenerator.print(newPitches);
+		System.out.println("\n Rhythms: \n" + "-----Probability Distribution-----\n");
+		rhythmGenerator.print(newRhythms);
+		System.out.println("------");
+		
+		//print out transition table
+		System.out.println("Project 2\n " + "Unit Test One: \n");
+		System.out.println("\n Pitches: \n" + "-----Transition Table -----\n");
+		pitGenerator.printMarkov(midiNotesMary.getPitchArray());
+		System.out.println("\n Rhythms: \n" + "-----Transition Table-----\n");
+		rhyGenerator.printMarkov(midiNotesMary.getRhythmArray());
+		System.out.println("------");
+		
 		//generate 10,000 times Project 3
 		System.out.println("Project 3:\n" + "Unit Test 3:");
 		
@@ -83,10 +99,9 @@ public class UnitThreeTest<T> {
 				ArrayList<Integer> newP = new ArrayList<Integer>(); //initialize array lists
 				ArrayList<Integer> nP = new ArrayList<Integer>();
 				
-				
+				nP = pitG.generate(20); //generating initSeq
 				
 				//for (int j = 0; j <= 10000; j++) {
-					nP = pitG.generate(20); //generating initSeq
 					newP = pGen.generate(nP, 20); //generate new tokens
 					
 					pGen.train(newP); //use newly generated tokens and train
@@ -120,23 +135,6 @@ public class UnitThreeTest<T> {
 				rGen.printMarkovM(newR);
 				System.out.println("------");
 			}
-
-		
-		//print out the distribution
-//		System.out.println("Project 1:\n" + "Unit Test 3:");
-//		System.out.println("\n Pitches: \n" + "-----Probability Distribution-----\n");
-//		pitchGenerator.print(newPitches);
-//		System.out.println("\n Rhythms: \n" + "-----Probability Distribution-----\n");
-//		rhythmGenerator.print(newRhythms);
-//		System.out.println("------");
-		
-		//print out transition table
-//		System.out.println("Project 2\n " + "Unit Test One: \n");
-//		System.out.println("\n Pitches: \n" + "-----Transition Table -----\n");
-//		pitGenerator.printMarkov(midiNotesMary.getPitchArray());
-//		System.out.println("\n Rhythms: \n" + "-----Transition Table-----\n");
-//		rhyGenerator.printMarkov(midiNotesMary.getRhythmArray());
-//		System.out.println("------");
 
 
 	}
