@@ -20,7 +20,7 @@ import com.jaunt.JauntException;
 public class BadAdviceBotMain extends PApplet {
 
 	private ArrayList<String> tokens;
-	private static String HEYER_TWITTER_URL = "https://twitter.com/dianav_crcp"; //my twitter
+	private static String HEYER_TWITTER_URL = "https://twitter.com/BADadvicebot1"; //my twitter
 	private static int TWITTER_CHAR_LIMIT = 140; //I understand this has changed... but forget limit
 	
 	//useful constant strings -- for instance if you want to make sure your tweet ends on a space or ending punctuation, etc.
@@ -31,7 +31,7 @@ public class BadAdviceBotMain extends PApplet {
 	private static final String fWHITESPACE = "\t\r\n ";
 	
 	//example twitter hastag search term
-	private static final String fPASSIVEAGG = "passiveaggressive";
+	private static final String fPASSIVEAGG = "badadvice";
 	private static final String fCOMMA = ","; 
 	
 	//handles twitter api
@@ -59,9 +59,9 @@ public class BadAdviceBotMain extends PApplet {
 		//TODO: train an AI algorithm (eg, Markov Chain) and generate text for markov chain status
 		
 		//can train on twitter statuses -- note: in your code I would put this part in a separate function
-		//but anyhow, here is an example of searrching twitter hashtag. You have to pay $$ to the man to get more results. :(
+		//but anyhow, here is an example of searching twitter hashtag. You have to pay $$ to the man to get more results. :(
 		//see TwitterInteraction class
-		ArrayList<String> tweetResults = tweet.searchForTweets("John Cage");
+		ArrayList<String> tweetResults = tweet.searchForTweets("Bad Advice");
 		for (int i = 0; i < tweetResults.size(); i++) {
 				println(tweetResults.get(i)); //just prints out the results for now
 		}
@@ -75,12 +75,12 @@ public class BadAdviceBotMain extends PApplet {
 //		Scraper scraper = new Scraper(); 
 //		ArrayList<String> results;
 //		try {
-//			results = scraper.scrapeGoogleResults("dogs");
+//			results = scraper.scrapeGoogleResults("badadvice");
 //			
 //			//print your results
 //			System.out.println(results); 
 //			
-//			scraper.scrape("http://google.com",  "dogs"); //see class documentation
+//			scraper.scrape("http://google.com",  "badadvice"); //see class documentation
 //
 //		} catch (JauntException e) {
 //			// TODO Auto-generated catch block
