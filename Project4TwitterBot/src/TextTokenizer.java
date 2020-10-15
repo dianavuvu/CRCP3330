@@ -1,5 +1,5 @@
-/* Programmer: Courtney Brown
- * Date: Created Fall 2018, Modified 2019, 2020 (removed Set & used ArrayList instead)
+/* Programmer: Diana Vu 
+ * Date: October 20, 2020
  * Desc:  Turns input text into tokens. Removes whitespace, some punctuation, etc. 
  *  The original code was lifted from an online example and then modified. The link got lost in the internet. mea culpa.
  */

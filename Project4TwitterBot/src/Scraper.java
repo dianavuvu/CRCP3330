@@ -1,3 +1,8 @@
+/*
+ * Programmer: Diana Vu 
+ * Date: October 20, 2020
+ * Description: Using web content from Google to train data of Markov Chain
+ */
 
 import java.io.IOException;
 import java.util.ArrayList;

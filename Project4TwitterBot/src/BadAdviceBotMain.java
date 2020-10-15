@@ -1,5 +1,5 @@
-/* Programmer: Courtney Brown
- * Date: Created Fall 2018, Modified 2019, 2020
+/* Programmer: Diana Vu
+ * Date: October 20, 2020
  * This class is a template for creating a twitterbot & also demonstrated web-scraping
  */
 
@@ -17,10 +17,10 @@ import com.jaunt.JauntException;
 
 //This class serves as a template for creating twitterbots and demonstrates string tokenizing and web scraping and the use of the 
 //twitter API
-public class TwitterBotMain extends PApplet {
+public class BadAdviceBotMain extends PApplet {
 
 	private ArrayList<String> tokens;
-	private static String HEYER_TWITTER_URL = "https://twitter.com/GeorgetteRomanc"; //this is mine, you should use yours
+	private static String HEYER_TWITTER_URL = "https://twitter.com/dianav_crcp"; //my twitter
 	private static int TWITTER_CHAR_LIMIT = 140; //I understand this has changed... but forget limit
 	
 	//useful constant strings -- for instance if you want to make sure your tweet ends on a space or ending punctuation, etc.
@@ -39,7 +39,7 @@ public class TwitterBotMain extends PApplet {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		PApplet.main("TwitterBotMain");  //Not really using processing functionality but ya know, you _could_. UI not required.
+		PApplet.main("BadAdviceBotMain");  //Not really using processing functionality but ya know, you _could_. UI not required.
 		
 	}
 
@@ -54,17 +54,17 @@ public class TwitterBotMain extends PApplet {
 //NOTE: everything starts uncommented. Comment out the calls that you would like to try and use.
 		
 		loadNovel("data/The Grand Sophy excerpt.txt"); //TODO: must train from another source
-//		println("Token size:"+tokens.size());
+		println("Token size:"+tokens.size());
 
 		//TODO: train an AI algorithm (eg, Markov Chain) and generate text for markov chain status
 		
 		//can train on twitter statuses -- note: in your code I would put this part in a separate function
 		//but anyhow, here is an example of searrching twitter hashtag. You have to pay $$ to the man to get more results. :(
 		//see TwitterInteraction class
-//		ArrayList<String> tweetResults = tweet.searchForTweets("John Cage");
-//		for (int i = 0; i < tweetResults.size(); i++) {
-//				println(tweetResults.get(i)); //just prints out the results for now
-//		}
+		ArrayList<String> tweetResults = tweet.searchForTweets("John Cage");
+		for (int i = 0; i < tweetResults.size(); i++) {
+				println(tweetResults.get(i)); //just prints out the results for now
+		}
 		
 		//Make sure within Twitter limits (used to be 140 but now is more?)
 		String status = "OMG testing again";
@@ -80,7 +80,7 @@ public class TwitterBotMain extends PApplet {
 //			//print your results
 //			System.out.println(results); 
 //			
-////			scraper.scrape("http://google.com",  "dogs"); //see class documentation
+//			scraper.scrape("http://google.com",  "dogs"); //see class documentation
 //
 //		} catch (JauntException e) {
 //			// TODO Auto-generated catch block
