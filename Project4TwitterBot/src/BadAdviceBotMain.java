@@ -40,53 +40,59 @@ public class BadAdviceBotMain extends PApplet {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		PApplet.main("BadAdviceBotMain");  //Not really using processing functionality but ya know, you _could_. UI not required.
-		
 	}
 
 	public void settings() {
 		size(300, 300); //dummy window
-
 	};
 
 	public void setup() {
-		tweet = new TwitterInteraction(); 
+		//tweet = new TwitterInteraction(); 
 		
 //NOTE: everything starts uncommented. Comment out the calls that you would like to try and use.
 		
-		loadNovel("data/The Grand Sophy excerpt.txt"); //TODO: must train from another source
-		println("Token size:"+tokens.size());
+		//loadNovel("data/The Grand Sophy excerpt.txt"); //TODO: must train from another source
+		//println("Token size:"+tokens.size());
 
 		//TODO: train an AI algorithm (eg, Markov Chain) and generate text for markov chain status
 		
-		//can train on twitter statuses -- note: in your code I would put this part in a separate function
-		//but anyhow, here is an example of searching twitter hashtag. You have to pay $$ to the man to get more results. :(
+		trainTwitterStat(); //train on twitter hashtags
+
+				
+		//prints the text content of the sites that come up with the google search of dogs
+		//you may use this content to train your AI too
+		Scraper scraper = new Scraper(); 
+		ArrayList<String> results;
+		try {
+			results = scraper.scrapeGoogleResults("badadvice");
+			
+			//print your results
+			System.out.println(results); 
+			
+			scraper.scrape("http://google.com",  "badadvice"); //see class documentation
+
+		} catch (JauntException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+				
+	}
+	
+	void trainTwitterStat() {
+		tweet = new TwitterInteraction();
+		
+		//here is an example of searching twitter hashtag. You have to pay $$ to the man to get more results. :(
 		//see TwitterInteraction class
+		
 		ArrayList<String> tweetResults = tweet.searchForTweets("Bad Advice");
 		for (int i = 0; i < tweetResults.size(); i++) {
-				println(tweetResults.get(i)); //just prints out the results for now
+			//println(tweetResults.get(i)); //just prints out the results for now, use to train markov chain
+			MarkovOrderM<Integer> trainTweet = new MarkovOrderM(i);
 		}
 		
 		//Make sure within Twitter limits (used to be 140 but now is more?)
 		String status = "OMG testing again";
 		tweet.updateTwitter(status);
-				
-		//prints the text content of the sites that come up with the google search of dogs
-//		//you may use this content to train your AI too
-//		Scraper scraper = new Scraper(); 
-//		ArrayList<String> results;
-//		try {
-//			results = scraper.scrapeGoogleResults("badadvice");
-//			
-//			//print your results
-//			System.out.println(results); 
-//			
-//			scraper.scrape("http://google.com",  "badadvice"); //see class documentation
-//
-//		} catch (JauntException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-				
 	}
 
 
