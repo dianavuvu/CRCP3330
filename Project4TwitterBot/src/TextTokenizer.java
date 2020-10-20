@@ -28,14 +28,14 @@ public class TextTokenizer {
 	 *         
 	 *         also the code may be modified so that very
 	 *         common words (and, the, etc.) do not qualify as possible search
-	 *         targets, but this was bah-leted as it is not necessarily useful for training markoov chains
+	 *         targets, but this was bah-leted as it is not necessarily useful for training markov chains
 	 */
 	public ArrayList<String> parseSearchText() {
 		ArrayList<String> result = new ArrayList<>();
 
 		boolean returnTokens = true;
 		String currentDelims = fWHITESPACE_AND_QUOTES_PUNCTUATION;
-		StringTokenizer parser = new StringTokenizer(fSearchText, currentDelims, true);
+		StringTokenizer parser = new StringTokenizer(fSearchText, currentDelims, false);
 
 		String token = null;
 		while (parser.hasMoreTokens()) {
@@ -52,7 +52,7 @@ public class TextTokenizer {
 	private static final Set<String> fCOMMON_WORDS = new LinkedHashSet<>();
 
 	// the parser flips between these two sets of delimiters
-	private static final String fWHITESPACE_AND_QUOTES_PUNCTUATION = " \t\r\n\",.!?;:()/\\@";
+	private static final String fWHITESPACE_AND_QUOTES_PUNCTUATION = " \t\r\n\",.!?;()\\ ";
 	private static final String fWHITESPACE = " \t\r\n";
 	private static final String fQUOTES_ONLY = "\"";
 	

@@ -7,19 +7,19 @@
 
 import java.util.ArrayList;
 
-public class MarkovGenerator<String> extends ProbabilityGenerator<String>{
+public class MarkovGenerator<T> extends ProbabilityGenerator<T>{
 	//to declare
 	ArrayList<ArrayList<Integer>> transitionTable; //initialize array list of array lists
 	float sum = 0; //initialize sum
-	ProbabilityGenerator<String> probGenerator = new ProbabilityGenerator<String>(); //create prob generator
+	ProbabilityGenerator<T> probGenerator = new ProbabilityGenerator<T>(); //create prob generator
 	
 	MarkovGenerator(){
 		super();
 		transitionTable = new ArrayList(); 		//to create the ArrayList
 	}
 	
-	java.lang.String generate(java.lang.String initToken) { //find initToken from ProbabilityGenerator
-		String newToken = null;
+	T generate(T initToken) { //find initToken from ProbabilityGenerator
+		T newToken = null;
 
 		int foundIndex = 0; //initialize found token index
 		float sumAlphabetCounts = 0; //initialize sum of alphabet counts array
@@ -52,7 +52,7 @@ public class MarkovGenerator<String> extends ProbabilityGenerator<String>{
 //		That is, set initToken = the token you just generated. Go to step 1.
 	}
 	
-	void train(ArrayList<java.lang.String> newTokens) {
+	void train(ArrayList<T> newTokens) {
 		
 		probGenerator.train(newTokens); //train the data first for generate
 		
@@ -91,7 +91,7 @@ public class MarkovGenerator<String> extends ProbabilityGenerator<String>{
 		}
 	}
 	
-	void printMarkov(ArrayList<java.lang.String> newTokens) {
+	void printMarkov(ArrayList<T> newTokens) {
 		System.out.println(alphabet); //printing out what is in alphabet(ie the tokens)
 		
 		for(int i = 0; i < alphabet.size(); i++) { //for each row in transition table
@@ -113,11 +113,11 @@ public class MarkovGenerator<String> extends ProbabilityGenerator<String>{
 		}
 	}
 	
-	ArrayList<java.lang.String> generate(int length, java.lang.String initToken) {
-		ArrayList<java.lang.String> newSequence = new ArrayList<java.lang.String>();
+	ArrayList<T> generate(int length, T initToken) {
+		ArrayList<T> newSequence = new ArrayList<T>();
 		
-		java.lang.String token = null; //initialize variables
-		java.lang.String nToken = null;
+		T token = null; //initialize variables
+		T nToken = null;
 		
 		newSequence.add(initToken); //add original initToken to sequence
 		
@@ -137,7 +137,7 @@ public class MarkovGenerator<String> extends ProbabilityGenerator<String>{
 		return newSequence;
 	}
 	
-	ArrayList<java.lang.String> generate(int length) {
+	ArrayList<T> generate(int length) {
 		return generate(length, probGenerator.generate());
 	}
 }

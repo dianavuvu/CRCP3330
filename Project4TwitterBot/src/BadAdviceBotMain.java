@@ -36,9 +36,14 @@ public class BadAdviceBotMain extends PApplet {
 	
 	//handles twitter api
 	TwitterInteraction tweet; 
+	String status;
 	
 	//class scope to print tweet
 	ArrayList<String> genTweet = new ArrayList<String>();
+	
+	//init Markov Generator
+	MarkovOrderM<String> trainTweet = new MarkovOrderM(2);
+	ArrayList<String> seed = new ArrayList<String>();
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -64,10 +69,39 @@ public class BadAdviceBotMain extends PApplet {
 	void trainTwitterStat() {
 		tweet = new TwitterInteraction();
 		
-		//here is an example of searching twitter hashtag. You have to pay $$ to the man to get more results. :(
-		//see TwitterInteraction class
+		//create seed for tweet
+		seed.add("A");
+		seed.add("personal");
+		seed.add("feeling"); 
+
+		//set words to search for
+		String badAdvice = "Bad Advice";
+		String badTip = "Bad Tip";
+		String questChoices = "Questionable Choices";
+		String adviceMe = "advisemebro"; //bad advice twitter user
+		String bAdvice = "Badvice"; //Jimmy Fallon segment
+		String worstAdvice = "Worst Advice Ever";
 		
-		ArrayList<String> tweetResults = tweet.searchForTweets("Bad Advice");
+		
+		//search and train
+		search(badAdvice);
+		search(badTip);
+		search(questChoices);
+		search(adviceMe);
+		search(bAdvice);
+		search(worstAdvice);
+		
+		//generating tweet
+		genTweet = trainTweet.generate(seed, 20); //generate ONE tweet
+		
+		//testing before posting to Twitter
+		for (int i = 0; i < genTweet.size(); i++) {
+			System.out.print(genTweet.get(i) + " ");
+		}
+	}
+	
+	void search(String s) {
+		ArrayList<String> tweetResults = tweet.searchForTweets(s);
 		for (int i = 0; i < tweetResults.size(); i++) {
 			
 			//just prints out the results for now, use to train markov chain
@@ -77,33 +111,29 @@ public class BadAdviceBotMain extends PApplet {
 			ArrayList<String> tweets = new ArrayList<String>();
 			//tweets.add(tweetResults.get(i));
 			
-			TextTokenizer tokenizer = new TextTokenizer(tweetResults.get(i));
+			TextTokenizer tokenizer = new TextTokenizer(tweetResults.get(i));			
+				
 			ArrayList<String> t = tokenizer.parseSearchText();
-			tweets.addAll(t);
 			
-			//init Markov Generator
-			MarkovOrderM<String> trainTweet = new MarkovOrderM(10);
-			MarkovGenerator<String> initTweet = new MarkovGenerator<String>();
+			int length = t.size() - 1;
+			for(int j = length; j >= 0; j--) {
+				if(t.get(j).contains("@"))
+					t.remove(j);
+				else if(t.get(j).contains("/"))
+					t.remove(j);
+				else if(t.get(j).contains(":"))
+					t.remove(j);
+				else if(t.get(j).contains("com"))
+					t.remove(j);
+				else if(t.get(j).contains("-"))
+					t.remove(j);
+			}
+			
+			tweets.addAll(t);
 			
 			//training
 			trainTweet.train(tweets);
-			initTweet.train(tweets);
-			
-			//initialize new array for generated tweets  
-			ArrayList<String> initT = new ArrayList<String>();
-			
-			initT = initTweet.generate(20);
-			genTweet = trainTweet.generate(initT, 20); //generate ONE tweet
 		}
-		
-		//testing before posting to Twitter
-		for (int i = 0; i < genTweet.size(); i++) {
-			System.out.println(genTweet.get(i) + " ");
-		}
-		
-		//Make sure within Twitter limits (used to be 140 but now is more?)
-//		String status = genTweet + " ";
-//		tweet.updateTwitter(status);
 	}
 	
 	void useScraper() {
@@ -175,14 +205,39 @@ public class BadAdviceBotMain extends PApplet {
 		
 		textSize(15);
 		fill(0, 0, 200);
-		text("Press 1 to start Unit Test One\n", width/10, height/6);
+		text("Press 1 to send a tweet!\n", width/10, height/6);
 		
 		fill(0, 200, 0);
-		text("Press 2 to start Unit Test Two\n", width/10, height/4);
+		text("Press 2 to run ALL unit tests\n", width/10, height/4);
+	}
+	
+	public void keyPressed() {
 		
-		fill(200, 0, 0);
-		text("Press 3 to start Unit Test Three\n", width/10, height/3);
-
+		//instantiate unit tests
+		UnitOneTest test = new UnitOneTest();
+		UnitTwoTest t = new UnitTwoTest();
+		UnitThreeTest ts = new UnitThreeTest();
+		
+		if (key == ' ') {
+			//player.reset();
+			println("Melody started!");
+		}
+		else if (key == '1'){			
+			for (int i = 0; i < genTweet.size(); i++) {
+				//System.out.print(genTweet.get(i) + " ");
+				status = status + genTweet.get(i) + " ";
+			}
+			
+			tweet.updateTwitter(status);
+		}
+		else if (key == '2') {
+			//run unit 1
+			test.run();
+			//run unit 2
+			t.run();
+			//run unit 3
+			ts.run();
+		}
 	}
 
 }

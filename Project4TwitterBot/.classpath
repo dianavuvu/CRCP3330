@@ -7,5 +7,6 @@
 	<classpathentry kind="lib" path="jogl-all.jar"/>
 	<classpathentry kind="lib" path="twitter4j-core-4.0.4.jar"/>
 	<classpathentry kind="lib" path="C:/Users/dvusi/Downloads/Installers/jaunt1.6.0/jaunt1.6.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/dvusi/Downloads/Installers/jMusic1.6.5.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
