@@ -36,6 +36,9 @@ public class BadAdviceBotMain extends PApplet {
 	
 	//handles twitter api
 	TwitterInteraction tweet; 
+	
+	//class scope to print tweet
+	ArrayList<String> genTweet = new ArrayList<String>();
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -55,6 +58,8 @@ public class BadAdviceBotMain extends PApplet {
 		//TODO: train an AI algorithm (eg, Markov Chain) and generate text for markov chain status
 		
 		trainTwitterStat(); //train on twitter hashtags
+		
+		//useScraper();
 				
 	}
 	
@@ -64,37 +69,45 @@ public class BadAdviceBotMain extends PApplet {
 		//here is an example of searching twitter hashtag. You have to pay $$ to the man to get more results. :(
 		//see TwitterInteraction class
 		
-		ArrayList<String> tweetResults = tweet.searchForTweets("BadAdvice");
+		ArrayList<String> tweetResults = tweet.searchForTweets("Bad Advice");
 		for (int i = 0; i < tweetResults.size(); i++) {
 			
 			//just prints out the results for now, use to train markov chain
-			println(tweetResults.get(i)); 
+			//println(tweetResults.get(i)); 
+			
+			//init array list to hold tweets
+			ArrayList<String> tweets = new ArrayList<String>();
+			tweets.add(tweetResults.get(i));
 			
 			//init Markov Generator
-			MarkovOrderM<String> trainTweet = new MarkovOrderM(1);
+			MarkovOrderM<String> trainTweet = new MarkovOrderM(10);
 			MarkovGenerator<String> initTweet = new MarkovGenerator<String>();
 			
 			//training
-			trainTweet.train(tweetResults.get(i));
-			initTweet.train(tweetResults.get(i));
+			trainTweet.train(tweets);
+			initTweet.train(tweets);
 			
-			//initialize new array for generated tweets
-			ArrayList<String> genTweet = new ArrayList<String>();  
+			//initialize new array for generated tweets  
 			ArrayList<String> initT = new ArrayList<String>();
 			
-			initT.generate(20);
-			genTweet.generate(initT, 20);
-			
+			initT = initTweet.generate(20);
+			genTweet = trainTweet.generate(initT, 1); //generate ONE tweet
 		}
 		
 		//Make sure within Twitter limits (used to be 140 but now is more?)
-		String status = genTweet;
-		tweet.updateTwitter(status);
+//		String status = genTweet + " ";
+//		tweet.updateTwitter(status);
+		
+		//testing before posting to Twitter
+		System.out.println("\n" + genTweet + "\n");
 	}
 	
 	void useScraper() {
+		tweet = new TwitterInteraction();
+		
 		//prints the text content of the sites that come up with the google search of dogs
 		//you may use this content to train your AI too
+		
 		Scraper scraper = new Scraper(); 
 		ArrayList<String> results;
 		try {
