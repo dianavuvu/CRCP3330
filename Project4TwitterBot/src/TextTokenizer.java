@@ -52,7 +52,7 @@ public class TextTokenizer {
 	private static final Set<String> fCOMMON_WORDS = new LinkedHashSet<>();
 
 	// the parser flips between these two sets of delimiters
-	private static final String fWHITESPACE_AND_QUOTES_PUNCTUATION = " \t\r\n\",.!?;:()/\\";
+	private static final String fWHITESPACE_AND_QUOTES_PUNCTUATION = " \t\r\n\",.!?;:()/\\@";
 	private static final String fWHITESPACE = " \t\r\n";
 	private static final String fQUOTES_ONLY = "\"";
 	
@@ -74,6 +74,7 @@ public class TextTokenizer {
 		fCOMMON_WORDS.add("on");
 		fCOMMON_WORDS.add("to");
 		fCOMMON_WORDS.add("the");
+		fCOMMON_WORDS.add("RT");
 	}
 
 	/**

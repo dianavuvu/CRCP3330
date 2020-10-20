@@ -54,8 +54,6 @@ public class BadAdviceBotMain extends PApplet {
 		
 		//loadNovel("data/The Grand Sophy excerpt.txt"); //TODO: must train from another source
 		//println("Token size:"+tokens.size());
-
-		//TODO: train an AI algorithm (eg, Markov Chain) and generate text for markov chain status
 		
 		trainTwitterStat(); //train on twitter hashtags
 		
@@ -77,7 +75,11 @@ public class BadAdviceBotMain extends PApplet {
 			
 			//init array list to hold tweets
 			ArrayList<String> tweets = new ArrayList<String>();
-			tweets.add(tweetResults.get(i));
+			//tweets.add(tweetResults.get(i));
+			
+			TextTokenizer tokenizer = new TextTokenizer(tweetResults.get(i));
+			ArrayList<String> t = tokenizer.parseSearchText();
+			tweets.addAll(t);
 			
 			//init Markov Generator
 			MarkovOrderM<String> trainTweet = new MarkovOrderM(10);
@@ -91,15 +93,17 @@ public class BadAdviceBotMain extends PApplet {
 			ArrayList<String> initT = new ArrayList<String>();
 			
 			initT = initTweet.generate(20);
-			genTweet = trainTweet.generate(initT, 1); //generate ONE tweet
+			genTweet = trainTweet.generate(initT, 20); //generate ONE tweet
+		}
+		
+		//testing before posting to Twitter
+		for (int i = 0; i < genTweet.size(); i++) {
+			System.out.println(genTweet.get(i) + " ");
 		}
 		
 		//Make sure within Twitter limits (used to be 140 but now is more?)
 //		String status = genTweet + " ";
 //		tweet.updateTwitter(status);
-		
-		//testing before posting to Twitter
-		System.out.println("\n" + genTweet + "\n");
 	}
 	
 	void useScraper() {
@@ -168,6 +172,16 @@ public class BadAdviceBotMain extends PApplet {
 
 	public void draw() {
 		// ellipse(width / 2, height / 2, second(), second());
+		
+		textSize(15);
+		fill(0, 0, 200);
+		text("Press 1 to start Unit Test One\n", width/10, height/6);
+		
+		fill(0, 200, 0);
+		text("Press 2 to start Unit Test Two\n", width/10, height/4);
+		
+		fill(200, 0, 0);
+		text("Press 3 to start Unit Test Three\n", width/10, height/3);
 
 	}
 
