@@ -9,17 +9,17 @@ import java.util.ArrayList;
 
 public class MarkovOrderM<T> extends MarkovGenerator<T>{
 	
-	ArrayList<ArrayList<T>> uniqueAlphabetSequence; //make an array list (uniqueAlphabetSequence) that holds curSequences
+	ArrayList<ArrayList<String>> uniqueAlphabetSequence; //make an array list (uniqueAlphabetSequence) that holds curSequences
 	int orderM; //for setting orderM in the constructor
-	MarkovGenerator<T> markGenerator = new MarkovGenerator<T>(); //create markov generator
+	MarkovGenerator<String> markGenerator = new MarkovGenerator<String>(); //create markov generator
 	
 	MarkovOrderM(int orderM1){ //overloaded constructor
 		orderM = orderM1;
 		uniqueAlphabetSequence = new ArrayList(); //add current sequences into transition table
 	}
 	
-	T generate(ArrayList<T> initSeq) {
-		T newToken = null;
+	String generate(ArrayList<String> initSeq) {
+		String newToken = null;
 		float sumAlphabetCounts = 0; //initialize sum of alphabet counts array
 		
 //		curSeqIndex  = find the index of initSeq in uniqueAlphabetSequence 
@@ -59,10 +59,10 @@ public class MarkovOrderM<T> extends MarkovGenerator<T>{
 		return newToken;
 	}
 	
-	ArrayList generate(ArrayList<T> initSeq, int numTokensToGen){
+	ArrayList<String> generate(ArrayList<String> initSeq, int numTokensToGen){
 //		1.	create an ArrayList of T - outputMelody
-		ArrayList<T> outputMelody = new ArrayList();
-		T genToken;
+		ArrayList<String> outputTweet = new ArrayList();
+		String genToken;
 		
 //		2.	for 1 to numTokensToGen do 
 		for(int i = 0;  i <= numTokensToGen; i++){
@@ -77,17 +77,17 @@ public class MarkovOrderM<T> extends MarkovGenerator<T>{
 			initSeq.add(genToken);
 			
 //			4.	add the generated token to outputMelody
-			outputMelody.add(genToken);
+			outputTweet.add(genToken);
 			
 //			5.	remove the first token off the top of the initSeq
 //			initSeq.remove(initSeq.size() - 1);
 		}
 		
-		return outputMelody;
+		return outputTweet;
 	}
 
 	
-	void train(ArrayList<T> newTokens) {
+	void train(ArrayList<String> newTokens) {
 //		for i = orderM -1 to (i < size of the input - 1) do 
 		
 		markGenerator.train(newTokens); //training for generate function
@@ -96,7 +96,7 @@ public class MarkovOrderM<T> extends MarkovGenerator<T>{
 			
 			int tokenIndex = 0; //token index is equal to index of token in alphabet
 			int rowIndex = -1; //initialize rowIndex
-			ArrayList<T> curSequence = new ArrayList(); //create a new curSequence EVERY TIME!!!! 
+			ArrayList<String> curSequence = new ArrayList(); //create a new curSequence EVERY TIME!!!! 
 					
 //			1.	Create the current sequence (e.g. curSequence) of size orderM from the input
 //			Remember to start the index into the input at 0 (with this algorithm) 
@@ -155,7 +155,7 @@ public class MarkovOrderM<T> extends MarkovGenerator<T>{
 		}
 	}
 	
-	void printMarkovM(ArrayList<T> newTokens) {
+	void printMarkovM(ArrayList<String> newTokens) {
 		System.out.println(alphabet); //printing out what is in alphabet(i.e the tokens)
 		
 		for(int i = 0; i < uniqueAlphabetSequence.size(); i++) { //for each row in uniqueAlphabetSequence

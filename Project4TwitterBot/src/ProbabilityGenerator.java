@@ -8,17 +8,17 @@
 import java.util.ArrayList;
 
 public class ProbabilityGenerator<T> {
-	ArrayList<T> alphabet; // initializing alphabet array list
+	ArrayList<String> alphabet; // initializing alphabet array list
 	ArrayList<Integer> alphabet_counts; // initializing alphabet count array list
 	float total = 0; //initializing total
 
 	ProbabilityGenerator() {
-		alphabet = new ArrayList<T>();
+		alphabet = new ArrayList<String>();
 		alphabet_counts = new ArrayList<Integer>();
 	}
 
 	// it is training probability generator with new data
-	void train(ArrayList<T> newTokens) {
+	void train(ArrayList<String> newTokens) {
 
 		for (int i = 0; i <= newTokens.size() - 1; i++) { // for loop to go through newTokens
 			int index = alphabet.indexOf(newTokens.get(i));
@@ -38,12 +38,12 @@ public class ProbabilityGenerator<T> {
 	// create print probability function
 	void print(ArrayList<T> newTokens) {	
 		for (int i = 0; i < alphabet_counts.size(); i++) {
-			System.out.println("Token: " + alphabet.get(i) + " | " + "Probability:" + alphabet_counts.get(i) / total); // print out all the pitches & rhythms																									
+			//System.out.println("Token: " + alphabet.get(i) + " | " + "Probability:" + alphabet_counts.get(i) / total); // print out all the pitches & rhythms																									
 		}
 	}
 	
-	T generate() {
-		T newToken = null; 
+	String generate() {
+		String newToken = null; 
 		
 		ArrayList<Float> newProbs = new ArrayList<Float>(); //initialize newProbs array list
 		ArrayList<Float> probDist =  new ArrayList<Float>(); //initialize probability distribution array list to normalize alphabet counts
@@ -87,8 +87,8 @@ public class ProbabilityGenerator<T> {
 		return newToken;
 	}
 
-	ArrayList<T> generate(int length) {
-		ArrayList<T> newSequence = new ArrayList<T>();
+	ArrayList<String> generate(int length) {
+		ArrayList<String> newSequence = new ArrayList<String>();
 		for (int i = 0; i < length; i++) {
 			newSequence.add(generate());
 		}

@@ -64,14 +64,31 @@ public class BadAdviceBotMain extends PApplet {
 		//here is an example of searching twitter hashtag. You have to pay $$ to the man to get more results. :(
 		//see TwitterInteraction class
 		
-		ArrayList<String> tweetResults = tweet.searchForTweets("Bad Advice");
+		ArrayList<String> tweetResults = tweet.searchForTweets("BadAdvice");
 		for (int i = 0; i < tweetResults.size(); i++) {
-			println(tweetResults.get(i)); //just prints out the results for now, use to train markov chain
-			//MarkovOrderM<Integer> trainTweet = new MarkovOrderM(i);
+			
+			//just prints out the results for now, use to train markov chain
+			println(tweetResults.get(i)); 
+			
+			//init Markov Generator
+			MarkovOrderM<String> trainTweet = new MarkovOrderM(1);
+			MarkovGenerator<String> initTweet = new MarkovGenerator<String>();
+			
+			//training
+			trainTweet.train(tweetResults.get(i));
+			initTweet.train(tweetResults.get(i));
+			
+			//initialize new array for generated tweets
+			ArrayList<String> genTweet = new ArrayList<String>();  
+			ArrayList<String> initT = new ArrayList<String>();
+			
+			initT.generate(20);
+			genTweet.generate(initT, 20);
+			
 		}
 		
 		//Make sure within Twitter limits (used to be 140 but now is more?)
-		String status = "Hello World!";
+		String status = genTweet;
 		tweet.updateTwitter(status);
 	}
 	
