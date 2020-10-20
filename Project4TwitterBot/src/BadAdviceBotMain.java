@@ -49,16 +49,33 @@ public class BadAdviceBotMain extends PApplet {
 	public void setup() {
 		//tweet = new TwitterInteraction(); 
 		
-//NOTE: everything starts uncommented. Comment out the calls that you would like to try and use.
-		
 		//loadNovel("data/The Grand Sophy excerpt.txt"); //TODO: must train from another source
 		//println("Token size:"+tokens.size());
 
 		//TODO: train an AI algorithm (eg, Markov Chain) and generate text for markov chain status
 		
 		trainTwitterStat(); //train on twitter hashtags
-
 				
+	}
+	
+	void trainTwitterStat() {
+		tweet = new TwitterInteraction();
+		
+		//here is an example of searching twitter hashtag. You have to pay $$ to the man to get more results. :(
+		//see TwitterInteraction class
+		
+		ArrayList<String> tweetResults = tweet.searchForTweets("Bad Advice");
+		for (int i = 0; i < tweetResults.size(); i++) {
+			println(tweetResults.get(i)); //just prints out the results for now, use to train markov chain
+			//MarkovOrderM<Integer> trainTweet = new MarkovOrderM(i);
+		}
+		
+		//Make sure within Twitter limits (used to be 140 but now is more?)
+		String status = "Hello World!";
+		tweet.updateTwitter(status);
+	}
+	
+	void useScraper() {
 		//prints the text content of the sites that come up with the google search of dogs
 		//you may use this content to train your AI too
 		Scraper scraper = new Scraper(); 
@@ -75,29 +92,11 @@ public class BadAdviceBotMain extends PApplet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-				
 	}
-	
-	void trainTwitterStat() {
-		tweet = new TwitterInteraction();
-		
-		//here is an example of searching twitter hashtag. You have to pay $$ to the man to get more results. :(
-		//see TwitterInteraction class
-		
-		ArrayList<String> tweetResults = tweet.searchForTweets("Bad Advice");
-		for (int i = 0; i < tweetResults.size(); i++) {
-			//println(tweetResults.get(i)); //just prints out the results for now, use to train markov chain
-			MarkovOrderM<Integer> trainTweet = new MarkovOrderM(i);
-		}
-		
-		//Make sure within Twitter limits (used to be 140 but now is more?)
-		String status = "OMG testing again";
-		tweet.updateTwitter(status);
-	}
-
 
 	//this loads the novel 'The Grand Sophy' given a path p -- but really will load any file.
 	void loadNovel(String p) {
+		tweet = new TwitterInteraction();
 		String filePath = getPath(p);
 		Path path = Paths.get(filePath);
 		tokens = new ArrayList<String>();
