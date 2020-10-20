@@ -36,7 +36,7 @@ public class BadAdviceBotMain extends PApplet {
 	
 	//handles twitter api
 	TwitterInteraction tweet; 
-	String status;
+	String status = "";
 	
 	//class scope to print tweet
 	ArrayList<String> genTweet = new ArrayList<String>();
@@ -70,9 +70,8 @@ public class BadAdviceBotMain extends PApplet {
 		tweet = new TwitterInteraction();
 		
 		//create seed for tweet
-		seed.add("A");
-		seed.add("personal");
-		seed.add("feeling"); 
+		seed.add("Trust");
+		seed.add("me");
 
 		//set words to search for
 		String badAdvice = "Bad Advice";
@@ -81,6 +80,7 @@ public class BadAdviceBotMain extends PApplet {
 		String adviceMe = "advisemebro"; //bad advice twitter user
 		String bAdvice = "Badvice"; //Jimmy Fallon segment
 		String worstAdvice = "Worst Advice Ever";
+		String badD = "Bad Decision";
 		
 		
 		//search and train
@@ -90,9 +90,10 @@ public class BadAdviceBotMain extends PApplet {
 		search(adviceMe);
 		search(bAdvice);
 		search(worstAdvice);
+		search(badD);
 		
 		//generating tweet
-		genTweet = trainTweet.generate(seed, 20); //generate ONE tweet
+		genTweet = trainTweet.generate(seed, 19); //generate ONE tweet
 		
 		//testing before posting to Twitter
 		for (int i = 0; i < genTweet.size(); i++) {
@@ -115,7 +116,9 @@ public class BadAdviceBotMain extends PApplet {
 				
 			ArrayList<String> t = tokenizer.parseSearchText();
 			
-			int length = t.size() - 1;
+			int length = t.size() - 1; //init length of tokenizer
+			
+			//searching through data and getting rid of things I don't want
 			for(int j = length; j >= 0; j--) {
 				if(t.get(j).contains("@"))
 					t.remove(j);
@@ -129,6 +132,7 @@ public class BadAdviceBotMain extends PApplet {
 					t.remove(j);
 			}
 			
+			//add the tweets I want after cleaning them up
 			tweets.addAll(t);
 			
 			//training
@@ -227,6 +231,9 @@ public class BadAdviceBotMain extends PApplet {
 				//System.out.print(genTweet.get(i) + " ");
 				status = status + genTweet.get(i) + " ";
 			}
+			
+			//adding some hashtags
+			status = status + " #nailedit " + "#botadvice";
 			
 			tweet.updateTwitter(status);
 		}
