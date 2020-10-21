@@ -70,13 +70,15 @@ public class BadAdviceBotMain extends PApplet {
 		tweet = new TwitterInteraction();
 		
 		//create seed for tweet
-		seed.add("Trust");
-		seed.add("me");
+		seed.add("Some");
+		seed.add("advice");
+		
+		genTweet.clear(); //clear genTweet for newly generated tweets
 
 		//set words to search for
 		String badAdvice = "Bad Advice";
 		String badTip = "Bad Tip";
-		String questChoices = "Questionable Choices";
+		String funnyA = "Funny Advice";
 		String adviceMe = "advisemebro"; //bad advice twitter user
 		String bAdvice = "Badvice"; //Jimmy Fallon segment
 		String worstAdvice = "Worst Advice Ever";
@@ -86,14 +88,14 @@ public class BadAdviceBotMain extends PApplet {
 		//search and train
 		search(badAdvice);
 		search(badTip);
-		search(questChoices);
+		search(funnyA);
 		search(adviceMe);
 		search(bAdvice);
 		search(worstAdvice);
 		search(badD);
 		
 		//generating tweet
-		genTweet = trainTweet.generate(seed, 19); //generate ONE tweet
+		genTweet = trainTweet.generate(seed, 20); //generate ONE tweet
 		
 		//testing before posting to Twitter
 		for (int i = 0; i < genTweet.size(); i++) {
@@ -239,7 +241,7 @@ public class BadAdviceBotMain extends PApplet {
 			status = status + " #nailedit " + "#botadvice";
 			
 			tweet.updateTwitter(status);
-			genTweet.clear(); //clear genTweet for newly generated tweets
+			status = ""; //clear status
 		}
 		else if (key == '3') {
 			//run unit 1
@@ -251,6 +253,7 @@ public class BadAdviceBotMain extends PApplet {
 		}
 		else if (key == '1') {
 			trainTwitterStat(); //train on twitter hashtags
+			System.out.println();
 		}
 	}
 
