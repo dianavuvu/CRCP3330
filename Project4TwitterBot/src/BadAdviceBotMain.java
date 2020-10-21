@@ -60,7 +60,7 @@ public class BadAdviceBotMain extends PApplet {
 		//loadNovel("data/The Grand Sophy excerpt.txt"); //TODO: must train from another source
 		//println("Token size:"+tokens.size());
 		
-		trainTwitterStat(); //train on twitter hashtags
+		
 		
 		//useScraper();
 				
@@ -209,10 +209,13 @@ public class BadAdviceBotMain extends PApplet {
 		
 		textSize(15);
 		fill(0, 0, 200);
-		text("Press 1 to send a tweet!\n", width/10, height/6);
+		text("Press 1 to generate a tweet\n", width/10, height/6);
 		
 		fill(0, 200, 0);
-		text("Press 2 to run ALL unit tests\n", width/10, height/4);
+		text("Press 2 to send the tweet to Twitter!\n", width/10, height/4);
+		
+		fill(200, 0, 0);
+		text("Press 3 run ALL unit tests\n", width/10, height/3);
 	}
 	
 	public void keyPressed() {
@@ -226,7 +229,7 @@ public class BadAdviceBotMain extends PApplet {
 			//player.reset();
 			println("Melody started!");
 		}
-		else if (key == '1'){			
+		else if (key == '2'){			
 			for (int i = 0; i < genTweet.size(); i++) {
 				//System.out.print(genTweet.get(i) + " ");
 				status = status + genTweet.get(i) + " ";
@@ -236,14 +239,18 @@ public class BadAdviceBotMain extends PApplet {
 			status = status + " #nailedit " + "#botadvice";
 			
 			tweet.updateTwitter(status);
+			genTweet.clear(); //clear genTweet for newly generated tweets
 		}
-		else if (key == '2') {
+		else if (key == '3') {
 			//run unit 1
 			test.run();
 			//run unit 2
 			t.run();
 			//run unit 3
 			ts.run();
+		}
+		else if (key == '1') {
+			trainTwitterStat(); //train on twitter hashtags
 		}
 	}
 
