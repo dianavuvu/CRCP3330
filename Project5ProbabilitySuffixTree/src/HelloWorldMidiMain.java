@@ -26,7 +26,6 @@ public class HelloWorldMidiMain extends PApplet {
 	MidiFileToNotes midiNotes; //read a midi file
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		PApplet.main("HelloWorldMidiMain"); //change this to match above class & file name 
 	}
 
@@ -40,8 +39,8 @@ public class HelloWorldMidiMain extends PApplet {
 		fill(120, 50, 240);
 		
 		//Create my generator for pitch and rhythm
-		ProbabilityGenerator<Integer> pitchGenerator = new ProbabilityGenerator<Integer>();
-		ProbabilityGenerator<Double> rhythmGenerator = new ProbabilityGenerator<Double>();
+//		ProbabilityGenerator<Integer> pitchGenerator = new ProbabilityGenerator<Integer>();
+//		ProbabilityGenerator<Double> rhythmGenerator = new ProbabilityGenerator<Double>();
 		
 
 		// returns a url
@@ -58,9 +57,9 @@ public class HelloWorldMidiMain extends PApplet {
 
 		player = new MelodyPlayer(this, 100.0f);
 
-		player.setup();
-		player.setMelody(pitchGenerator.generate(20));
-		player.setRhythm(rhythmGenerator.generate(20));
+//		player.setup();
+//		player.setMelody(pitchGenerator.generate(20));
+//		player.setRhythm(rhythmGenerator.generate(20));
 	}
 
 	public void draw() {

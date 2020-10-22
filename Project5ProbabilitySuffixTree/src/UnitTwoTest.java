@@ -29,25 +29,25 @@ public class UnitTwoTest {
 		midiNotesMary.setWhichLine(0);
 		
 		//initialize generators for pitch and rhythm
-		ProbabilityGenerator<Integer> pitchGenerator = new ProbabilityGenerator<Integer>();
-		ProbabilityGenerator<Double> rhythmGenerator = new ProbabilityGenerator<Double>();
-		
-		//training
-		pitchGenerator.train(midiNotesMary.getPitchArray());
-		rhythmGenerator.train(midiNotesMary.getRhythmArray());
-		
-		//generating melodies
-		ArrayList<Integer> newPitches = new ArrayList<Integer>(); //initialize new array for generated pitches
-		ArrayList<Double> newRhythms = new ArrayList<Double>(); //initialize new array for generated rhythms
-		
-		newPitches = pitchGenerator.generate(20); //put new generated pitches in an array
-		newRhythms = rhythmGenerator.generate(20); //put new generated rhythms in an array
-		
-		//printing out pitch and rhythm tokens of generated melody
-		System.out.println("Unit Test Two:\n" + " Generated Tokens for Pitches: \n");
-		System.out.println(newPitches);
-		System.out.println("\n Generated Tokens for Rhythm: \n");
-		System.out.println(newRhythms);
+//		ProbabilityGenerator<Integer> pitchGenerator = new ProbabilityGenerator<Integer>();
+//		ProbabilityGenerator<Double> rhythmGenerator = new ProbabilityGenerator<Double>();
+//		
+//		//training
+//		pitchGenerator.train(midiNotesMary.getPitchArray());
+//		rhythmGenerator.train(midiNotesMary.getRhythmArray());
+//		
+//		//generating melodies
+//		ArrayList<Integer> newPitches = new ArrayList<Integer>(); //initialize new array for generated pitches
+//		ArrayList<Double> newRhythms = new ArrayList<Double>(); //initialize new array for generated rhythms
+//		
+//		newPitches = pitchGenerator.generate(20); //put new generated pitches in an array
+//		newRhythms = rhythmGenerator.generate(20); //put new generated rhythms in an array
+//		
+//		//printing out pitch and rhythm tokens of generated melody
+//		System.out.println("Unit Test Two:\n" + " Generated Tokens for Pitches: \n");
+//		System.out.println(newPitches);
+//		System.out.println("\n Generated Tokens for Rhythm: \n");
+//		System.out.println(newRhythms);
 	}
 
 	String getPath(String path) {
