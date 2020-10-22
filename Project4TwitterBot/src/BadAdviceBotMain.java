@@ -84,7 +84,6 @@ public class BadAdviceBotMain extends PApplet {
 		String worstAdvice = "Worst Advice Ever";
 		String badD = "Bad Decision";
 		
-		
 		//search and train
 		search(badAdvice);
 		search(badTip);
