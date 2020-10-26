@@ -12,9 +12,12 @@ public class Node<T> {
 	ArrayList<T> tokenSequence;
 	ArrayList<Node> children;
 	
-	Node(){
+	Node(ArrayList<T> sequence){
 		tokenSequence = new ArrayList<T>();
 		children = new ArrayList<Node>();
+		
+		//set tokenSequence to current sequence 
+		tokenSequence = sequence;
 	}
 	
 	//adding a node to the tree
@@ -51,7 +54,7 @@ public class Node<T> {
 		//if(node.subList(0, node.size() - 1) == )
 		
 		//if they are equal
-		if(node.equals(tokenSequence - 1))
+		if(node.equals(tokenSequence))
 			return true;
 	
 	}

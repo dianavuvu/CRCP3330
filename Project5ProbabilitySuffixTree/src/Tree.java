@@ -22,6 +22,8 @@ public class Tree<T>{
 		
 		for(int i = 1; i <= L; i++) { //for every interation of the size up until L
 			
+			Node<ArrayList<T>> theNewNode = null; //init the new node
+			
 			for(int j = 0; j < newTokens.size() - (i-1); j++) { //for every token in the arraylist
 				
 				ArrayList<T> curSequence = new ArrayList(); //create a new curSequence EVERY TIME!!!!
@@ -33,13 +35,12 @@ public class Tree<T>{
 				
 				//create new node with current sequence
 				for(int k = 0; k <= curSequence.size(); k++) {
-					Node theNewNode;
 					
-					theNewNode = (Node) curSequence.get(k);
-					
-					//add the node
-					root.addNode(theNewNode);
+					theNewNode.add(curSequence.get(k));
 				}
+				
+				//add the node
+				root.addNode(theNewNode);
 			}
 		}
 	}
