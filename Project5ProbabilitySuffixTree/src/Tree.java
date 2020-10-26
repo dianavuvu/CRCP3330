@@ -7,7 +7,7 @@
 
 import java.util.ArrayList;
 
-public class Tree<T> {
+public class Tree<T>{
 	
 	//setting max sequence length
 	int L = 3;
@@ -20,11 +20,11 @@ public class Tree<T> {
 	// it is training probability generator with new data
 	void train(ArrayList<T> newTokens) {
 		
-		ArrayList<T> curSequence = new ArrayList(); //create a new curSequence EVERY TIME!!!!
-		
 		for(int i = 1; i <= L; i++) { //for every interation of the size up until L
 			
 			for(int j = 0; j < newTokens.size() - (i-1); j++) { //for every token in the arraylist
+				
+				ArrayList<T> curSequence = new ArrayList(); //create a new curSequence EVERY TIME!!!!
 				
 				//finding current sequence
 				for(int s = j - (L - 1); s <= j; s++) { 

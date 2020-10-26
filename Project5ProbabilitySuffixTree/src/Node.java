@@ -22,21 +22,38 @@ public class Node<T> {
 		
 		boolean found = false; 
 		
-		if(tokenSequence == theNewNode) {
+		//if tokenSequence is same as sequence of added node
+		if(tokenSequence == node) {
 			found = true;
 		}
 		else if(amIASuffix(node) || (tokenSequence.size() == 0)) {
 			
 			//add node to all children node
+			node.addNode(node);
 			
-			//if not found
+			//did child nodes add the node?
+			found = true;
+			
+			//if not found && length of node is one less than this tokenSequence
+			if (!found && node.tokenSequence > tokenSequence ){
+				
+				children.add(node); //add node to children array
+				found = true;
+			}
 		}
 		return found;		
 	}
 	
 	//to determine if node is a suffix or not
-	void amIASuffix(Node node) {
+	boolean amIASuffix(Node node) {
+		boolean amI = false;
 		
+		//if(node.subList(0, node.size() - 1) == )
+		
+		//if they are equal
+		if(node.equals(tokenSequence - 1))
+			return true;
+	
 	}
 	
 	//print method 
@@ -54,7 +71,11 @@ public class Node<T> {
 	void print(int numSpacesBefore) {
 		
 		for (int i = 1; i <= numSpacesBefore; i++) {
-			print(" ");
+			System.out.print("--> " + tokenSequence.get(i));
+		}
+		
+		for(int i = 0; i <= children.size(); i++) { //for each node in children
+			node.print(numSpacesBefore + 1);
 		}
 	}
 
