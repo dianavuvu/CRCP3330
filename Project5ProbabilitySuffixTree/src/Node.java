@@ -18,14 +18,24 @@ public class Node<T> {
 	}
 	
 	//adding a node to the tree
-	void addNode(Node node) {
+	boolean addNode(Node node) {
 		
 		boolean found = false; 
 		
+		if(tokenSequence == theNewNode) {
+			found = true;
+		}
+		else if(amIASuffix(node) || (tokenSequence.size() == 0)) {
+			
+			//add node to all children node
+			
+			//if not found
+		}
+		return found;		
 	}
 	
 	//to determine if node is a suffix or not
-	void amIaSuffix(Node node) {
+	void amIASuffix(Node node) {
 		
 	}
 	
