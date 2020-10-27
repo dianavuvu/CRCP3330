@@ -16,7 +16,7 @@ public class Tree<T>{
 	Node root;
 
 	Tree() {
-		root = new Node(new ArrayList());
+		root = new Node(new ArrayList()); //init
 	}
 
 	// it is training probability generator with new data
@@ -33,7 +33,7 @@ public class Tree<T>{
 					curSequence.add(newTokens.get(s));
 				}
 
-				System.out.println(curSequence);
+				//System.out.println(curSequence);
 				
 				//create new node with current sequence	
 				Node theNewNode = new Node(curSequence); //init the new node

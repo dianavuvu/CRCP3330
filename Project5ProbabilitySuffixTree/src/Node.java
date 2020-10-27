@@ -28,6 +28,7 @@ public class Node<T> {
 	boolean addNode(Node node) {
 		
 		boolean found = false; 
+		System.out.println("token" + tokenSequence);
 		
 		//if tokenSequence of this node is same as sequence of added node
 		if(tokenSequence.equals(node.getTokenSequence())) {
@@ -43,7 +44,7 @@ public class Node<T> {
 				//did child nodes add the node?
 				found = children.get(i).addNode(node);
 						
-				i++; //increment
+				i++;
 			}
 			
 			//if not found && length of node is one less than this tokenSequence
@@ -66,16 +67,16 @@ public class Node<T> {
 		if(node.getTokenSequence().equals(tokenSequence))
 			return false;
 		
-		//for the size of tokenSequence
-		for(int i = 1; i <= tokenSequence.size(); i++) {
+		int i = 0;
 		
-			while(node.getTokenSequence().get(node.getTokenSequence().size() - i).equals(tokenSequence.get(tokenSequence.size() - i))) {
-				//if the last token are the same
-				//if(node.tokenSequence.get(node.tokenSequence.size() - i).equals(tokenSequence.get(tokenSequence.size() - i))) {
-					amI = false;
-				//}
-			}	
-		}
+		//for the size of tokenSequence
+		while(amI && i < tokenSequence.size()) {
+
+			//if the last token are the same
+			amI = node.tokenSequence.get(node.tokenSequence.size() - i).equals(tokenSequence.get(tokenSequence.size() - i));
+			
+			i++; //increment
+		}	
 		return amI;
 	}
 	
@@ -83,7 +84,7 @@ public class Node<T> {
 	void print() {
 		
 		//print token sequence
-		System.out.println(tokenSequence);
+		System.out.println("tokenSequence: "+tokenSequence);
 		
 		for(int i = 0; i <= children.size(); i++) { //for each node in children
 			children.get(i).print(1);
@@ -92,6 +93,8 @@ public class Node<T> {
 	
 	//determine how much spaces to increment
 	void print(int numSpacesBefore) {
+		
+		System.out.println("children" + children);
 		
 		for (int i = 1; i <= numSpacesBefore; i++) {
 			System.out.print("--> " + tokenSequence.get(i));
