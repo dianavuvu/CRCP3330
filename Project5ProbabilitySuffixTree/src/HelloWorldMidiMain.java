@@ -74,6 +74,9 @@ public class HelloWorldMidiMain extends PApplet {
 		
 		fill(200, 0, 0);
 		text("Press 3 to start Unit Test Three\n", width/10, height/3);
+		
+		fill(200, 200, 0);
+		text("Press 4 to start Unit Test Four\n", width/10, height/3);
 	}
 
 	//this finds the absolute path of a file
@@ -106,6 +109,7 @@ public class HelloWorldMidiMain extends PApplet {
 		UnitOneTest test = new UnitOneTest();
 		UnitTwoTest t = new UnitTwoTest();
 		UnitThreeTest ts = new UnitThreeTest();
+		UnitFourTest m = new UnitFourTest();
 		
 		if (key == ' ') {
 			player.reset();
@@ -122,6 +126,9 @@ public class HelloWorldMidiMain extends PApplet {
 		else if (key == '3') {
 			//run unit 3
 			ts.run();
+		}
+		else if (key == '4') {
+			m.run();
 		}
 	}
 }

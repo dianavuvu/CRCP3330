@@ -20,25 +20,32 @@ public class Node<T> {
 		tokenSequence = sequence;
 	}
 	
+	ArrayList<T> getTokenSequence(){
+		return tokenSequence;
+	}
+	
 	//adding a node to the tree
 	boolean addNode(Node node) {
 		
 		boolean found = false; 
 		
-		//if tokenSequence is same as sequence of added node
-		if(tokenSequence == node) {
+		//if tokenSequence of this node is same as sequence of added node
+		if(tokenSequence.equals(node.getTokenSequence())) {
 			found = true;
 		}
 		else if(amIASuffix(node) || (tokenSequence.size() == 0)) {
 			
 			//add node to all children node
-			node.addNode(node);
-			
-			//did child nodes add the node?
-			found = true;
+			while(!found) {
+				
+				children.addNode(node);
+				
+				//did child nodes add the node?
+				found = 
+			}
 			
 			//if not found && length of node is one less than this tokenSequence
-			if (!found && node.tokenSequence > tokenSequence ){
+			if (!found && node.getTokenSequence().size() > tokenSequence.size() ){
 				
 				children.add(node); //add node to children array
 				found = true;
@@ -49,14 +56,25 @@ public class Node<T> {
 	
 	//to determine if node is a suffix or not
 	boolean amIASuffix(Node node) {
-		boolean amI = false;
+		boolean amI = true;
 		
 		//if(node.subList(0, node.size() - 1) == )
 		
 		//if they are equal
-		if(node.equals(tokenSequence))
-			return true;
-	
+		if(node.getTokenSequence().equals(tokenSequence))
+			return false;
+		
+		//for the size of tokenSequence
+		for(int i = 1; i <= tokenSequence.size(); i++) {
+		
+			while(node.getTokenSequence().get(node.getTokenSequence().size() - i).equals(tokenSequence.get(tokenSequence.size() - i))) {
+				//if the last token are the same
+				//if(node.tokenSequence.get(node.tokenSequence.size() - i).equals(tokenSequence.get(tokenSequence.size() - i))) {
+					amI = false;
+				//}
+			}	
+		}
+		return amI;
 	}
 	
 	//print method 
@@ -66,7 +84,7 @@ public class Node<T> {
 		System.out.println(tokenSequence);
 		
 		for(int i = 0; i <= children.size(); i++) { //for each node in children
-			node.print(1);
+			children.get(i).print(1);
 		}
 	}
 	
@@ -78,7 +96,7 @@ public class Node<T> {
 		}
 		
 		for(int i = 0; i <= children.size(); i++) { //for each node in children
-			node.print(numSpacesBefore + 1);
+			children.get(i).print(numSpacesBefore + 1);
 		}
 	}
 
