@@ -7,6 +7,8 @@
 
 import java.util.ArrayList;
 
+import com.sun.xml.internal.bind.v2.schemagen.xmlschema.List;
+
 public class Tree<T>{
 	
 	//setting max sequence length
@@ -14,7 +16,7 @@ public class Tree<T>{
 	Node root;
 
 	Tree() {
-		
+		root = new Node(new ArrayList());
 	}
 
 	// it is training probability generator with new data
@@ -27,9 +29,11 @@ public class Tree<T>{
 				ArrayList<T> curSequence = new ArrayList(); //create a new curSequence EVERY TIME!!!!
 				
 				//finding current sequence
-				for(int s = j - (L - 1); s <= j; s++) { 
-					curSequence.add(newTokens.get(j));
+				for(int s = j; s < j + i; s++) { 
+					curSequence.add(newTokens.get(s));
 				}
+
+				System.out.println(curSequence);
 				
 				//create new node with current sequence	
 				Node theNewNode = new Node(curSequence); //init the new node

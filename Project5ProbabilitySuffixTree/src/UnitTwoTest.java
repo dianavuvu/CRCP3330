@@ -31,7 +31,7 @@ public class UnitTwoTest<T> {
 		
 		//print out the tree
 		System.out.println("Unit Test Two: \n");
-		System.out.println("\n acadaacbda \n" + "-----Tree-----\n");
+		System.out.println(" acadaacbda \n" + "-----Tree-----\n");
 		t.print();
 	}
 

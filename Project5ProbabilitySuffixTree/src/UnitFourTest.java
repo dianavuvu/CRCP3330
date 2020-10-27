@@ -37,7 +37,7 @@ public class UnitFourTest {
 		
 		//print out the tree
 		System.out.println("Unit Test Four: \n");
-		System.out.println("\n Mary Had a Little Lamb \n" + "-----Tree-----\n");
+		System.out.println(" Mary Had a Little Lamb \n" + "-----Tree-----\n");
 		t.print();
 
 	}
