@@ -28,23 +28,17 @@ public class UnitFourTest {
 	    // which line to read in --> this object only reads one line (or ie, voice or ie, one instrument)'s worth of data from the file
 		midiNotesMary.setWhichLine(0);
 		
-//		ProbabilityGenerator<Integer> pitchGenerator = new ProbabilityGenerator<Integer>();
-//		ProbabilityGenerator<Double> rhythmGenerator = new ProbabilityGenerator<Double>();
+		//initialize tree
 		Tree t = new Tree();
 		
 		//training
 		t.train(midiNotesMary.getPitchArray());
-//		pitchGenerator.train(midiNotesMary.getPitchArray());
-//		rhythmGenerator.train(midiNotesMary.getRhythmArray());
-//		
-//		//print out the distribution
-		System.out.println("Unit Test One: \n");
-		System.out.println("\n Pitches: \n" + "-----Tree-----\n");
-		t.print();
-//		System.out.println("\n Rhythms: \n" + "-----Probability Distribution-----\n");
-//		rhythmGenerator.print(midiNotesMary.getRhythmArray());
-//		System.out.println("------");
 
+		
+		//print out the tree
+		System.out.println("Unit Test Four: \n");
+		System.out.println("\n Mary Had a Little Lamb \n" + "-----Tree-----\n");
+		t.print();
 
 	}
 

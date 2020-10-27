@@ -7,42 +7,33 @@
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
+import java.util.ArrayList;
+import java.util.Arrays;
 
-public class UnitOneTest {
+public class UnitOneTest<T> {
 	
 	UnitOneTest(){
 		
 	}
 	
-	void run() {
-		//put in unit test class
-		MidiFileToNotes midiNotesMary; //read midi file
+	void run() {		
 		
-		// returns a url
-		String filePath = getPath("mid/MaryHadALittleLamb.mid");
-
-		midiNotesMary = new MidiFileToNotes(filePath); //creates a new MidiFileToNotes -- reminder -- ALL objects in Java must 
-													   //be created with "new". Note how every object is a pointer or reference. Every. single. one.
-
-
-	    // which line to read in --> this object only reads one line (or ie, voice or ie, one instrument)'s worth of data from the file
-		midiNotesMary.setWhichLine(0);
+		//set data
+		Character[] myList = {'a', 'b', 'r', 'a', 'c', 'a', 'd', 'a', 'b', 'r', 'a'};
 		
-//		ProbabilityGenerator<Integer> pitchGenerator = new ProbabilityGenerator<Integer>();
-//		ProbabilityGenerator<Double> rhythmGenerator = new ProbabilityGenerator<Double>();
+		//set data in array list
+		ArrayList<T> testList = new ArrayList(Arrays.asList(myList));	
 		
-		//training
-//		pitchGenerator.train(midiNotesMary.getPitchArray());
-//		rhythmGenerator.train(midiNotesMary.getRhythmArray());
-//		
-//		//print out the distribution
-//		System.out.println("Unit Test One: \n");
-//		System.out.println("\n Pitches: \n" + "-----Probability Distribution-----\n");
-//		pitchGenerator.print(midiNotesMary.getPitchArray());
-//		System.out.println("\n Rhythms: \n" + "-----Probability Distribution-----\n");
-//		rhythmGenerator.print(midiNotesMary.getRhythmArray());
-//		System.out.println("------");
-
+		//initialize tree
+		Tree<T> t = new Tree<T>();
+		
+		//train tree
+		t.train(testList);
+		
+		//print out the tree
+		System.out.println("Unit Test One: \n");
+		System.out.println("\n abracadabra \n" + "-----Tree-----\n");
+		t.print();
 
 	}
 

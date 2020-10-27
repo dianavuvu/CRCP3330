@@ -8,46 +8,31 @@
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.util.ArrayList;
+import java.util.Arrays;
 
-public class UnitTwoTest {
+public class UnitTwoTest<T> {
 
 	UnitTwoTest(){
 		
 	}
 	
 	void run() {
-		//put in unit test class
-		MidiFileToNotes midiNotesMary; //read midi file
+		//set data
+		Character[] myList = {'a', 'c', 'a', 'd', 'a', 'a', 'c', 'b', 'd', 'a'};
 		
-		// returns a url
-		String filePath = getPath("mid/MaryHadALittleLamb.mid");
-
-		midiNotesMary = new MidiFileToNotes(filePath); //creates a new MidiFileToNotes -- reminder -- ALL objects in Java must 
-													//be created with "new". Note how every object is a pointer or reference. Every. single. one.
-
-	    // which line to read in --> this object only reads one line (or ie, voice or ie, one instrument)'s worth of data from the file
-		midiNotesMary.setWhichLine(0);
+		//set data in array list
+		ArrayList<T> testList = new ArrayList(Arrays.asList(myList));	
 		
-		//initialize generators for pitch and rhythm
-//		ProbabilityGenerator<Integer> pitchGenerator = new ProbabilityGenerator<Integer>();
-//		ProbabilityGenerator<Double> rhythmGenerator = new ProbabilityGenerator<Double>();
-//		
-//		//training
-//		pitchGenerator.train(midiNotesMary.getPitchArray());
-//		rhythmGenerator.train(midiNotesMary.getRhythmArray());
-//		
-//		//generating melodies
-//		ArrayList<Integer> newPitches = new ArrayList<Integer>(); //initialize new array for generated pitches
-//		ArrayList<Double> newRhythms = new ArrayList<Double>(); //initialize new array for generated rhythms
-//		
-//		newPitches = pitchGenerator.generate(20); //put new generated pitches in an array
-//		newRhythms = rhythmGenerator.generate(20); //put new generated rhythms in an array
-//		
-//		//printing out pitch and rhythm tokens of generated melody
-//		System.out.println("Unit Test Two:\n" + " Generated Tokens for Pitches: \n");
-//		System.out.println(newPitches);
-//		System.out.println("\n Generated Tokens for Rhythm: \n");
-//		System.out.println(newRhythms);
+		//initialize tree
+		Tree<T> t = new Tree<T>();
+		
+		//train tree
+		t.train(testList);
+		
+		//print out the tree
+		System.out.println("Unit Test Two: \n");
+		System.out.println("\n acadaacbda \n" + "-----Tree-----\n");
+		t.print();
 	}
 
 	String getPath(String path) {

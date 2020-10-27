@@ -35,13 +35,15 @@ public class Node<T> {
 		}
 		else if(amIASuffix(node) || (tokenSequence.size() == 0)) {
 			
+			int i = 0;// initialize increment
+			
 			//add node to all children node
-			while(!found) {
-				
-				children.addNode(node);
+			while(!found && i < tokenSequence.size()) {
 				
 				//did child nodes add the node?
-				found = 
+				found = children.get(i).addNode(node);
+						
+				i++; //increment
 			}
 			
 			//if not found && length of node is one less than this tokenSequence

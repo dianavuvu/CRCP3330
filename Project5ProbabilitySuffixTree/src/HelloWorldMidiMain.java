@@ -75,8 +75,8 @@ public class HelloWorldMidiMain extends PApplet {
 		fill(200, 0, 0);
 		text("Press 3 to start Unit Test Three\n", width/10, height/3);
 		
-		fill(200, 200, 0);
-		text("Press 4 to start Unit Test Four\n", width/10, height/3);
+		fill(0, 200, 200);
+		text("Press 4 to start Unit Test Four\n", width/10, height/2);
 	}
 
 	//this finds the absolute path of a file
