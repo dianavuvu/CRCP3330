@@ -19,7 +19,7 @@ public class UnitOneTest<T> {
 	void run() {		
 		
 		//set data
-		Character[] myList = {'a', 'b', 'r', 'a', 'c', 'a', 'd', 'a', 'b', 'r', 'a'};
+		String[] myList = {"a", "b", "r", "a", "c", "a", "d", "a", "b", "r", "a"};
 		
 		//set data in array list
 		ArrayList<T> testList = new ArrayList(Arrays.asList(myList));	

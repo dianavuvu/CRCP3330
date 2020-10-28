@@ -17,7 +17,7 @@ public class Node<T> {
 		children = new ArrayList<Node>();
 		
 		//set tokenSequence to current sequence 
-		tokenSequence = sequence;
+		tokenSequence = sequence; 
 	}
 	
 	ArrayList<T> getTokenSequence(){
@@ -67,13 +67,19 @@ public class Node<T> {
 		if(node.getTokenSequence().equals(tokenSequence))
 			return false;
 		
-		int i = 0;
+		int i = 1;
+		
+		System.out.println("token size" +tokenSequence.size());
 		
 		//for the size of tokenSequence
-		while(amI && i < tokenSequence.size()) {
+		while(amI && i < node.getTokenSequence().size()) {
 
 			//if the last token are the same
 			amI = node.tokenSequence.get(node.tokenSequence.size() - i).equals(tokenSequence.get(tokenSequence.size() - i));
+			
+				//account for empty string
+				if(node.tokenSequence.get(node.tokenSequence.size() - i).equals(0) && tokenSequence.get(tokenSequence.size() - i).equals(0))
+					amI = false;
 			
 			i++; //increment
 		}	

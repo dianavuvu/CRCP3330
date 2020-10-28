@@ -18,7 +18,7 @@ public class UnitTwoTest<T> {
 	
 	void run() {
 		//set data
-		Character[] myList = {'a', 'c', 'a', 'd', 'a', 'a', 'c', 'b', 'd', 'a'};
+		String[] myList = {"a", "c", "a", "d", "a", "a", "c", "b", "d", "a"};
 		
 		//set data in array list
 		ArrayList<T> testList = new ArrayList(Arrays.asList(myList));	

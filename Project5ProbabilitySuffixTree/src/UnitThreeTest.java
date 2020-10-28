@@ -18,7 +18,7 @@ public class UnitThreeTest<T> {
 	
 	void run() {
 		//set data
-		Character[] myList = {'a', 'b', 'c', 'c', 'c', 'd', 'a', 'a', 'd', 'c', 'd', 'a', 'a', 'b', 'c', 'a', 'd', 'a', 'd'};
+		String[] myList = {"a", "b", "c", "c", "c", "d", "a", "a", "d", "c", "d", "a", "a", "b", "c", "a", "d", "a", "d"};
 		
 		//set data in array list
 		ArrayList<T> testList = new ArrayList(Arrays.asList(myList));	
