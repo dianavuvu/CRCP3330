@@ -29,6 +29,7 @@ public class Node<T> {
 		
 		boolean found = false; 
 		System.out.println("token" + tokenSequence);
+		System.out.println("node" + node.getTokenSequence());
 		
 		//if tokenSequence of this node is same as sequence of added node
 		if(tokenSequence.equals(node.getTokenSequence())) {
@@ -51,6 +52,8 @@ public class Node<T> {
 			if (!found && node.getTokenSequence().size() > tokenSequence.size() ){
 				
 				children.add(node); //add node to children array
+				System.out.println("going through add children token" + tokenSequence.size());
+				System.out.println("going through add children node" + node.getTokenSequence().size());
 				found = true;
 			}
 		}
@@ -63,23 +66,23 @@ public class Node<T> {
 		
 		//if(node.subList(0, node.size() - 1) == )
 		
-		//if they are equal
-		if(node.getTokenSequence().equals(tokenSequence))
-			return false;
-		
-		int i = 1;
-		
+//		//if they are equal
+//		if(node.getTokenSequence().equals(tokenSequence))
+//			return false;
+	
 		System.out.println("token size" +tokenSequence.size());
 		
+		//for empty string
+		if(tokenSequence.size() == 0) {
+			return true;
+		}
+		
+		int i = 1;
 		//for the size of tokenSequence
 		while(amI && i < node.getTokenSequence().size()) {
 
 			//if the last token are the same
 			amI = node.tokenSequence.get(node.tokenSequence.size() - i).equals(tokenSequence.get(tokenSequence.size() - i));
-			
-				//account for empty string
-				if(node.tokenSequence.get(node.tokenSequence.size() - i).equals(0) && tokenSequence.get(tokenSequence.size() - i).equals(0))
-					amI = false;
 			
 			i++; //increment
 		}	
@@ -90,7 +93,7 @@ public class Node<T> {
 	void print() {
 		
 		//print token sequence
-		System.out.println("tokenSequence: "+tokenSequence);
+		System.out.println("tokenSequence in print: "+tokenSequence);
 		
 		for(int i = 0; i <= children.size(); i++) { //for each node in children
 			children.get(i).print(1);
