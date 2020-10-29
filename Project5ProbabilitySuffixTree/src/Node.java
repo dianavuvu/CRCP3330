@@ -28,21 +28,22 @@ public class Node<T> {
 	boolean addNode(Node node) {
 		
 		boolean found = false; 
-		System.out.println("token" + tokenSequence);
-		System.out.println("node" + node.getTokenSequence());
 		
 		//if tokenSequence of this node is same as sequence of added node
 		if(tokenSequence.equals(node.getTokenSequence())) {
 			found = true;
 		}
 		else if(amIASuffix(node) || (tokenSequence.size() == 0)) {
-			
-			int i = 0;// initialize increment
-			
+	
 			//add node to all children node
-			while(!found && i < tokenSequence.size()) {
+			for(int k = 0; k <= children.size(); k++) {
+				children.get(k).addNode(node);
+			}
+			
+			int i = 1;// initialize increment
+			//did child nodes add the node?
+			while(!found && i <= tokenSequence.size()) {
 				
-				//did child nodes add the node?
 				found = children.get(i).addNode(node);
 						
 				i++;
@@ -52,8 +53,6 @@ public class Node<T> {
 			if (!found && node.getTokenSequence().size() > tokenSequence.size() ){
 				
 				children.add(node); //add node to children array
-				System.out.println("going through add children token" + tokenSequence.size());
-				System.out.println("going through add children node" + node.getTokenSequence().size());
 				found = true;
 			}
 		}
@@ -69,8 +68,6 @@ public class Node<T> {
 //		//if they are equal
 //		if(node.getTokenSequence().equals(tokenSequence))
 //			return false;
-	
-		System.out.println("token size" +tokenSequence.size());
 		
 		//for empty string
 		if(tokenSequence.size() == 0) {
@@ -93,7 +90,7 @@ public class Node<T> {
 	void print() {
 		
 		//print token sequence
-		System.out.println("tokenSequence in print: "+tokenSequence);
+		System.out.println(tokenSequence);
 		
 		for(int i = 0; i <= children.size(); i++) { //for each node in children
 			children.get(i).print(1);
@@ -102,8 +99,6 @@ public class Node<T> {
 	
 	//determine how much spaces to increment
 	void print(int numSpacesBefore) {
-		
-		System.out.println("children" + children);
 		
 		for (int i = 1; i <= numSpacesBefore; i++) {
 			System.out.print("--> " + tokenSequence.get(i));
