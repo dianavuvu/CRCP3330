@@ -34,23 +34,19 @@ public class Node<T> {
 			found = true;
 		}
 		else if(amIASuffix(node) || (tokenSequence.size() == 0)) {
-	
-			//add node to all children node
-			for(int k = 0; k <= children.size(); k++) {
-				children.get(k).addNode(node);
-			}
+
+			int i = 0;// initialize increment
 			
-			int i = 1;// initialize increment
-			//did child nodes add the node?
-			while(!found && i <= tokenSequence.size()) {
+			while(!found && i < children.size()) {
 				
-				found = children.get(i).addNode(node);
-						
-				i++;
+				//did child nodes add the node?
+				//add node to all children node
+				found = children.get(i).addNode(node);	
+				i++; //increment
 			}
 			
 			//if not found && length of node is one less than this tokenSequence
-			if (!found && node.getTokenSequence().size() > tokenSequence.size() ){
+			if (!found ){
 				
 				children.add(node); //add node to children array
 				found = true;
@@ -63,23 +59,22 @@ public class Node<T> {
 	boolean amIASuffix(Node node) {
 		boolean amI = true;
 		
-		//if(node.subList(0, node.size() - 1) == )
-		
-//		//if they are equal
-//		if(node.getTokenSequence().equals(tokenSequence))
-//			return false;
-		
 		//for empty string
 		if(tokenSequence.size() == 0) {
 			return true;
 		}
 		
+		//if they are the same size false
+		if(node.getTokenSequence().size() == tokenSequence.size()) {
+			return false;
+		}
+			
 		int i = 1;
 		//for the size of tokenSequence
-		while(amI && i < node.getTokenSequence().size()) {
+		while(amI && i <= tokenSequence.size()) {
 
 			//if the last token are the same
-			amI = node.tokenSequence.get(node.tokenSequence.size() - i).equals(tokenSequence.get(tokenSequence.size() - i));
+			amI = node.getTokenSequence().get(node.getTokenSequence().size() - i).equals(tokenSequence.get(tokenSequence.size() - i));
 			
 			i++; //increment
 		}	
@@ -92,7 +87,7 @@ public class Node<T> {
 		//print token sequence
 		System.out.println(tokenSequence);
 		
-		for(int i = 0; i <= children.size(); i++) { //for each node in children
+		for(int i = 0; i < children.size(); i++) { //for each node in children
 			children.get(i).print(1);
 		}
 	}
@@ -101,10 +96,12 @@ public class Node<T> {
 	void print(int numSpacesBefore) {
 		
 		for (int i = 1; i <= numSpacesBefore; i++) {
-			System.out.print("--> " + tokenSequence.get(i));
+			System.out.print("  ");
 		}
 		
-		for(int i = 0; i <= children.size(); i++) { //for each node in children
+		System.out.println("--> " + tokenSequence);
+		
+		for(int i = 0; i < children.size(); i++) { //for each node in children
 			children.get(i).print(numSpacesBefore + 1);
 		}
 	}

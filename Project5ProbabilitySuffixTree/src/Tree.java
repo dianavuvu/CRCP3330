@@ -22,8 +22,8 @@ public class Tree<T>{
 
 	// it is training probability generator with new data
 	void train(ArrayList<T> newTokens) {
-//		String[] myList = {"a" , "b" ,"c"};
-//		String[] list = {"b" ,"c"};
+//		String[] myList = {"a"};
+//		String[] list = {"b"};
 //		
 //		//set data in array list
 //		ArrayList<T> testList = new ArrayList(Arrays.asList(myList));
@@ -32,7 +32,6 @@ public class Tree<T>{
 //		Node<String> node3 = new Node(testList);
 //		Node<String> node2 = new Node(testL);
 //		System.out.println( "TEST\n" + node2.amIASuffix(node3) );
-
 		
 		for(int i = 1; i <= L; i++) { //for every interation of the size up until L
 			

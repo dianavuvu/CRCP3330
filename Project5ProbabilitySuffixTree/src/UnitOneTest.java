@@ -32,7 +32,7 @@ public class UnitOneTest<T> {
 		
 		//print out the tree
 		System.out.println("Unit Test One: \n");
-		System.out.println(" abracadabra \n" + "-----Tree-----\n");
+		System.out.println(" abracadabra:  PST L=3 \n" + "-----Tree-----\n");
 		t.print();
 
 	}

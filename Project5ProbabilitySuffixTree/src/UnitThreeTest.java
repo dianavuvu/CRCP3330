@@ -31,7 +31,7 @@ public class UnitThreeTest<T> {
 		
 		//print out the tree
 		System.out.println("Unit Test Three: \n");
-		System.out.println(" abcccdaadcdaabcadad \n" + "-----Tree-----\n");
+		System.out.println(" abcccdaadcdaabcadad:  PST L=3 \n" + "-----Tree-----\n");
 		t.print();
 
 	}
