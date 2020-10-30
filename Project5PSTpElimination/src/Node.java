@@ -11,10 +11,13 @@ public class Node<T> {
 	
 	ArrayList<T> tokenSequence;
 	ArrayList<Node> children;
+	int count;
+
 	
 	Node(ArrayList<T> sequence){
 		tokenSequence = new ArrayList<T>();
 		children = new ArrayList<Node>();
+		count = 1; //counter for how many times node appears in the input
 		
 		//set tokenSequence to current sequence 
 		tokenSequence = sequence; 
@@ -32,6 +35,7 @@ public class Node<T> {
 		//if tokenSequence of this node is same as sequence of added node
 		if(tokenSequence.equals(node.getTokenSequence())) {
 			found = true;
+			count++; //adding one to count
 		}
 		else if(amIASuffix(node) || (tokenSequence.size() == 0)) {
 
@@ -79,6 +83,39 @@ public class Node<T> {
 			i++; //increment
 		}	
 		return amI;
+	}
+	
+	boolean pMinElimination(int totalTokens, float pMin) {
+		
+		int emProb = 0;
+		
+		//find number of times that sequence could have occurred
+		for(int i = tokenSequence.size(); i < totalTokens; i++) {
+			emProb++;
+		}
+		
+		//shouldRemove = emProb < pMin
+		boolean shouldRemove = false;
+		shouldRemove = emProb < pMin;
+		
+		//if we DON'T remove node
+		if(!shouldRemove) {
+			
+			//for each node
+			for(int i = 0; i <= children.size(); i++) {
+				
+				//call pMin on all children nodes
+				boolean remove = pMinElimination(children.get(i).getTokenSequence().size(), pMin);
+				
+				//if it returns true
+				if(remove == true) {
+					
+					//remove entire node
+					children.remove(children.get(i));
+				}
+			}
+		}
+		return shouldRemove; //return shouldRemove
 	}
 	
 	//print method 

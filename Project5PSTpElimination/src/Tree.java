@@ -12,12 +12,16 @@ import com.sun.xml.internal.bind.v2.schemagen.xmlschema.List;
 
 public class Tree<T>{
 	
-	//setting max sequence length
-	int L = 3;
-	Node root;
+	int L; //setting max sequence length
+	Node root; //init variables
+	float pMin;
+	int totalInputTokens;
 
 	Tree() {
 		root = new Node(new ArrayList()); //init
+		pMin = 0.5f;
+		L = 3;
+		totalInputTokens = 0;
 	}
 
 	// it is training probability generator with new data
@@ -53,6 +57,11 @@ public class Tree<T>{
 				root.addNode(theNewNode);
 			}
 		}
+		//sum total number of tokens
+		totalInputTokens = totalInputTokens + newTokens.size();
+		
+		//use p min elimination
+		root.pMinElimination(totalInputTokens, pMin);
 	}
 	
 	//printing out data
