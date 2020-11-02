@@ -13,12 +13,12 @@ import com.sun.xml.internal.bind.v2.schemagen.xmlschema.List;
 public class Tree<T>{
 	
 	int L; //setting max sequence length
-	Node root; //init variables
+	Node root; //initialize variables
 	float pMin;
 	int totalInputTokens;
 
 	Tree() {
-		root = new Node(new ArrayList()); //init
+		root = new Node(new ArrayList()); //initialize
 		pMin = 0.5f;
 		L = 3;
 		totalInputTokens = 0;
@@ -37,9 +37,9 @@ public class Tree<T>{
 //		Node<String> node2 = new Node(testL);
 //		System.out.println( "TEST\n" + node2.amIASuffix(node3) );
 		
-		for(int i = 1; i <= L; i++) { //for every interation of the size up until L
+		for(int i = 1; i <= L; i++) { //for every iteration of the size up until L
 			
-			for(int j = 0; j < newTokens.size() - (i-1); j++) { //for every token in the arraylist
+			for(int j = 0; j < newTokens.size() - (i-1); j++) { //for every token in the arrayList
 				
 				ArrayList<T> curSequence = new ArrayList(); //create a new curSequence EVERY TIME!!!!
 				
@@ -51,7 +51,7 @@ public class Tree<T>{
 				//System.out.println(curSequence);
 				
 				//create new node with current sequence	
-				Node theNewNode = new Node(curSequence); //init the new node
+				Node theNewNode = new Node(curSequence); //initialize the new node
 
 				//add the node
 				root.addNode(theNewNode);
@@ -60,7 +60,7 @@ public class Tree<T>{
 		//sum total number of tokens
 		totalInputTokens = totalInputTokens + newTokens.size();
 		
-		//use p min elimination
+		//use pMin elimination
 		root.pMinElimination(totalInputTokens, pMin);
 	}
 	

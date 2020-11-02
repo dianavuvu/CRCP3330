@@ -90,19 +90,22 @@ public class Node<T> {
 		int emProb = 0;
 		
 		//find number of times that sequence could have occurred
-		for(int i = tokenSequence.size(); i < totalTokens; i++) {
-			emProb++;
-		}
+		emProb = count / (totalTokens – (tokenSequence.size() - 1);
 		
-		//shouldRemove = emProb < pMin
-		boolean shouldRemove = false;
+		//shouldRemove = empirical probability of token sequence < pMin
+		boolean shouldRemove;
+		
 		shouldRemove = emProb < pMin;
+		
+		//for empty root
+		if(count == 1 || emProb == 0)
+			shouldRemove = false;
 		
 		//if we DON'T remove node
 		if(!shouldRemove) {
 			
 			//for each node
-			for(int i = 0; i <= children.size(); i++) {
+			for(int i = 0; i < children.size(); i++) {
 				
 				//call pMin on all children nodes
 				boolean remove = pMinElimination(children.get(i).getTokenSequence().size(), pMin);
