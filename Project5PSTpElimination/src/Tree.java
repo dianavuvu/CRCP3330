@@ -14,18 +14,18 @@ public class Tree<T>{
 	
 	int L; //setting max sequence length
 	Node root; //initialize variables
-	float pMin;
+	//float pMin;
 	int totalInputTokens;
 
 	Tree() {
 		root = new Node(new ArrayList()); //initialize
-		pMin = 0.5f;
+		//pMin = 0.5f;
 		L = 3;
 		totalInputTokens = 0;
 	}
 
 	// it is training probability generator with new data
-	void train(ArrayList<T> newTokens) {
+	void train(ArrayList<T> newTokens, float pMin) {
 //		String[] myList = {"a"};
 //		String[] list = {"b"};
 //		

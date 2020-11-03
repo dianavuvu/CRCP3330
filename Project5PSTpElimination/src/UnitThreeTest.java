@@ -25,14 +25,23 @@ public class UnitThreeTest<T> {
 		
 		//initialize tree
 		Tree<T> t = new Tree<T>();
+		Tree<T> two = new Tree<T>();
 		
 		//train tree
-		t.train(testList);
+		float pMin = 0.1f;
+		t.train(testList, pMin);
+		
+		float p = 0.15f;
+		two.train(testList, p);
 		
 		//print out the tree
 		System.out.println("Unit Test Three: \n");
-		System.out.println(" abcccdaadcdaabcadad:  PST L=3 \n" + "-----Tree-----\n");
+		System.out.println(" abcccdaadcdaabcadad:  PST L=3 Pmin=0.1 \n" + "-----Tree-----\n");
 		t.print();
+		
+		System.out.println("Unit Test Two: \n");
+		System.out.println(" abracadabra:  PST L=3 Pmin=0.15 \n" + "-----Tree-----\n");
+		two.print();
 
 	}
 

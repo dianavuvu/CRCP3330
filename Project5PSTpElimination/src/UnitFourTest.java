@@ -30,15 +30,23 @@ public class UnitFourTest {
 		
 		//initialize tree
 		Tree t = new Tree();
+		Tree two = new Tree();
 		
 		//training
-		t.train(midiNotesMary.getPitchArray());
-
+		float pMin = 0.1f;
+		t.train(midiNotesMary.getPitchArray(), pMin);
+		
+		float p = 0.15f;
+		two.train(midiNotesMary.getPitchArray(), p);
 		
 		//print out the tree
 		System.out.println("Unit Test Four: \n");
-		System.out.println(" Mary Had a Little Lamb:  PST L=3 \n" + "-----Tree-----\n");
+		System.out.println(" Mary Had a Little Lamb:  PST L=3 Pmin=0.1 \n" + "-----Tree-----\n");
 		t.print();
+		
+		System.out.println("Unit Test Two: \n");
+		System.out.println(" abracadabra:  PST L=3 Pmin=0.15 \n" + "-----Tree-----\n");
+		two.print();
 
 	}
 
