@@ -87,10 +87,10 @@ public class Node<T> {
 	
 	boolean pMinElimination(int totalTokens, float pMin) {
 		
-		int emProb = 0;
+		float emProb = 0;
 		
 		//find number of times that sequence could have occurred
-		emProb = count / (totalTokens – (tokenSequence.size() - 1);
+		emProb = count/(totalTokens - (tokenSequence.size() - 1));
 		
 		//shouldRemove = empirical probability of token sequence < pMin
 		boolean shouldRemove;
