@@ -39,7 +39,7 @@ public class Tree<T>{
 		
 		for(int i = 1; i <= L; i++) { //for every iteration of the size up until L
 			
-			for(int j = 0; j < newTokens.size() - (i-1); j++) { //for every token in the arrayList
+			for(int j = 0; j < newTokens.size() - (i - 1); j++) { //for every token in the arrayList
 				
 				ArrayList<T> curSequence = new ArrayList(); //create a new curSequence EVERY TIME!!!!
 				

@@ -45,7 +45,7 @@ public class UnitFourTest {
 		t.print();
 		
 		System.out.println("Unit Test Two: \n");
-		System.out.println(" abracadabra:  PST L=3 Pmin=0.15 \n" + "-----Tree-----\n");
+		System.out.println(" Mary Had a Little Lamb:  PST L=3 Pmin=0.15 \n" + "-----Tree-----\n");
 		two.print();
 
 	}
