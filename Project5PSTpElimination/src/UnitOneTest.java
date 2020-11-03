@@ -40,8 +40,7 @@ public class UnitOneTest<T> {
 		System.out.println(" abracadabra:  PST L=3 Pmin=0.1 \n" + "-----Tree-----\n");
 		t.print();
 		
-		System.out.println("Unit Test One: \n");
-		System.out.println(" abracadabra:  PST L=3 Pmin=0.15 \n" + "-----Tree-----\n");
+		System.out.println("\n abracadabra:  PST L=3 Pmin=0.15 \n" + "-----Tree-----\n");
 		two.print();
 
 	}
