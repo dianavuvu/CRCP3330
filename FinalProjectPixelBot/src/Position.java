@@ -40,12 +40,12 @@ public class Position {
 		ArrayList<Integer> testList = new ArrayList(Arrays.asList(xList));	
 		
 		//initialize image
-		//MarkovOrderM<Integer> posGenerator = new MarkovOrderM<Integer>(1);
-		ProbabilityGenerator<Integer> pGenerator = new ProbabilityGenerator<Integer>();
+		MarkovOrderM<Integer> posGenerator = new MarkovOrderM<Integer>(1);
+		//ProbabilityGenerator<Integer> pGenerator = new ProbabilityGenerator<Integer>();
 		
 		//train data
-		//posGenerator.train(testList);
-		pGenerator.train(testList);
+		posGenerator.train(testList);
+		//pGenerator.train(testList);
 		
 		//print image
 		System.out.println(testList);
@@ -75,10 +75,6 @@ public class Position {
 //		JFrame main = null;
 //		makeFrameFullSize(main);
 		
-
-		
-		
-
 	}
 	
 	private void makeFrameFullSize(JFrame aFrame) {

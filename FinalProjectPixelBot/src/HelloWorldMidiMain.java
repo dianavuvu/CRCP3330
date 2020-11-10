@@ -29,44 +29,11 @@ public class HelloWorldMidiMain extends PApplet {
 	MelodyPlayer player; //play a midi sequence
 	MidiFileToNotes midiNotes; //read a midi file
 	boolean playMelody = false;
-	
-    private static void createAndShowGUI() {
-        //Create and set up the window.
-//        JFrame frame = new JFrame("HelloWorldSwing");
-//        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//
-//        //Add the ubiquitous "Hello World" label.
-//        JLabel label = new JLabel("Hello World");
-//        frame.getContentPane().add(label);
-//
-//        //Display the window.
-//        frame.pack();
-//        frame.setVisible(true);
-        
-        JFrame frame = new JFrame("mull");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-        JPanel panel = new JPanel();
-
-        // add panel to the center of window
-        frame.getContentPane().add("Center", panel);
-        frame.setSize(500, 300); // << not working!!!
-
-        //frame.pack(); // give a suitable size to window automatically
-        frame.setVisible(true); // make window visible
-    }
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		PApplet.main("HelloWorldMidiMain"); //change this to match above class & file name 
-		
-	     //Schedule a job for the event-dispatching thread:
-        //creating and showing this application's GUI.
-        javax.swing.SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
-                createAndShowGUI();
-            }
-        });
+	
 	}
 
 	//setting the window size to 300x300
