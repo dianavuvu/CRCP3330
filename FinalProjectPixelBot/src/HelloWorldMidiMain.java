@@ -6,7 +6,11 @@
  */
 
 import processing.core.*;
-import java.util.*; 
+import java.util.*;
+
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 //importing the JMusic stuff
 import jm.music.data.*;
@@ -25,10 +29,44 @@ public class HelloWorldMidiMain extends PApplet {
 	MelodyPlayer player; //play a midi sequence
 	MidiFileToNotes midiNotes; //read a midi file
 	boolean playMelody = false;
+	
+    private static void createAndShowGUI() {
+        //Create and set up the window.
+//        JFrame frame = new JFrame("HelloWorldSwing");
+//        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//
+//        //Add the ubiquitous "Hello World" label.
+//        JLabel label = new JLabel("Hello World");
+//        frame.getContentPane().add(label);
+//
+//        //Display the window.
+//        frame.pack();
+//        frame.setVisible(true);
+        
+        JFrame frame = new JFrame("mull");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        JPanel panel = new JPanel();
+
+        // add panel to the center of window
+        frame.getContentPane().add("Center", panel);
+        frame.setSize(500, 300); // << not working!!!
+
+        //frame.pack(); // give a suitable size to window automatically
+        frame.setVisible(true); // make window visible
+    }
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		PApplet.main("HelloWorldMidiMain"); //change this to match above class & file name 
+		
+	     //Schedule a job for the event-dispatching thread:
+        //creating and showing this application's GUI.
+        javax.swing.SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                createAndShowGUI();
+            }
+        });
 	}
 
 	//setting the window size to 300x300
@@ -43,43 +81,7 @@ public class HelloWorldMidiMain extends PApplet {
 	}
 
 	public void draw() {
-		// returns a url
-//		String filePath = getPath("mid/gardel_por.mid");
-//		// playMidiFile(filePath);
-//
-//		midiNotes = new MidiFileToNotes(filePath); //creates a new MidiFileToNotes -- reminder -- ALL objects in Java must 
-//													//be created with "new". Note how every object is a pointer or reference. Every. single. one.
-//
-//		// which line to read in --> this object only reads one line (or ie, voice or ie, one instrument)'s worth of data from the file
-//		midiNotes.setWhichLine(0);
-//		
-//		//Create my generator for pitch and rhythm
-//		MarkovOrderM<Integer> pG = new MarkovOrderM<Integer>(10);
-//		MarkovOrderM<Double> rG = new MarkovOrderM<Double>(10);
-//		MarkovGenerator<Double> rhyG = new MarkovGenerator<Double>();
-//		MarkovGenerator<Integer> pitG = new MarkovGenerator<Integer>();
-//		
-//		//training
-//		pG.train(midiNotes.getPitchArray());
-//		pitG.train(midiNotes.getPitchArray());
-//		rG.train(midiNotes.getRhythmArray());
-//		rhyG.train(midiNotes.getRhythmArray());
-//		
-//		ArrayList<Double> nR = new ArrayList<Double>(); //create array list to hold generated initSeq
-//		ArrayList<Integer> nP = new ArrayList<Integer>();
-//		
-//		nP = pitG.generate(20); //create initSeq4
-//		nR = rhyG.generate(20);
-//		
-//		player = new MelodyPlayer(this, 100.0f);
-//
-//		player.setup();
-//		player.setMelody(pG.generate(nP, 20));
-//		player.setRhythm(rG.generate(nR, 20));
-//		
-//		if(playMelody) {
-//			player.play(); //play each note in the sequence -- the player will determine whether is time for a note onset
-//		}
+
 
 		textSize(15);
 		fill(0, 0, 200);
@@ -131,15 +133,6 @@ public class HelloWorldMidiMain extends PApplet {
 		else if (key == '1'){		
 			//run unit 1
 			test.run();
-		}
-		else if (key == '2') {
-
-		}
-		else if (key == '3') {
-
-		}
-		else if (key == '4') {
-			playMelody = !playMelody;
 		}
 	}
 }

@@ -40,10 +40,12 @@ public class Position {
 		ArrayList<Integer> testList = new ArrayList(Arrays.asList(xList));	
 		
 		//initialize image
-		MarkovGenerator<Integer> posGenerator = new MarkovGenerator<Integer>();
+		//MarkovOrderM<Integer> posGenerator = new MarkovOrderM<Integer>(1);
+		ProbabilityGenerator<Integer> pGenerator = new ProbabilityGenerator<Integer>();
 		
 		//train data
-		posGenerator.train(testList);
+		//posGenerator.train(testList);
+		pGenerator.train(testList);
 		
 		//print image
 		System.out.println(testList);
@@ -55,9 +57,9 @@ public class Position {
 	//method to print arraylist in image format
 	void print(ArrayList<Integer> newTokens) {
 		
-		for(int i = 0; i <= 16; i++) { //for each row of pixel
+		for(int i = 0; i < 16; i++) { //for each row of pixel
 			
-			for(int j = 0; j <= 16; j++) { //row size of pixels
+			for(int j = 0; j < 16; j++) { //row size of pixels
 				
 			System.out.print(newTokens.get(i) + " ");
 			
