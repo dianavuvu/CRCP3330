@@ -81,18 +81,18 @@ public class HelloWorldMidiMain extends PApplet {
 //			player.play(); //play each note in the sequence -- the player will determine whether is time for a note onset
 //		}
 
-		textSize(15);
-		fill(0, 0, 200);
-		text("Press 1 to start Unit Test One\n", width/10, height/6);
-		
-		fill(0, 200, 0);
-		text("Press 2 to start Unit Test Two\n", width/10, height/4);
-		
-		fill(200, 0, 0);
-		text("Press 3 to start Unit Test Three\n", width/10, height/3);
-		
-		fill(200, 0, 200);
-		text("Press 4 to stop melody\n", width/10, height/2);
+//		textSize(15);
+//		fill(0, 0, 200);
+//		text("Press 1 to start Unit Test One\n", width/10, height/6);
+//		
+//		fill(0, 200, 0);
+//		text("Press 2 to start Unit Test Two\n", width/10, height/4);
+//		
+//		fill(200, 0, 0);
+//		text("Press 3 to start Unit Test Three\n", width/10, height/3);
+//		
+//		fill(200, 0, 200);
+//		text("Press 4 to stop melody\n", width/10, height/2);
 	}
 
 	//this finds the absolute path of a file
@@ -123,8 +123,6 @@ public class HelloWorldMidiMain extends PApplet {
 		
 		//instantiate unit tests
 		UnitOneTest test = new UnitOneTest();
-		UnitTwoTest t = new UnitTwoTest();
-		UnitThreeTest ts = new UnitThreeTest();
 		
 		if (key == ' ') {
 			player.reset();
@@ -135,12 +133,10 @@ public class HelloWorldMidiMain extends PApplet {
 			test.run();
 		}
 		else if (key == '2') {
-			//run unit 2
-			t.run();
+
 		}
 		else if (key == '3') {
-			//run unit 3
-			ts.run();
+
 		}
 		else if (key == '4') {
 			playMelody = !playMelody;
