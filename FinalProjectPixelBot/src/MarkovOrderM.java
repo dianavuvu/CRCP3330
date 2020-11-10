@@ -176,6 +176,7 @@ public class MarkovOrderM<T> extends MarkovGenerator<T>{
 			System.out.println("\n");
 		}
 	}
+	
 
 }//end class
 

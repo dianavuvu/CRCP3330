@@ -81,9 +81,9 @@ public class HelloWorldMidiMain extends PApplet {
 //			player.play(); //play each note in the sequence -- the player will determine whether is time for a note onset
 //		}
 
-//		textSize(15);
-//		fill(0, 0, 200);
-//		text("Press 1 to start Unit Test One\n", width/10, height/6);
+		textSize(15);
+		fill(0, 0, 200);
+		text("Press 1 to start Unit Test One\n", width/10, height/6);
 //		
 //		fill(0, 200, 0);
 //		text("Press 2 to start Unit Test Two\n", width/10, height/4);
@@ -122,7 +122,7 @@ public class HelloWorldMidiMain extends PApplet {
 	public void keyPressed() {
 		
 		//instantiate unit tests
-		UnitOneTest test = new UnitOneTest();
+		Position test = new Position();
 		
 		if (key == ' ') {
 			player.reset();
