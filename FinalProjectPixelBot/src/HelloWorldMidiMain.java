@@ -38,7 +38,7 @@ public class HelloWorldMidiMain extends PApplet {
 
 	//setting the window size to 300x300
 	public void settings() {
-		size(300, 300);
+		size(500, 500);
 	}
 
 	//doing all the setup stuff
@@ -53,7 +53,32 @@ public class HelloWorldMidiMain extends PApplet {
 		textSize(15);
 		fill(0, 0, 200);
 		text("Press 1 to start Unit Test One\n", width/10, height/6);
-//		
+		
+		//initialize
+		int squareWidth = width / 10;
+	    int squareHeight = height / 10;
+	    ColorSquare colorSquare = new ColorSquare();
+	    
+		//draw the rectangles
+	    for (int i = 0; i < 10; i++) { //iterating through every i until the size of N
+            for (int j = 0; j < 10; j++) {
+                int x1 = i * squareWidth;  //should increase by 1 every iteration, top corner of square
+                int y1 = j * squareHeight;
+                int x2 = x1 + squareWidth;  //should increase by 1 every iteration, bottoom corner of square
+                int y2 = y1 + squareHeight;
+
+                //color
+                fill(colorSquare.run());
+
+                rect(x1, y1, x2, y2);    //setting corners of sqaure
+//                gl::drawSolidRect(curSquare);   //drawing the square
+            }
+	    }	
+	    
+	    
+//		fill(0);
+//		rect(20, 20, 20, 20);
+		
 //		fill(0, 200, 0);
 //		text("Press 2 to start Unit Test Two\n", width/10, height/4);
 //		

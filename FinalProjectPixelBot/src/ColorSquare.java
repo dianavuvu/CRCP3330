@@ -1,6 +1,6 @@
 /*
  * Programmer: Diana Vu
- * Date: November 10, 2020
+ * Date: November 17, 2020
  * Description: This class will be responsible for creating brush strokes
  * 
  */
@@ -15,9 +15,11 @@ import javax.swing.JFrame;
 
 import processing.core.PApplet;
 
-public class Position extends PApplet { //inherit Processing properties
+public class ColorSquare extends PApplet { //inherit Processing properties
 	
-	void run() {
+	int run() {
+		
+		int color = 0;
 		
 		//set data
 		//Integer[] xList = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16};
@@ -53,6 +55,8 @@ public class Position extends PApplet { //inherit Processing properties
 		System.out.println(testList);
 		//posGenerator.print(testList);
 		print(testList);
+		
+		return color;
 		
 	}
 	
