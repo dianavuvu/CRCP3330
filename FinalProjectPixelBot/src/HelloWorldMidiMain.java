@@ -122,7 +122,15 @@ public class HelloWorldMidiMain extends PApplet {
 	                int y2 = y1 + squareHeight;
 
 	                //color
-	                fill(colorSquare.run());
+	                int color = colorSquare.run();
+	                
+	                //change grey to red
+	                if(color == 100) {
+	                	fill(255, 0, 0);
+	                }
+		                else{
+		                	fill(color);
+		                }
 
 	                rect(x1, y1, x2, y2);    //setting corners of sqaure
 //	                gl::drawSolidRect(curSquare);   //drawing the square
