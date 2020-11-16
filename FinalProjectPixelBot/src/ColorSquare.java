@@ -53,7 +53,9 @@ public class ColorSquare extends PApplet { //inherit Processing properties
 		
 		//print image
 		//System.out.println(testList);
-		//posGenerator.print(testList);
+		posGenerator.print(testList);
+		
+		color = testList.get((int)random(64));
 		
 		return color;
 		
