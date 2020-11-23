@@ -140,5 +140,33 @@ public class HelloWorldMidiMain extends PApplet {
 	            }
 		    }	
 		}
+		else if(key == '3') {
+			//initialize
+			int squareWidth = width / 10;
+		    int squareHeight = height / 10;
+		    Position colorPos = new Position();
+		    
+			//draw the rectangles
+		    for (int i = 0; i < 16; i++) { //iterating through every i until the size of N
+	            for (int j = 0; j < 16; j++) {
+	                int x1 = i * squareWidth;  //should increase by 1 every iteration, top corner of square
+	                int y1 = j * squareHeight;
+	                int x2 = x1 + squareWidth;  //should increase by 1 every iteration, bottom corner of square
+	                int y2 = y1 + squareHeight;
+
+	                //color
+	                int color = colorPos.runMushroom(j);
+	                
+	                //change grey to red
+	                if(color == 100) {
+	                	fill(255, 0, 0);
+	                }
+		                else{
+		                	fill(color);
+		                }
+	                rect(x1, y1, x2, y2);    //draw square
+	            }
+		    }	
+		}
 	}
 }

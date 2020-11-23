@@ -82,6 +82,71 @@ public class Position extends PApplet { //inherit Processing properties
 		
 	}
 	
+	int runMushroom(int increment) {
+		int color = 0;
+		int i = increment;
+		//set data
+		//Integer[] xList = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16};
+		/*
+		 * 10 = red
+		 * 30 = pink
+		 * 200 = light green
+		 * 100 = green
+		 */
+		Integer[] aList = {255, 255, 255, 255, 255, 0, 0, 0, 0, 0, 0, 255, 255, 255, 255, 255};
+		Integer[] bList = {255, 255, 255, 0, 0, 100, 100, 100, 100, 255, 255, 0, 0, 255, 255, 255};
+		Integer[] dList = {255, 255, 0, 255, 255, 100, 100, 100, 100, 255, 255, 255, 255, 0, 255, 255}; 
+		Integer[] eList = {255, 0, 255, 255, 100, 100, 100, 100, 100, 100, 255, 255, 255, 255, 0, 255}; 
+		Integer[] fList = {255, 0, 255, 100, 100, 255, 255, 255, 255, 100, 100, 255, 255, 255, 0, 255}; 
+		Integer[] gList = {0, 100, 100, 100, 255, 255, 255, 255, 255, 255, 100, 100, 100, 100, 100, 0}; 
+		Integer[] hList = {0, 100, 100, 100, 255, 255, 255, 255, 255, 255, 100, 100, 255, 255, 100, 0};
+		Integer[] iList = {0, 255, 100, 100, 255, 255, 255, 255, 255, 255, 100, 255, 255, 255, 255, 0};
+		Integer[] jList = {0, 255, 255, 100, 100, 255, 255, 255, 255, 100, 100, 255, 255, 255, 255, 0};
+		Integer[] kList = {0, 255, 255, 100, 100, 100, 100, 100, 100, 100, 100, 100, 255, 255, 100, 0};
+		Integer[] lList = {0, 255, 100, 100, 0, 0, 0, 0, 0, 0, 0, 0, 100, 100, 100, 0};
+		Integer[] mList = {255, 0, 0, 0, 255, 255, 0, 255, 255, 0, 255, 255, 0, 0, 0, 255}; 
+		Integer[] nList = {255, 255, 0, 255, 255, 255, 0, 255, 255, 0, 255, 255, 255, 0, 255, 255}; 
+		Integer[] oList = {255, 255, 0, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 0, 255, 255}; 
+		Integer[] pList = {255, 255, 255, 0, 255, 255, 255, 255, 255, 255, 255, 255, 0, 255, 255, 255};
+		Integer[] cList = {255, 255, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 255, 255};
+		
+		//init array
+		ArrayList<Integer[]> list = new ArrayList<Integer[]>();
+		
+		list.add(aList);
+		list.add(bList);
+		list.add(dList);
+		list.add(eList);
+		list.add(fList);
+		list.add(gList);
+		list.add(hList);
+		list.add(iList);
+		list.add(jList);
+		list.add(kList);
+		list.add(lList);
+		list.add(mList);
+		list.add(nList);
+		list.add(oList);
+		list.add(pList);
+		list.add(cList);
+		
+		//for(int i = 0; i < list.size(); i++) {
+
+			//set data in array list
+			ArrayList<Integer> testList = new ArrayList(Arrays.asList(list.get(i)));	
+			
+			//initialize image
+			MarkovOrderM<Integer> posGenerator = new MarkovOrderM<Integer>(1);
+			
+			//train data
+			posGenerator.train(testList);
+			
+			color = testList.get((int)random(15));
+		//}
+		
+		return color;
+	}
+	
 	//method to print arraylist in image format
 	void print(ArrayList<Integer> newTokens) {
 		
