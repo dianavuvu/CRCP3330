@@ -28,7 +28,7 @@ public class Position extends PApplet { //inherit Processing properties
 		 * 200 = light green
 		 * 100 = green
 		 */
-		Integer[] aList = {255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255};
+		//Integer[] aList = {255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255};
 		Integer[] bList = {255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 200, 100, 255, 255, 255};
 		Integer[] dList = {255, 255, 255, 255, 255, 255, 255, 255, 255, 10, 30, 200, 100, 255, 255}; 
 		Integer[] eList = {255, 255, 255, 255, 255, 255, 255, 255, 10, 10, 30, 30, 200, 100, 255}; 
@@ -42,12 +42,12 @@ public class Position extends PApplet { //inherit Processing properties
 		Integer[] mList = {255, 100, 200, 30, 30, 30, 30, 30, 30, 200, 100, 100, 255, 255, 255}; 
 		Integer[] nList = {255, 255, 100, 200, 200, 200, 200, 200, 200, 100, 100, 255, 255, 255, 255}; 
 		Integer[] oList = {255, 255, 255, 255, 100, 100, 100, 100, 100, 255, 255, 255, 255, 255, 255}; 
-		Integer[] pList = {255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255};
+		//Integer[] pList = {255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255};
 		
 		//init array
 		ArrayList<Integer[]> list = new ArrayList<Integer[]>();
 		
-		list.add(aList);
+		//list.add(aList);
 		list.add(bList);
 		list.add(dList);
 		list.add(eList);
@@ -61,7 +61,7 @@ public class Position extends PApplet { //inherit Processing properties
 		list.add(mList);
 		list.add(nList);
 		list.add(oList);
-		list.add(pList);
+		//list.add(pList);
 		
 		for(int i = 0; i < list.size(); i++) {
 
@@ -70,11 +70,9 @@ public class Position extends PApplet { //inherit Processing properties
 			
 			//initialize image
 			MarkovOrderM<Integer> posGenerator = new MarkovOrderM<Integer>(1);
-			//ProbabilityGenerator<Integer> pGenerator = new ProbabilityGenerator<Integer>();
 			
 			//train data
 			posGenerator.train(testList);
-			//pGenerator.train(testList);
 			
 			color = testList.get((int)random(15));
 		}

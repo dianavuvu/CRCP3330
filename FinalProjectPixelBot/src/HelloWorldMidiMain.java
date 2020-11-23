@@ -129,15 +129,15 @@ public class HelloWorldMidiMain extends PApplet {
 	                	fill(255, 0, 0);
 	                }
 	                //change to pink
-	                if(color == 30) {
+	                else if(color == 30) {
 	                	fill(255, 182, 193);
 	                }
 	                //change to light green
-	                if(color == 200) {
+	                else if(color == 200) {
 	                	fill(144, 238, 144);
 	                }
 	                //change to green
-	                if(color == 200) {
+	                else if(color == 100) {
 	                	fill(34, 139, 34);
 	                }
 		                else{
