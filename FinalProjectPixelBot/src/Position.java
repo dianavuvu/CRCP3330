@@ -44,18 +44,40 @@ public class Position extends PApplet { //inherit Processing properties
 		Integer[] oList = {255, 255, 255, 255, 100, 100, 100, 100, 100, 255, 255, 255, 255, 255, 255}; 
 		Integer[] pList = {255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255};
 		
-		//set data in array list
-		ArrayList<Integer> testList = new ArrayList(Arrays.asList(aList));	
+		//init array
+		ArrayList<Integer[]> list = new ArrayList<Integer[]>();
 		
-		//initialize image
-		MarkovOrderM<Integer> posGenerator = new MarkovOrderM<Integer>(1);
-		//ProbabilityGenerator<Integer> pGenerator = new ProbabilityGenerator<Integer>();
+		list.add(aList);
+		list.add(bList);
+		list.add(dList);
+		list.add(eList);
+		list.add(fList);
+		list.add(gList);
+		list.add(hList);
+		list.add(iList);
+		list.add(jList);
+		list.add(kList);
+		list.add(lList);
+		list.add(mList);
+		list.add(nList);
+		list.add(oList);
+		list.add(pList);
 		
-		//train data
-		posGenerator.train(testList);
-		//pGenerator.train(testList);
-		
-		color = testList.get((int)random(64));
+		for(int i = 0; i < list.size(); i++) {
+
+			//set data in array list
+			ArrayList<Integer> testList = new ArrayList(Arrays.asList(list.get(i)));	
+			
+			//initialize image
+			MarkovOrderM<Integer> posGenerator = new MarkovOrderM<Integer>(1);
+			//ProbabilityGenerator<Integer> pGenerator = new ProbabilityGenerator<Integer>();
+			
+			//train data
+			posGenerator.train(testList);
+			//pGenerator.train(testList);
+			
+			color = testList.get((int)random(15));
+		}
 		
 		return color;
 		
