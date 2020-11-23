@@ -6,29 +6,13 @@
  */
 
 import processing.core.*;
-import java.util.*;
-
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-
-//importing the JMusic stuff
-import jm.music.data.*;
-import jm.JMC;
-import jm.util.*;
-import jm.midi.*;
 
 import java.io.UnsupportedEncodingException;
 import java.net.*;
 
-//import javax.sound.midi.*;
 
 			//make sure this class name matches your file name, if not fix.
 public class HelloWorldMidiMain extends PApplet {
-
-	MelodyPlayer player; //play a midi sequence
-	MidiFileToNotes midiNotes; //read a midi file
-	boolean playMelody = false;
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -48,7 +32,6 @@ public class HelloWorldMidiMain extends PApplet {
 	}
 
 	public void draw() {
-
 
 		textSize(15);
 		fill(0, 0, 200);
@@ -81,14 +64,6 @@ public class HelloWorldMidiMain extends PApplet {
 		return filePath;
 	}
 
-	//this function is not currently called. you may call this from setup() if you want to test
-	//this just plays the midi file -- all of it via your software synth. You will not use this function in upcoming projects
-	//but it could be a good debug tool.
-	void playMidiFile(String filename) {
-		Score theScore = new Score("Temporary score");
-		Read.midi(theScore, filename);
-		Play.midi(theScore);
-	}
 
 	//this starts & restarts the melody.
 	public void keyPressed() {
@@ -129,7 +104,7 @@ public class HelloWorldMidiMain extends PApplet {
 		                	fill(color);
 		                }
 
-	                rect(x1, y1, x2, y2);    //setting corners of square
+	                rect(x1, y1, x2, y2);    //draw square
 
 	            }
 		    }	
