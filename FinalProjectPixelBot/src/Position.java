@@ -17,29 +17,35 @@ import processing.core.PApplet;
 
 public class Position extends PApplet { //inherit Processing properties
 	
-	void run() {
+	int run() {
 		
+		int color = 0;
 		//set data
 		//Integer[] xList = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16};
-		Integer[] xList = {1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1,
-						   1, 1, 1, 0, 0, 2, 2, 2, 2, 1, 1, 0, 0, 1, 1, 1,
-						   1, 1, 6, 1, 1, 2, 2, 2, 2, 1, 1, 1, 1, 0, 1, 1, 
-						   1, 0, 1, 1, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 0, 1, 
-						   1, 0, 1, 2, 2, 1, 1, 1, 1, 2, 2, 1, 1, 1, 0, 1, 
-						   6, 2, 2, 2, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 0, 
-						   0, 2, 2, 2, 1, 1, 1, 1, 1, 1, 2, 2, 1, 1, 2, 0,
-						   0, 1, 2, 2, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 0,
-						   0, 1, 1, 2, 2, 1, 1, 1, 1, 2, 2, 1, 1, 1, 1, 0,
-						   0, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 2, 0,
-						   0, 1, 2, 2, 0, 0, 6, 0, 0, 0, 0, 0, 2, 2, 2, 0,
-						   1, 0, 0, 0, 1, 1, 0, 1, 1, 0, 1, 1, 0, 0, 0, 1, 
-						   1, 1, 0, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 0, 1, 1, 
-						   1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 
-						   1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 
-						   1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1};
+		/*
+		 * 10 = red
+		 * 30 = pink
+		 * 200 = light green
+		 * 100 = green
+		 */
+		Integer[] aList = {255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255};
+		Integer[] bList = {255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 200, 100, 255, 255, 255};
+		Integer[] dList = {255, 255, 255, 255, 255, 255, 255, 255, 255, 10, 30, 200, 100, 255, 255}; 
+		Integer[] eList = {255, 255, 255, 255, 255, 255, 255, 255, 10, 10, 30, 30, 200, 100, 255}; 
+		Integer[] fList = {255, 255, 255, 255, 255, 255, 255, 10, 10, 0, 10, 30, 200, 100, 255}; 
+		Integer[] gList = {255, 255, 255, 255, 255, 255, 10, 10, 10, 10, 10, 30, 200, 100, 255}; 
+		Integer[] hList = {255, 255, 255, 255, 255, 10, 10, 10, 0, 10, 10, 30, 200, 100, 255};
+		Integer[] iList = {255, 255, 255, 255, 10, 10, 10, 10, 10, 10, 10, 30, 200, 100, 255};
+		Integer[] jList = {255, 255, 255, 10, 10, 10, 0, 10, 10, 10, 30, 30, 200, 100, 255};
+		Integer[] kList = {255, 255, 10, 10, 0, 10, 10, 10, 10, 10, 30, 200, 100, 255, 255};
+		Integer[] lList = {255, 200, 30, 30, 10, 10, 10, 10, 10, 30, 30, 200, 100, 100, 255, 255};
+		Integer[] mList = {255, 100, 200, 30, 30, 30, 30, 30, 30, 200, 100, 100, 255, 255, 255}; 
+		Integer[] nList = {255, 255, 100, 200, 200, 200, 200, 200, 200, 100, 100, 255, 255, 255, 255}; 
+		Integer[] oList = {255, 255, 255, 255, 100, 100, 100, 100, 100, 255, 255, 255, 255, 255, 255}; 
+		Integer[] pList = {255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255};
 		
 		//set data in array list
-		ArrayList<Integer> testList = new ArrayList(Arrays.asList(xList));	
+		ArrayList<Integer> testList = new ArrayList(Arrays.asList(aList));	
 		
 		//initialize image
 		MarkovOrderM<Integer> posGenerator = new MarkovOrderM<Integer>(1);
@@ -49,10 +55,9 @@ public class Position extends PApplet { //inherit Processing properties
 		posGenerator.train(testList);
 		//pGenerator.train(testList);
 		
-		//print image
-		System.out.println(testList);
-		//posGenerator.print(testList);
-		print(testList);
+		color = testList.get((int)random(64));
+		
+		return color;
 		
 	}
 	
