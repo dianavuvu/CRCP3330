@@ -52,10 +52,7 @@ public class HelloWorldMidiMain extends PApplet {
 
 		textSize(15);
 		fill(0, 0, 200);
-		text("Press 1 to start Unit Test One\n", width/10, height/6);
-		
-
-	    
+		text("Press 2 to draw mushroom\n", width/10, height/6);
 	    
 //		fill(0);
 //		rect(20, 20, 20, 20);
@@ -100,8 +97,8 @@ public class HelloWorldMidiMain extends PApplet {
 		Position test = new Position();
 		
 		if (key == ' ') {
-			player.reset();
-			println("Melody started!");
+	    	//use space bar to refresh screen
+	    	background(255);
 		}
 		else if (key == '1'){		
 			//run unit 1
@@ -118,7 +115,7 @@ public class HelloWorldMidiMain extends PApplet {
 	            for (int j = 0; j < 16; j++) {
 	                int x1 = i * squareWidth;  //should increase by 1 every iteration, top corner of square
 	                int y1 = j * squareHeight;
-	                int x2 = x1 + squareWidth;  //should increase by 1 every iteration, bottoom corner of square
+	                int x2 = x1 + squareWidth;  //should increase by 1 every iteration, bottom corner of square
 	                int y2 = y1 + squareHeight;
 
 	                //color
@@ -132,10 +129,13 @@ public class HelloWorldMidiMain extends PApplet {
 		                	fill(color);
 		                }
 
-	                rect(x1, y1, x2, y2);    //setting corners of sqaure
-//	                gl::drawSolidRect(curSquare);   //drawing the square
+	                rect(x1, y1, x2, y2);    //setting corners of square
+
 	            }
 		    }	
 		}
+	    else if(key == '3') {
+
+	    }
 	}
 }
