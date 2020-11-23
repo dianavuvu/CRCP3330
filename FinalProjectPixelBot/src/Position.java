@@ -17,9 +17,10 @@ import processing.core.PApplet;
 
 public class Position extends PApplet { //inherit Processing properties
 	
-	int run() {
+	int run(int increment) {
 		
 		int color = 0;
+		int i = increment;
 		//set data
 		//Integer[] xList = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16};
 		/*
@@ -63,7 +64,7 @@ public class Position extends PApplet { //inherit Processing properties
 		list.add(oList);
 		//list.add(pList);
 		
-		for(int i = 0; i < list.size(); i++) {
+		//for(int i = 0; i < list.size(); i++) {
 
 			//set data in array list
 			ArrayList<Integer> testList = new ArrayList(Arrays.asList(list.get(i)));	
@@ -75,7 +76,7 @@ public class Position extends PApplet { //inherit Processing properties
 			posGenerator.train(testList);
 			
 			color = testList.get((int)random(15));
-		}
+		//}
 		
 		return color;
 		

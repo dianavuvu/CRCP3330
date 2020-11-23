@@ -35,7 +35,7 @@ public class HelloWorldMidiMain extends PApplet {
 
 		textSize(15);
 		fill(0, 0, 200);
-		text("Press 2 to draw mushroom\n", width/10, height/6);
+		//text("Press 2 to draw mushroom\n", width/10, height/6);
 	    
 //		fill(0);
 //		rect(20, 20, 20, 20);
@@ -68,16 +68,49 @@ public class HelloWorldMidiMain extends PApplet {
 	//this starts & restarts the melody.
 	public void keyPressed() {
 		
-		//instantiate unit tests
-		Position test = new Position();
-		
 		if (key == ' ') {
 	    	//use space bar to refresh screen
 	    	background(255);
 		}
 		else if (key == '1'){		
-			//run unit 1
-			test.run();
+			//initialize
+			int squareWidth = width / 10;
+		    int squareHeight = height / 10;
+		    Position colorPos = new Position();
+		    
+			//draw the rectangles
+		    for (int i = 0; i < 13; i++) { //iterating through every i until the size of N
+	            for (int j = 0; j < 13; j++) {
+	                int x1 = i * squareWidth;  //should increase by 1 every iteration, top corner of square
+	                int y1 = j * squareHeight;
+	                int x2 = x1 + squareWidth;  //should increase by 1 every iteration, bottom corner of square
+	                int y2 = y1 + squareHeight;
+
+	                //color
+	                int color = colorPos.run(j); //run color for that row 
+	                
+	                //change grey to red
+	                if(color == 10) {
+	                	fill(255, 0, 0);
+	                }
+	                //change to pink
+	                else if(color == 30) {
+	                	fill(255, 182, 193);
+	                }
+	                //change to light green
+	                else if(color == 200) {
+	                	fill(144, 238, 144);
+	                }
+	                //change to green
+	                else if(color == 100) {
+	                	fill(34, 139, 34);
+	                }
+		                else{
+		                	fill(color);
+		                }
+	                rect(x1, y1, x2, y2);    //draw square
+	            }
+		    }	
 		}
 		else if (key == '2') {
 			//initialize
@@ -107,45 +140,5 @@ public class HelloWorldMidiMain extends PApplet {
 	            }
 		    }	
 		}
-	    else if(key == '3') {
-			//initialize
-			int squareWidth = width / 10;
-		    int squareHeight = height / 10;
-		    Position colorPos = new Position();
-		    
-			//draw the rectangles
-		    for (int i = 0; i < 15; i++) { //iterating through every i until the size of N
-	            for (int j = 0; j < 15; j++) {
-	                int x1 = i * squareWidth;  //should increase by 1 every iteration, top corner of square
-	                int y1 = j * squareHeight;
-	                int x2 = x1 + squareWidth;  //should increase by 1 every iteration, bottom corner of square
-	                int y2 = y1 + squareHeight;
-
-	                //color
-	                int color = colorPos.run();
-	                
-	                //change grey to red
-	                if(color == 10) {
-	                	fill(255, 0, 0);
-	                }
-	                //change to pink
-	                else if(color == 30) {
-	                	fill(255, 182, 193);
-	                }
-	                //change to light green
-	                else if(color == 200) {
-	                	fill(144, 238, 144);
-	                }
-	                //change to green
-	                else if(color == 100) {
-	                	fill(34, 139, 34);
-	                }
-		                else{
-		                	fill(color);
-		                }
-	                rect(x1, y1, x2, y2);    //draw square
-	            }
-		    }	
-	    }
 	}
 }
